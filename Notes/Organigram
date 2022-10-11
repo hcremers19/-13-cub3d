@@ -1,0 +1,44 @@
+CUB3D
+|
+| ---> 1) PARSING
+|	 		- 1.0 :	fichier .cub ?
+|			- 1.1 : Open (a bien proteger)
+|			- 1.2 : verification image NSEW
+|			- 1.3 : verification color bon range ? [0 , 250]
+|			- 1.4 : lecture (gnl simplifié pour eviter leaks)
+|					--> trou de mur ?
+|					--> caractére non autorisé ? (hors 0, 1, N, S, W, E, " ")
+|			- 1.5 : initiation fenetre MLX (Hugo ou Alan a voir)
+|
+|			--> EN GROS : verfication format fichier map (attention au \n potentiellement présent et valables)
+|			(-> astuce un peu moche : tout parcourir, placer dans une matrice et verifier dedans chaque élément entourant un 0)
+|
+|
+| ---> 2) RECAST
+|			- "envoyer autan de rayon qu il y a de pixel a affchier" <=> largeur(pixel) = nb rayon
+|			- mxl_loop (pas hook)
+|			- bon chance
+|
+|
+| ---> 3) IMAGE
+|			- Conversion pixel + gestion texture
+|
+|
+| ---> 4) BONUS
+			- Collision mur deja implentée
+			- mini map
+			- animation (fixer image a chaque calcul)
+
+
+
+Idees structures :
+	- maps {floor, sky, 4x murs}	(parsing)
+	- murs							(parsing)
+	- player						(recast)
+	- ecran							(recast)
+	- global {adresses!}			(main)
+
+
+Tips :
+	- open image donne un pointeur sur le premier pixel de l'image
+	- appliquer couleur : appliquer le recast au milieu ET PUIS APRES mettre couleur ciel et sol(et pas l'inverse)
