@@ -19,6 +19,13 @@ CUB3D
 |			- mxl_loop (pas hook)
 |			- bon chance
 |
+|			- 1.1 : Equations lignes a partir rection regard
+|			- 1.2 : Detecter intersections avec murs
+|			- 1.3 : Deduire distance entre joueur et mur
+|			- 1.4 : Corriger perspective
+|			- 1.5 : Utiliser Thalès pour calculer hauter perception mur
+|			- 1.6 : Appliquer texture
+|
 |
 | ---> 3) IMAGE
 |			- Conversion pixel + gestion texture
