@@ -6,14 +6,15 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:22:06 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/12 16:22:46 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:42:55 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
 
-# define W 750
-# define H 550
+// Size window
+# define W 1024
+# define H 512
 
 #endif /* DEFINE_H */

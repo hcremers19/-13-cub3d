@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
+#    By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/10/12 17:49:27 by hcremers         ###   ########.fr        #
+#    Updated: 2022/10/13 13:37:16 by acaillea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ NAME		=	cub3d
 # -----------	Sources ------------- #
 
 SRCS_DIR	=	./Sources/
-SRCS		=	main.c
+SRCS		=	recastSage.c
 
 # -----------	Includes ------------ #
 
