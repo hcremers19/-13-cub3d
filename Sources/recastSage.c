@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:28:22 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/13 19:33:10 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/17 18:36:34 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 void	draw(t_global *d);
 void	window_init(t_global *d);
 void	my_mlx_pixel_put(t_global *d, int x, int y, int color);
-
-//------------------------------------------------------------------
-//			RECAST --> V 6:47
-//------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------
-//			MAP
-//------------------------------------------------------------------
 
 int	map[] =
 {
@@ -37,6 +27,172 @@ int	map[] =
 	1,0,0,0,0,0,0,1,
 	1,1,1,1,1,1,1,1,
 };
+
+//------------------------------------------------------------------
+//			RECAST --> V 6:47
+//------------------------------------------------------------------
+
+float	pythagor(float ax, float ay, float bx, float by)
+{
+	return(sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
+}
+
+void	drawMap3D(t_global *d)
+{
+	int		r, mx, my, mp, dof;
+	float	rx, ry, ra, x0, y0;
+	float	aTan;
+	float	nTan;
+	float	disT;
+	float	disH, hx = d->player->posX, hy = d->player->posY;
+	float	disV, vx = d->player->posX, vy = d->player->posY;
+
+	float	ca;
+	float 	lineH; 
+	float	lineO;
+
+	r = -1;
+	ra = d->player->alpha - OD * 30;
+	if(ra < 0)
+		ra += 2* M_PI;
+	else if(ra > 2 * M_PI)
+		ra -= 2* M_PI;
+	while(++r < 60)
+	{
+		//Check horizontal intersections lines
+		dof = 0;
+		aTan = -1 / tan(ra);
+		//is the ray looking up or down?
+		if(ra > M_PI)//looking up
+		{
+			ry = (((int)d->player->posY >> 6) << 6) - 0.0001;//y first hit
+			rx = (d->player->posY - ry) * aTan + d->player->posX;//x first hit
+			y0 = -64;
+			x0 = -y0 * aTan;
+		}
+		if(ra < M_PI)//looking down
+		{
+			ry = (((int)d->player->posY >> 6) << 6) + 64;//y first hit
+			rx = (d->player->posY - ry) * aTan + d->player->posX;//x first hit
+			y0 = 64;
+			x0 = -y0 * aTan;
+		}
+		if(ra == 0 || ra == M_PI)//looking straight left or right
+		{
+			rx = d->player->posX;
+			ry = d->player->posY;
+			dof = 8;
+		}
+		while(dof < 8)
+		{
+			mx = (int)(rx) >> 6;
+			my = (int)(ry) >> 6;
+			mp = my * d->map_d->sizeX + mx;
+			if(mp > 0 && mp < d->map_d->sizeX * d->map_d->sizeY && map[mp] == 1)// hit a wall
+			{
+				hx = rx;
+				hy = ry;
+				disH = pythagor(d->player->posX, d->player->posY, hx, hy);
+				dof = 8;
+			}
+			else //didn't hit a wall, looking for next horizontal line
+			{
+				rx += x0;
+				ry += y0;
+				dof += 1;
+			}
+		}
+	//---------------------------------------------------------------
+		//Check vertical intersections lines
+		dof = 0;
+		nTan = -tan(ra);
+		if(ra > (M_PI / 2) && ra < (3 * M_PI / 2))//looking left
+		{
+			rx = (((int)d->player->posX >> 6) << 6) - 0.0001;//y first hit
+			ry = (d->player->posX - rx) * nTan + d->player->posY;//x first hit
+			x0 = -64;
+			y0 = -x0 * nTan;
+		}
+		if(ra < (M_PI / 2) || ra > (3 * M_PI / 2))//looking right
+		{
+			rx = (((int)d->player->posX >> 6) << 6) + 64;//y first hit
+			ry = (d->player->posX - rx) * nTan + d->player->posY;//x first hit
+			x0 = 64;
+			y0 = -x0 * nTan;
+		}
+		if(ra == 0 || ra == M_PI)//looking up or down
+		{
+			rx = d->player->posX;
+			ry = d->player->posY;
+			dof = 8;
+		}
+		while(dof < 8)
+		{
+			mx = (int)(rx) >> 6;
+			my = (int)(ry) >> 6;
+			mp = my * d->map_d->sizeX + mx;
+			if(mp > 0 && mp < d->map_d->sizeX * d->map_d->sizeY && map[mp] == 1)
+			{
+				vx = rx;
+				vy = ry;
+				disV = pythagor(d->player->posX, d->player->posY, vx, vy);
+				dof = 8;
+			}
+			else //didn't hit a wall, looking for next line
+			{
+				rx += x0;
+				ry += y0;
+				dof += 1;
+			}
+		}
+		if(disV < disH)
+		{
+			rx = vx;
+			ry = vy;
+			disT = disV;
+		}
+		if(disV > disH)
+		{
+			rx = hx;
+			ry = hy;
+			disT = disH;
+		}
+		//---------------------------------------------------------------
+		// correcting fisheye
+		ca = d->player->alpha - ra;
+		if(ca < 0)
+			ca += 2 * M_PI;
+		if(ca > 2 * M_PI)
+			ca -= 2 * M_PI;
+		disT = disT * cos(ca);
+		//---------------------------------------------------------------
+		lineH = (d->map_d->aera * 1024) / disT;
+		if (lineH > 1024)
+			lineH = 1024;
+		lineO = 512 - lineH / 2;
+		
+		int tmp = -1;
+		int tmpt;
+		while(++tmp < H)
+		{
+			tmpt = -1;
+			while(tmpt < W)
+				if(++tmp == lineH)
+					my_mlx_pixel_put(d, tmpt, tmp, 0x00FFFF00);
+		}
+		//---------------------------------------------------------------
+		// Main while
+		ra += OD;
+		if(ra < 0)
+			ra += 2* M_PI;
+		if(ra > 2 * M_PI)
+			ra -= 2* M_PI;
+	}
+}
+
+//------------------------------------------------------------------
+//			MAP
+//------------------------------------------------------------------
 
 void	printBlock(t_global *d, int x, int y, int color)
 {
@@ -127,8 +283,9 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 
 void	draw(t_global *d)
 {
-	drawMap2D(d);// plateau 2D
-	my_mlx_pixel_put(d, d->player->posX, d->player->posY, 0x00FF0000);//player
+	// drawMap2D(d);// plateau 2D
+	drawMap3D(d);
+	// my_mlx_pixel_put(d, d->player->posX, d->player->posY, 0x00FF0000);//player
 	mlx_put_image_to_window(d->mlx_d->mlx, d->mlx_d->mlx_win, d->mlx_d->img, 0, 0);
 }
 
