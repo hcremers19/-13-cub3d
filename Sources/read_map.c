@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/13 15:31:26 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/17 19:26:47 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,16 @@ void	get_dimensions(char *file, t_map *map)
 
 	fd = open(file, O_RDONLY);													// Ouvrir le fichier pour trouver les dimensions de la zone de map
 	if (fd < 1 || read(fd, NULL, 0) < 0)
-		ft_error("Error: invalid path\n");
-	map->height = 0;
+		ft_error("Error: invalid path\n");										// N'a pas été testé, et doit peut-être être closed
 	line = get_next_line(fd);
 	if (!line)
 	{
 		free(line);
-		map->width = 0;
 		close(fd);
-		ft_error("Error: empty map\n");
+		ft_error("Error: empty map\n");											// N'a pas été testé
 	}
+	map->height = 0;
 	map->width = ft_strlen(line) - 1;											// (1)
-	ft_putstr_fd("map->width = ", 1); ft_putnbr_fd(map->width, 1); ft_putchar_fd(10, 1);
 	while (line)
 	{
 		map->height++;															// Déterminer la hauteur en l'incrémentant à chaque nouvelle ligne
@@ -58,6 +56,7 @@ void	get_dimensions(char *file, t_map *map)
 		free(line);
 		line = get_next_line(fd);
 	}
+	ft_putstr_fd("map->width = ", 1); ft_putnbr_fd(map->width, 1); ft_putchar_fd(10, 1);
 	ft_putstr_fd("map->height = ", 1); ft_putnbr_fd(map->height, 1); ft_putchar_fd(10, 1);
 	close(fd);
 }
@@ -114,7 +113,7 @@ void	fill_matrix(char *file, t_map *map)
 	close(fd);
 }
 
-void	print_matrix(t_map *map)
+void	print_matrix(t_map *map)												// Juste pour les tests
 {
 	int	y;
 	int	x;
@@ -146,7 +145,7 @@ void	check_map(t_map *map)
 		x = 0;
 		while (x < map->width)
 		{
-			if (y == 0 || x == 0 || y == map->height - 1 || x == map->width - 1)	// Vérifier qu'aucun 0 ne se trouve au bord de la zone de map
+			if (y == 0 || x == 0 || y == map->height - 1 || x == map->width - 1)// Vérifier qu'aucun 0 ne se trouve au bord de la zone de map
 			{
 				if (map->matrix[y][x] != ' ' && map->matrix[y][x] != '1')
 				{
@@ -201,8 +200,8 @@ void	read_map(char *file)
 		ft_error("Allocation error\n");
 	get_dimensions(file, map);
 	alloc_map(map);
-	fill_matrix(file, map); // Tester en revoyant le contenu de la matrice dans un fichier
-	print_matrix(map);
+	fill_matrix(file, map);
+	print_matrix(map);															// Juste pour les tests
 	check_map(map);
 }
 
@@ -219,3 +218,8 @@ void	read_map(char *file)
 //		La méthode optimale consisterait donc à modifier la fonction
 // 		get_next_line afin qu'elle ne garde pas de retour à la ligne quand elle
 // 		en trouve un à la fin de la ligne qu'elle va renvoyer.
+
+//		==> Ou juste modifier le code pour que le dernier caractère ne soit pas
+//		supprimé s'il n'y a pas de retour ligne à la fin du fichier, vu que fi-
+//		nalement c'est la seule mauvaise conséquence que ça a sur la lecture de
+//		la map.
