@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:28:22 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/17 18:36:34 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:10:16 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,29 @@ int	map[] =
 //			RECAST --> V 6:47
 //------------------------------------------------------------------
 
+void	drawMap3D(t_global *d, float lineO, float lineH, float r)
+{
+	int i = -1;
+	while(++i < lineO)
+	{
+		my_mlx_pixel_put(d, i++, r, 0x00FF0000);
+	}
+	while(i < lineO + lineH)
+	{
+		my_mlx_pixel_put(d, i++, r, 0x00FFFF00);
+	}
+	while(i < lineO + lineH + lineO)
+	{
+		my_mlx_pixel_put(d, i++, r, 0x00FF0000);
+	}
+}
+
 float	pythagor(float ax, float ay, float bx, float by)
 {
 	return(sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
 }
 
-void	drawMap3D(t_global *d)
+void	math3D(t_global *d)
 {
 	int		r, mx, my, mp, dof;
 	float	rx, ry, ra, x0, y0;
@@ -52,7 +69,7 @@ void	drawMap3D(t_global *d)
 	float	lineO;
 
 	r = -1;
-	ra = d->player->alpha - OD * 30;
+	ra = d->player->alpha - (OD * 30);
 	if(ra < 0)
 		ra += 2* M_PI;
 	else if(ra > 2 * M_PI)
@@ -164,22 +181,14 @@ void	drawMap3D(t_global *d)
 			ca += 2 * M_PI;
 		if(ca > 2 * M_PI)
 			ca -= 2 * M_PI;
-		disT = disT * cos(ca);
+		disT *= cos(ca);
 		//---------------------------------------------------------------
-		lineH = (d->map_d->aera * 1024) / disT;
-		if (lineH > 1024)
-			lineH = 1024;
-		lineO = 512 - lineH / 2;
-		
-		int tmp = -1;
-		int tmpt;
-		while(++tmp < H)
-		{
-			tmpt = -1;
-			while(tmpt < W)
-				if(++tmp == lineH)
-					my_mlx_pixel_put(d, tmpt, tmp, 0x00FFFF00);
-		}
+		lineH = (d->map_d->aera * H) / disT;
+		if (lineH > H)
+			lineH = H;
+		lineO = (W / 2) - (lineH / 2);
+
+		drawMap3D(d, lineO, lineH, r);
 		//---------------------------------------------------------------
 		// Main while
 		ra += OD;
@@ -284,7 +293,7 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 void	draw(t_global *d)
 {
 	// drawMap2D(d);// plateau 2D
-	drawMap3D(d);
+	math3D(d);
 	// my_mlx_pixel_put(d, d->player->posX, d->player->posY, 0x00FF0000);//player
 	mlx_put_image_to_window(d->mlx_d->mlx, d->mlx_d->mlx_win, d->mlx_d->img, 0, 0);
 }
@@ -335,10 +344,9 @@ int	main(void)
 	//---------------------------------------------------
 	// Parsing init
 	//---------------------------------------------------
-	d->player->posX = 200;
-	d->player->posY = 200;
-
-	d->player->alpha = M_PI / 2; 		// = Nord
+	d->player->posX = 100;
+	d->player->posY = 100;
+	d->player->alpha = M_PI / 2; 			// = Nord
 
 	d->player->pdx = cos(d->player->alpha) * 5;
 	d->player->pdy = sin(d->player->alpha) * 5;
