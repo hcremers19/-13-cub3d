@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/18 23:05:55 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/19 17:18:32 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//'d' = DATA (partout) !
-
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct s_map // HUGO
+typedef struct s_map
 {
 	// char	**map;
 	int		sizeX;
@@ -48,10 +45,15 @@ typedef struct s_player
 	double	rayDirX;
 	double	rayDirY;
 	double	sizeRay;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
 	int		mapX;
 	int		mapY;
-	int		jumpX;	//direction to step in x or y-direction
+	int		jumpX;
 	int		jumpY;
+	int		hit;
 	int		side;
 } t_player;
 
@@ -64,18 +66,8 @@ typedef struct s_player
 // 	int		mapY;
 // 	int		jumpX;	//direction to step in x or y-direction
 // 	int		jumpY;
+// int		side;
 // } t_ray;
-
-
-// typedef struct s_player
-// {
-// 	float	posX;
-// 	float	posY;
-// 	float	pdx;
-// 	float	pdy;
-// 	float	alpha;
-	
-// } t_player;
 
 typedef struct s_mlx //done
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new.c                                              :+:      :+:    :+:   */
+/*   recast.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/18 23:10:15 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/19 17:33:53 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 // Out init
 //---------------------------------------------------
 
-void	window_init(t_global *d);
+void	initWindow(t_global *d);
 
 int test_map[8][8]=
 {
 	{1,1,1,1,1,1,1,1},
 	{1,0,1,0,0,0,0,1},
-	{1,0,1,0,0,1,0,1},
+	{1,0,1,0,1,1,0,1},
 	{1,0,1,0,0,0,0,1},
-	{1,0,0,0,0,0,0,1},
-	{1,0,0,0,0,1,0,1},
+	{1,0,1,0,0,0,0,1},
+	{1,0,1,0,0,1,0,1},
 	{1,0,0,0,0,0,0,1},
 	{1,1,1,1,1,1,1,1},
 };
 
 //------------------------------------------------------------------
-//			Libft
+//			Utils
 //------------------------------------------------------------------
 
 int	ft_strlen(char *str)
@@ -62,8 +62,8 @@ void	drawVert(t_global *d, int x, int y1, int y2)
 	int color;
 
 	color = 0x00FF0000;
-	if(x <= W / d->map->sizeX + 1 && x >= W / d->map->sizeX - 1)
-		color = 0x00000000;
+	// if(x <= W / d->map->sizeX + 1 && x >= W / d->map->sizeX - 1)
+	// 	color = 0x00000000;
 	if(d->player->side == 1) //give x and y sides different brightness
 		color = color / 2;
 	if(y2 < y1)
@@ -81,7 +81,6 @@ void	drawVert(t_global *d, int x, int y1, int y2)
 	y = y1 - 1;
 	while(++y <= y2)
 		my_mlx_pixel_put(d, x, y, color);
-	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
 }
 
 void	draw(t_global *d)
@@ -101,63 +100,54 @@ void	draw(t_global *d)
 		d->player->mapX = (int)d->player->posX;
 		d->player->mapY = (int)d->player->posY;
 
-		//length of ray from current position to next x or y-side
-		double sideDistX;
-		double sideDistY;
-
-		double deltaDistX;
-		double deltaDistY;
-
-		deltaDistX = sqrt(1 + (d->player->rayDirY * d->player->rayDirY) / (d->player->rayDirX * d->player->rayDirX));
-		deltaDistY = sqrt(1 + (d->player->rayDirX * d->player->rayDirX) / (d->player->rayDirY * d->player->rayDirY));
+		d->player->deltaDistX = sqrt(1 + (d->player->rayDirY * d->player->rayDirY) / (d->player->rayDirX * d->player->rayDirX));
+		d->player->deltaDistY = sqrt(1 + (d->player->rayDirX * d->player->rayDirX) / (d->player->rayDirY * d->player->rayDirY));
 
 		if(d->player->rayDirX < 0)
 		{
 			d->player->jumpX = -1;
-			sideDistX = (d->player->posX - d->player->mapX) * deltaDistX;
+			d->player->sideDistX = (d->player->posX - d->player->mapX) * d->player->deltaDistX;
 		}
 		else
 		{
 			d->player->jumpX = 1;
-			sideDistX = (d->player->mapX + 1.0 - d->player->posX) * deltaDistX;
+			d->player->sideDistX = (d->player->mapX + 1.0 - d->player->posX) * d->player->deltaDistX;
 		}
 		if(d->player->rayDirY < 0)
 		{
 			d->player->jumpY = -1;
-			sideDistY = (d->player->posY - d->player->mapY) * deltaDistY;
+			d->player->sideDistY = (d->player->posY - d->player->mapY) * d->player->deltaDistY;
 		}
 		else
 		{
 			d->player->jumpY = 1;
-			sideDistY = (d->player->mapY + 1.0 - d->player->posY) * deltaDistY;
+			d->player->sideDistY = (d->player->mapY + 1.0 - d->player->posY) * d->player->deltaDistY;
 		}
-		// DDA
-		int	 hit = 0; //was there a wall hit?
+		d->player->hit = 0; //was there a wall d->player->hit?
 		d->player->side = 0; //of the wall
 
-		while(!hit)
+		while(!d->player->hit)
 		{
-			if(sideDistX < sideDistY)
+			if(d->player->sideDistX < d->player->sideDistY)
 			{
-				sideDistX += deltaDistX;
+				d->player->sideDistX += d->player->deltaDistX;
 				d->player->mapX += d->player->jumpX;
 				d->player->side = 0;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
+				d->player->sideDistY += d->player->deltaDistY;
 				d->player->mapY += d->player->jumpY;
 				d->player->side = 1;
 			}
-			//Check if ray has hit a wall
-			if(test_map[d->player->mapX][d->player->mapY] > 0)
-				hit = 1;
+			if(test_map[d->player->mapX][d->player->mapY] > 0) // hit
+				d->player->hit = 1;
 		}
 		// Len rayon
 		if(!d->player->side)
-			d->player->sizeRay = (sideDistX - deltaDistX);
+			d->player->sizeRay = (d->player->sideDistX - d->player->deltaDistX);
 		else
-			d->player->sizeRay = (sideDistY - deltaDistY);
+			d->player->sizeRay = (d->player->sideDistY - d->player->deltaDistY);
 
 		// 3D Draw
 		int lineH = (int)(H / d->player->sizeRay);//conversion pixels
@@ -174,8 +164,89 @@ void	draw(t_global *d)
 }
 
 //------------------------------------------------------------------
+//			DRAW MINIMAP
+//------------------------------------------------------------------
+
+void	printBlock(t_global *d, int x, int y, int color)
+{
+	int p;
+	int k;
+
+	k = y * H /  (d->map->sizeY * (H));
+	while(++k < ((y + 1) * H / d->map->sizeY))
+	{
+		p = x * W / ( d->map->sizeX * (W));
+		while(++p < ((x + 1) * W / d->map->sizeX))
+			my_mlx_pixel_put(d, p, k, color);
+	}				
+}
+
+void	drawMap2D(t_global *d)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while(++y < d->map->sizeY)
+	{
+		x = -1;
+		while(++x < d->map->sizeX)
+		{
+			if(test_map[x][y] == 1)
+				printBlock(d, x, y, 0x00FFFFFF);
+			else
+				printBlock(d, x, y, 0x00000000);		
+		}
+	}
+}
+
+//------------------------------------------------------------------
 //			HOOK
 //------------------------------------------------------------------
+
+void	mooveN(t_global *d, double speed)
+{
+	if(!test_map[(int)(d->player->posX + d->player->dirX * speed)][(int)(d->player->posY)])
+		d->player->posX += d->player->dirX * speed;
+	if(!test_map[(int)(d->player->posX)][(int)(d->player->posY + d->player->dirY * speed)])
+		d->player->posY += d->player->dirY * speed;
+}
+
+void	mooveE(t_global *d, double angle)
+{
+	double oldDirX;
+	double oldScreenX;
+
+	oldDirX = d->player->dirX;
+	d->player->dirX = d->player->dirX * cos(angle) - d->player->dirY * sin(angle);
+	d->player->dirY = oldDirX * sin(angle) + d->player->dirY * cos(angle);
+		
+	oldScreenX = d->player->screenX;
+	d->player->screenX = d->player->screenX * cos(angle) - d->player->screenY * sin(angle);
+    d->player->screenY = oldScreenX * sin(angle) + d->player->screenY * cos(angle);
+}
+
+void	mooveS(t_global *d, double speed)
+{
+	if(!test_map[(int)(d->player->posX - d->player->dirX * speed)][(int)(d->player->posY)])
+		d->player->posX -= d->player->dirX * speed;
+	if(!test_map[(int)(d->player->posX)][(int)(d->player->posY + d->player->dirY * speed)])
+		d->player->posY -= d->player->dirY * speed;
+}
+
+void	mooveW(t_global *d, double angle)
+{
+	double oldDirX;
+	double oldScreenX;
+
+	oldDirX = d->player->dirX;
+	d->player->dirX = d->player->dirX * cos(-angle) - d->player->dirY * sin(-angle);
+	d->player->dirY = oldDirX * sin(-angle) + d->player->dirY * cos(-angle);
+		
+	oldScreenX = d->player->screenX;
+	d->player->screenX = d->player->screenX * cos(-angle) - d->player->screenY * sin(-angle);
+    d->player->screenY = oldScreenX * sin(-angle) + d->player->screenY * cos(-angle);
+}
 
 int	key_hook(int keycode, t_global *d)
 {
@@ -189,42 +260,16 @@ int	key_hook(int keycode, t_global *d)
 		mlx_destroy_window(d->mlx->mlx, d->mlx->mlx_win);
 		exit(0);// ! FREE
 	}
-	if (keycode == 13)					//W
-	{
-		if(!test_map[(int)(d->player->posX + d->player->dirX * speed)][(int)(d->player->posY)])
-			d->player->posX += d->player->dirX * speed;
-		if(!test_map[(int)(d->player->posX)][(int)(d->player->posY + d->player->dirY * speed)])
-			d->player->posY += d->player->dirY * speed;
-	}
+	if (keycode == 13) // W
+		mooveN(d, speed);
 	if (keycode == 2 || keycode == 124)	//D && right
-	{
-		double oldDirX = d->player->dirX;
-		d->player->dirX = d->player->dirX * cos(angle) - d->player->dirY * sin(angle);
-		d->player->dirY = oldDirX * sin(angle) + d->player->dirY * cos(angle);
-		
-		double oldScreenX = d->player->screenX;
-		d->player->screenX = d->player->screenX * cos(angle) - d->player->screenY * sin(angle);
-      	d->player->screenY = oldScreenX * sin(angle) + d->player->screenY * cos(angle);
-	}
-	if (keycode == 1)					//S
-	{
-		if(!test_map[(int)(d->player->posX - d->player->dirX * speed)][(int)(d->player->posY)])
-			d->player->posX -= d->player->dirX * speed;
-		if(!test_map[(int)(d->player->posX)][(int)(d->player->posY + d->player->dirY * speed)])
-			d->player->posY -= d->player->dirY * speed;
-	}
+		mooveE(d, angle);
+	if (keycode == 1) // S
+		mooveS(d, speed);
 	if (keycode == 0 || keycode == 123)	//A && left
-	{
-		double oldDirX = d->player->dirX;
-		d->player->dirX = d->player->dirX * cos(-angle) - d->player->dirY * sin(-angle);
-		d->player->dirY = oldDirX * sin(-angle) + d->player->dirY * cos(-angle);
-		
-		double oldScreenX = d->player->screenX;
-		d->player->screenX = d->player->screenX * cos(-angle) - d->player->screenY * sin(-angle);
-      	d->player->screenY = oldScreenX * sin(-angle) + d->player->screenY * cos(-angle);
-	}
-	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
-	window_init(d);
+		mooveW(d, angle);
+	mlx_destroy_image(d->mlx->mlx, d->mlx->img);
+	initWindow(d);
 	return(0);
 }
 
@@ -232,7 +277,31 @@ int	key_hook(int keycode, t_global *d)
 //			WINDOW
 //------------------------------------------------------------------
 
-void	window_init(t_global *d)
+void	initDir(t_global *d, char c)
+{
+	if(c == 'N' || c == 'S')
+	{
+		d->player->screenX = 0.6;
+		d->player->screenY = 0;
+		d->player->dirX = 0;
+		if(c == 'N')
+			d->player->dirY = 1;	
+		else
+			d->player->dirY = -1;
+	}
+	else if(c == 'E' || c == 'W')
+	{
+		d->player->screenX = 0;
+		d->player->screenY = 0.6;	
+		d->player->dirY = 0;
+		if(c == 'E')
+			d->player->dirX = 1;
+		else
+			d->player->dirX = -1;
+	}
+}
+
+void	initWindow(t_global *d)
 {
 	d->mlx->img = mlx_new_image(d->mlx->mlx, W, H);
 	if (!d->mlx->img)
@@ -241,6 +310,8 @@ void	window_init(t_global *d)
 	if (!d->mlx->addr)
 		return ;
 	draw(d);
+	// drawMap2D(d); // mini map
+	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
 }
 
 void	init(t_global *d)
@@ -251,8 +322,10 @@ void	init(t_global *d)
 	d->mlx->mlx_win = mlx_new_window(d->mlx->mlx, W, H, "cub3D");
 	if(!d->mlx->mlx_win)
 		return ;
-	window_init(d);
-	mlx_hook(d->mlx->mlx_win, 2, (1L << 0), &key_hook, d);// PRESS + RELEASE
+	char c = 'E';// parsing
+	initDir(d, c);
+	initWindow(d);
+	mlx_hook(d->mlx->mlx_win, 2, (1L << 0), &key_hook, d);
 	// mlx_mouse_hook(d->mlx->mlx_win, &mouse_hook, d);
 	mlx_loop(d->mlx->mlx);
 }  
@@ -305,39 +378,6 @@ int main(void)
 
 	d->player->posX = 4; 
 	d->player->posY = 4;  
-	
-	char c;
-	c = 'E';
-	if(c == 'N' || c == 'S')
-	{
-		d->player->screenX = 0.6;
-		d->player->screenY = 0;
-		if(c == 'N')
-		{
-			d->player->dirX = 0;
-			d->player->dirY = 1;	
-		}
-		else
-		{
-			d->player->dirX = 0;
-			d->player->dirY = -1;
-		}
-	}
-	else if(c == 'E' || c == 'W')
-	{
-		d->player->screenX = 0;
-		d->player->screenY = 0.6;	
-		if(c == 'E')
-		{
-			d->player->dirX = 1;
-			d->player->dirY = 0;
-		}
-		else
-		{
-			d->player->dirX = -1;
-			d->player->dirY = 0;
-		}
-	}
 
 	d->map->colorN = 0x00FF0000;
 	d->map->colorS = 0x00FF0000;

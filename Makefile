@@ -23,7 +23,7 @@ NAME		=	cub3d
 # -----------	Sources ------------- #
 
 SRCS_DIR	=	./Sources/
-SRCS		=	new.c
+SRCS		=	recast.c
 
 # -----------	Includes ------------ #
 
@@ -78,6 +78,12 @@ ${NAME}: ${OBJS}
 	@${CC} ${CFLAGS} ${MLX} ${OBJS} -o ${NAME}
 	@${PRI} "\n${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	\
 	${C_GREEN}$@ 🧊🧊🧊 ${C_GREEN}Successfully built${C_DEFAUT}\n\n"
+
+# ---------------------------------- #
+# 				Bonus	 			 #
+# ---------------------------------- #
+
+#bonus :
 
 # ---------------------------------- #
 # 				Clean	 			 #
