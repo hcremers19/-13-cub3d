@@ -6,14 +6,13 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:36:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/17 19:57:59 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:25:37 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#include "my_header.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t start, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
@@ -40,6 +39,24 @@ size_t	ft_strlen(const char *s)
 	while (s[count])
 		count++;
 	return (count);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*p;
+	int		i;
+
+	p = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!p)
+		return (0);
+	i = 0;
+	while (src[i])
+	{
+		p[i] = src[i];
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
 }
 
 void	ft_putstr_fd(char *str, int fd)

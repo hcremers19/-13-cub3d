@@ -6,17 +6,13 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 18:39:45 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/14 12:04:54 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:22:25 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "my_header.h"
 
 #define BUFFER_SIZE 1
-#define __null (void *)0
 
 size_t	ft_strlen(const char *s);
 
