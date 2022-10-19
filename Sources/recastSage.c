@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recastSage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:28:22 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/18 17:10:16 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:32:27 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void	math3D(t_global *d)
 		{
 			mx = (int)(rx) >> 6;
 			my = (int)(ry) >> 6;
-			mp = my * d->map_d->sizeX + mx;
-			if(mp > 0 && mp < d->map_d->sizeX * d->map_d->sizeY && map[mp] == 1)// hit a wall
+			mp = my * d->map->sizeX + mx;
+			if(mp > 0 && mp < d->map->sizeX * d->map->sizeY && map[mp] == 1)// hit a wall
 			{
 				hx = rx;
 				hy = ry;
@@ -147,8 +147,8 @@ void	math3D(t_global *d)
 		{
 			mx = (int)(rx) >> 6;
 			my = (int)(ry) >> 6;
-			mp = my * d->map_d->sizeX + mx;
-			if(mp > 0 && mp < d->map_d->sizeX * d->map_d->sizeY && map[mp] == 1)
+			mp = my * d->map->sizeX + mx;
+			if(mp > 0 && mp < d->map->sizeX * d->map->sizeY && map[mp] == 1)
 			{
 				vx = rx;
 				vy = ry;
@@ -183,7 +183,7 @@ void	math3D(t_global *d)
 			ca -= 2 * M_PI;
 		disT *= cos(ca);
 		//---------------------------------------------------------------
-		lineH = (d->map_d->aera * H) / disT;
+		lineH = (d->map->aera * H) / disT;
 		if (lineH > H)
 			lineH = H;
 		lineO = (W / 2) - (lineH / 2);
@@ -208,11 +208,11 @@ void	printBlock(t_global *d, int x, int y, int color)
 	int p;
 	int k;
 
-	k = y * H /  d->map_d->sizeY;
-	while(++k < ((y + 1) * H / d->map_d->sizeY))
+	k = y * H /  d->map->sizeY;
+	while(++k < ((y + 1) * H / d->map->sizeY))
 	{
-		p = x * W / d->map_d->sizeX;
-		while(++p < ((x + 1) * W / d->map_d->sizeX))
+		p = x * W / d->map->sizeX;
+		while(++p < ((x + 1) * W / d->map->sizeX))
 			my_mlx_pixel_put(d, p, k, color);
 	}				
 }
@@ -223,12 +223,12 @@ void	drawMap2D(t_global *d)
 	int	y;
 
 	y = -1;
-	while(++y < d->map_d->sizeY)
+	while(++y < d->map->sizeY)
 	{
 		x = -1;
-		while(++x < d->map_d->sizeX)
+		while(++x < d->map->sizeX)
 		{
-			if(map[y * d->map_d->sizeX + x] == 1)
+			if(map[y * d->map->sizeX + x] == 1)
 				printBlock(d, x, y, 0x00FFFFFF);
 			else
 				printBlock(d, x, y, 0x00000000);		
@@ -244,7 +244,7 @@ int	key_hook(int keycode, t_global *d)
 {
 	if (keycode == 53)
 	{
-		mlx_destroy_window(d->mlx_d->mlx, d->mlx_d->mlx_win);
+		mlx_d  estroy_window(d->mlx->mlx, d->mlx->mlx_win);
 		exit(0);// ! FREE
 	}
 	if (keycode == 13)					//W
@@ -273,7 +273,7 @@ int	key_hook(int keycode, t_global *d)
 		d->player->pdx = cos(d->player->alpha) * 5;
 		d->player->pdy = sin(d->player->alpha) * 5;
 	}
-	mlx_clear_window(d->mlx_d->mlx, d->mlx_d->mlx_win);
+	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
 	window_init(d);
 	return(0);
 }
@@ -286,7 +286,7 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = d->mlx_d->addr + (y * d->mlx_d->line_len + x * (d->mlx_d->bpp / 8));
+	dst = d->mlx->addr + (y * d->mlx->line_len + x * (d->mlx->bpp / 8));
 	*(unsigned int*)dst = color;
 }
 
@@ -295,7 +295,7 @@ void	draw(t_global *d)
 	// drawMap2D(d);// plateau 2D
 	math3D(d);
 	// my_mlx_pixel_put(d, d->player->posX, d->player->posY, 0x00FF0000);//player
-	mlx_put_image_to_window(d->mlx_d->mlx, d->mlx_d->mlx_win, d->mlx_d->img, 0, 0);
+	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
 }
 
 //------------------------------------------------------------------
@@ -304,27 +304,27 @@ void	draw(t_global *d)
 
 void	window_init(t_global *d)
 {
-	d->mlx_d->img = mlx_new_image(d->mlx_d->mlx, W, H);
-	if (!d->mlx_d->img)
+	d->mlx->img = mlx_new_image(d->mlx->mlx, W, H);
+	if (!d->mlx->img)
 		return ;
-	d->mlx_d->addr = mlx_get_data_addr(d->mlx_d->img, &d->mlx_d->bpp, &d->mlx_d->line_len, &d->mlx_d->endian);
-	if (!d->mlx_d->addr)
+	d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, &d->mlx->line_len, &d->mlx->endian);
+	if (!d->mlx->addr)
 		return ;
 	draw(d);
 }
 
 void	init(t_global *d)
 {
-	d->mlx_d->mlx = mlx_init();
-	if(!d->mlx_d->mlx)
+	d->mlx->mlx = mlx_init();
+	if(!d->mlx->mlx)
 		return ;
-	d->mlx_d->mlx_win = mlx_new_window(d->mlx_d->mlx, W, H, "cub3D");
-	if(!d->mlx_d->mlx_win)
+	d->mlx->mlx_win = mlx_new_window(d->mlx->mlx, W, H, "cub3D");
+	if(!d->mlx->mlx_win)
 		return ;
 	window_init(d);
-	mlx_hook(d->mlx_d->mlx_win, 2, (1L << 0), &key_hook, d);// PRESS + RELEASE
-	// mlx_mouse_hook(d->mlx_d->mlx_win, &mouse_hook, d);
-	mlx_loop(d->mlx_d->mlx);
+	mlx_hook(d->mlx->mlx_win, 2, (1L << 0), &key_hook, d);// PRESS + RELEASE
+	// mlx_mouse_hook(d->mlx->mlx_win, &mouse_hook, d);
+	mlx_loop(d->mlx->mlx);
 }
 
 //------------------------------------------------------------------
@@ -337,9 +337,9 @@ int	main(void)
 	
 	d = (t_global *)malloc(sizeof(t_global));
 	d->player = (t_player *)malloc(sizeof(t_player));
-	d->mlx_d = (t_mlx *)malloc(sizeof(t_mlx));
-	d->map_d = (t_map *)malloc(sizeof(t_map));
-	if(!d || !d->player || !d->mlx_d || !d->map_d)
+	d->mlx = (t_mlx *)malloc(sizeof(t_mlx));
+	d->map = (t_map *)malloc(sizeof(t_map));
+	if(!d || !d->player || !d->mlx || !d->map)
 		return(0);
 	//---------------------------------------------------
 	// Parsing init
@@ -355,9 +355,9 @@ int	main(void)
 	// d->player->alpha = M_PI; 			// = W
 	// d->player->alpha = 0;				// = E
 
-	d->map_d->sizeX = 8;
-	d->map_d->sizeY = 8;
-	d->map_d->aera = d->map_d->sizeX * d->map_d->sizeY;
+	d->map->sizeX = 8;
+	d->map->sizeY = 8;
+	d->map->aera = d->map->sizeX * d->map->sizeY;
 
 	//---------------------------------------------------
 	init(d);

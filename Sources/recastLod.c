@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recastLod.cpp                                      :+:      :+:    :+:   */
+/*   recastLod.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 10:44:20 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/17 17:42:32 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:48:18 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int main(int /*argc*/, char */*argv*/[])
       //perform DDA
       while(hit == 0)
       {
-        //jump to next map square, either in x-direction, or in y-direction
+        //jump to next m ap square, either in x-direction, or in y-direction
         if(sideDistX < sideDistY)
         {
           sideDistX += deltaDistX;

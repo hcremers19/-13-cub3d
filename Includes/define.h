@@ -18,4 +18,7 @@
 # define H 512
 # define OD 0.0174533 //degre rad
 
+// Error
+# define ER_MA "Malloc error\n"
+
 #endif /* DEFINE_H */

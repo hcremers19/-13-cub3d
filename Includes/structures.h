@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/13 19:03:02 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/18 23:05:55 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,64 @@
 
 typedef struct s_map // HUGO
 {
-	char	**map;
+	// char	**map;
 	int		sizeX;
 	int		sizeY;
 	int		aera;
+	int		colorN;
+	int		colorS;
+	int		colorW;
+	int		colorE;
+	int		colorSky;
+	int		colorFloor;
 } t_map;
 
-typedef struct s_player // Alan
+// lodev
+typedef struct s_player
 {
-	float	posX;
-	float	posY;
-	float	pdx;
-	float	pdy;
-	float	alpha;
-	
+	// First vector
+	double	posX;
+	double	posY;
+	// Scnd vector
+	double	dirX;
+	double	dirY;
+	// Third vector
+	double	screenX;
+	double	screenY;
+	// Camera x
+	double	camX;
+	// Ray
+	double	rayDirX;
+	double	rayDirY;
+	double	sizeRay;
+	int		mapX;
+	int		mapY;
+	int		jumpX;	//direction to step in x or y-direction
+	int		jumpY;
+	int		side;
 } t_player;
+
+// typedef struct s_ray;
+// {
+// 	double	rayDirX;
+// 	double	rayDirY;
+// 	double	sizeRay;
+// 	int		mapX;
+// 	int		mapY;
+// 	int		jumpX;	//direction to step in x or y-direction
+// 	int		jumpY;
+// } t_ray;
+
+
+// typedef struct s_player
+// {
+// 	float	posX;
+// 	float	posY;
+// 	float	pdx;
+// 	float	pdy;
+// 	float	alpha;
+	
+// } t_player;
 
 typedef struct s_mlx //done
 {
@@ -47,21 +90,10 @@ typedef struct s_mlx //done
 
 typedef	struct s_global // in progress
 {
-	t_mlx		*mlx_d;
+	t_mlx		*mlx;
 	t_player	*player;
-	t_map		*map_d;
+	t_map		*map;
 } t_global;
 
 
 #endif /* STRUCTURES_H */
-
-// lodev
-// typedef struct s_player
-// {
-// 	double	posX;
-// 	double	posY;
-// 	double	screenX;
-// 	double	screenY;
-// 	double	pDirX;
-// 	double	pDirY;
-// }		t_player;
