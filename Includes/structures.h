@@ -3,45 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/19 17:18:32 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/24 01:25:14 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct s_map
+typedef struct s_map	t_map;
+typedef struct s_player	t_player;
+typedef struct s_ray	t_ray;
+typedef struct s_mlx	t_mlx;
+typedef struct s_wall	t_wall;
+typedef struct s_global	t_global;
+
+struct s_wall
 {
-	// char	**map;
+	void	*ptr;
+	void	*addr;
+	int		line_len;
+	int		bpp;
+	int		endian;	
 	int		sizeX;
 	int		sizeY;
-	int		aera;
-	int		colorN;
-	int		colorS;
-	int		colorW;
-	int		colorE;
-	int		colorSky;
-	int		colorFloor;
-} t_map;
+};
 
-// lodev
-typedef struct s_player
+struct s_map
 {
-	// First vector
+	// char	**map;
+	int			 sizeX;
+	int			 sizeY;
+	unsigned int floor;
+	unsigned int sky;
+	t_wall		 *wallT;
+	// t_wall	 wallN;
+	// t_wall	 wallS;
+	// t_wall	 wallE;
+	// t_wall	 wallW;
+};
+
+struct s_player
+{
+	char	letter;
 	double	posX;
 	double	posY;
-	// Scnd vector
 	double	dirX;
 	double	dirY;
-	// Third vector
 	double	screenX;
 	double	screenY;
-	// Camera x
 	double	camX;
-	// Ray
+};
+
+struct s_ray
+{
 	double	rayDirX;
 	double	rayDirY;
 	double	sizeRay;
@@ -49,43 +66,40 @@ typedef struct s_player
 	double	sideDistY;
 	double	deltaDistX;
 	double	deltaDistY;
+	double	hitpt;
+	double	step;
+	double	texPos;
 	int		mapX;
 	int		mapY;
 	int		jumpX;
 	int		jumpY;
-	int		hit;
 	int		side;
-} t_player;
+	int		texX;
+	int		texY;
+	int		texH;
+	int		texW;
+	void	*ptr;
+	t_wall	*curWall;
+};
 
-// typedef struct s_ray;
-// {
-// 	double	rayDirX;
-// 	double	rayDirY;
-// 	double	sizeRay;
-// 	int		mapX;
-// 	int		mapY;
-// 	int		jumpX;	//direction to step in x or y-direction
-// 	int		jumpY;
-// int		side;
-// } t_ray;
-
-typedef struct s_mlx //done
+struct s_mlx
 {
-	void		*mlx;
-	void		*mlx_win;
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			line_len;
-	int			endian;
-} t_mlx;
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	void	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+};
 
-typedef	struct s_global // in progress
+struct s_global
 {
 	t_mlx		*mlx;
 	t_player	*player;
+	t_ray		*ray;
 	t_map		*map;
-} t_global;
+};
 
 
 #endif /* STRUCTURES_H */

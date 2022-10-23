@@ -23,7 +23,10 @@ NAME		=	cub3d
 # -----------	Sources ------------- #
 
 SRCS_DIR	=	./Sources/
-SRCS		=	recast.c
+SRCS		=	main.c					\
+				recast.c				\
+				utils.c					\
+				key_hook_and_mooves.c
 
 # -----------	Includes ------------ #
 

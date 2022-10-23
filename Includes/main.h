@@ -15,9 +15,9 @@
 
 /*** Standard Librabries ***/
 
+# include <math.h>
 # include <mlx.h>
 # include <fcntl.h>
-# include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
