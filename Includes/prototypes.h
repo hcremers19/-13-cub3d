@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/21 01:50:31 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/24 20:27:51 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,53 @@
 # define PROTOTYPES_H
 
 //-------------------------------------------------------------
-//	Key_hook_and_mooves
+//	Key_hook
 //-------------------------------------------------------------
 
 void	mooveN(t_global *d);
 void	mooveE(t_global *d);
 void	mooveS(t_global *d);
 void	mooveW(t_global *d);
+void	rotE(t_global *d);
+void	rotW(t_global *d);
 int		key_hook(int keycode, t_global *d);
 
 //-------------------------------------------------------------
 //	Draw
 //-------------------------------------------------------------
 
-void	my_mlx_pixel_put(t_global *d, int x, int y, int color);
-
-void	drawVert(t_global *d, int x, int y1, int y2);
-// void	getDrawLines(t_global *d, int x);
+void	getSideDist(t_global *d);
 void	hitLoop(t_global *d);
-void	draw3D(t_global *d);
+void	posTex(t_global *d);
+void	drawVert(t_global *d, int x);
+void	recastLoop(t_global *d);
+
+//-------------------------------------------------------------
+//	Recast_utils
+//-------------------------------------------------------------
+
+void	my_mlx_pixel_put(t_global *d, int x, int y, int color);
+void	getDrawLines(t_global *d);
+void	initRay(t_global *d, int x);
+void	initImg(t_global *d, t_wall *curWall);
+void	initTex(t_global *d);
+
+//-------------------------------------------------------------
+//	Mini_map_bonus
+//-------------------------------------------------------------
 
 void	printBlock(t_global *d, int x, int y, int color);
 void	drawMap2D(t_global *d);
 
 //-------------------------------------------------------------
-//	Init
+//	InitDrawing
 //-------------------------------------------------------------
 
+void	initOneWall(t_global *d, t_wall *wall);
+void	initWalls(t_global *d);
 void	initDir(t_global *d);
-void	init(t_global *d);
 void	initWindow(t_global *d);
+void	init(t_global *d);
 
 //-------------------------------------------------------------
 //	Utils
@@ -52,10 +69,20 @@ void	initWindow(t_global *d);
 int		ft_strlen(char *str);
 
 //-------------------------------------------------------------
-//	MAIN
+//	Exit
 //-------------------------------------------------------------
 
+int		ft_exit_cross(t_global *d);
+void	freeWalls(t_global *d);
 void	ft_exit(t_global *d, char *str);
+
+//-------------------------------------------------------------
+//	Malloc
+//-------------------------------------------------------------
+
+void	wallStructMalloc(t_global *d);
 void	structMalloc(t_global *d);
+
+//-------------------------------------------------------------
 
 #endif /* PROTOTYPES_H */

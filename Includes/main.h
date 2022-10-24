@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:54 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/12 17:23:02 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/24 20:18:39 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 /*** Personnal Librabries ***/
 
+# include "define.h"
 # include "structures.h"
 # include "prototypes.h"
-# include "define.h"
 
 #endif /* MAIN_H */

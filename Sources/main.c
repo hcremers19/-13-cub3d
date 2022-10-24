@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/24 00:15:17 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/24 20:29:58 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,20 @@ int	main(int ac, char **av)
 	d->player->posY = 4;
 	d->player->letter = 'E';
 
-	// d->map->colorN = 0x00FF0000;
-	// d->map->colorS = 0x00FF0000;
-	// d->map->colorW = 0x00FF0000;
-	// d->map->colorE = 0x00FF0000;
-	// d->map->colorSky = 0x0000FF;
-	// d->map->colorFloor = 0x00000000;
+	d->map->wallS->path = "cat.xpm";
+	d->map->wallN->path = "cat.xpm";
+	d->map->wallE->path = "east.xpm";
+	d->map->wallW->path = "east.xpm";
+	
+	d->map->sky = 0x0000FF;
+	d->map->floor = 0x00000000;
 	//---------------------------------------------------
 	init(d);
 	return (0);
 }
+
+// To do Alan : 
+//	- 1 fct initialisation NULL ptr Wall et Ray
+//	- arranger mvt E et W
+//	- arranger effet fish eyes
+//	- verifier leaks

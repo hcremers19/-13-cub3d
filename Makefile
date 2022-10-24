@@ -26,7 +26,11 @@ SRCS_DIR	=	./Sources/
 SRCS		=	main.c					\
 				recast.c				\
 				utils.c					\
-				key_hook_and_mooves.c
+				exit.c					\
+				malloc.c				\
+				initDrawing.c			\
+				recast_utils.c			\
+				key_hook.c				\
 
 # -----------	Includes ------------ #
 

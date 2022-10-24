@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/24 01:25:14 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/24 18:51:16 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_global	t_global;
 
 struct s_wall
 {
+	char	*path;
 	void	*ptr;
 	void	*addr;
 	int		line_len;
@@ -38,11 +39,10 @@ struct s_map
 	int			 sizeY;
 	unsigned int floor;
 	unsigned int sky;
-	t_wall		 *wallT;
-	// t_wall	 wallN;
-	// t_wall	 wallS;
-	// t_wall	 wallE;
-	// t_wall	 wallW;
+	t_wall	 	 *wallN;
+	t_wall	 	 *wallS;
+	t_wall	  	 *wallE;
+	t_wall	 	 *wallW;
 };
 
 struct s_player
@@ -74,6 +74,9 @@ struct s_ray
 	int		jumpX;
 	int		jumpY;
 	int		side;
+	int		lineH;
+	int		drawStart;
+	int		drawEnd;
 	int		texX;
 	int		texY;
 	int		texH;
@@ -100,6 +103,5 @@ struct s_global
 	t_ray		*ray;
 	t_map		*map;
 };
-
 
 #endif /* STRUCTURES_H */
