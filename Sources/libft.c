@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:36:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/18 17:25:37 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:01:12 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_header.h"
+#include "../Includes/main.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

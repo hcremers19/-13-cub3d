@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 13:24:08 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:49:10 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ void	initWindow(t_global *d)
 {
 	d->mlx->img = mlx_new_image(d->mlx->mlx, WIGHT, HEIGHT);
 	if (!d->mlx->img)
-		return ;
+		return ;// FT FREE
 	d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, \
 		&d->mlx->line_len, &d->mlx->endian);
 	if (!d->mlx->addr)
-		return ;
+		return ;// FT FREE
 	raycastLoop(d);
 	// drawMap2D(d); // mini map
 	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
@@ -82,10 +82,10 @@ void	init(t_global *d)
 {
 	d->mlx->mlx = mlx_init();
 	if(!d->mlx->mlx)
-		return ;
+		return ;// FT FREE
 	d->mlx->mlx_win = mlx_new_window(d->mlx->mlx, WIGHT, HEIGHT, "cub3D");
 	if(!d->mlx->mlx_win)
-		return ;
+		return ;// FT_FREE
 	initDir(d);
 	initWalls(d);
 	initWindow(d);

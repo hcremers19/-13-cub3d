@@ -109,7 +109,7 @@ clean :
 
 fclean : clean
 	@${RM} ${NAME}
-	@make clean -C mlx
+#	@make clean -C mlx
 	@${PRI} "${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	${C_RED}Exe deleted${C_DEFAUT}\n"
 
 # ---------------------------------- #

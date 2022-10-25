@@ -6,13 +6,13 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:57:26 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/25 12:47:32 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:24:27 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-// int	d->map->matrix[15][15] =
+// int	d->map->map[15][15] =
 // {
 // 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 // 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -35,20 +35,20 @@
 
 void	mooveN(t_global *d)
 {
-	if(!d->map->matrix[(int)(d->player->posX + d->player->dirX * SPEED)]\
+	if(!d->map->map[(int)(d->player->posX + d->player->dirX * SPEED)]\
 		[(int)(d->player->posY)])
 		d->player->posX += d->player->dirX * SPEED;
-	if(!d->map->matrix[(int)(d->player->posX)][(int)(d->player->posY + \
+	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
 		d->player->dirY * SPEED)])
 		d->player->posY += d->player->dirY * SPEED;
 }
 
 void	mooveS(t_global *d)
 {
-	if(!d->map->matrix[(int)(d->player->posX - d->player->dirX * SPEED)]\
+	if(!d->map->map[(int)(d->player->posX - d->player->dirX * SPEED)]\
 		[(int)(d->player->posY)])
 		d->player->posX -= d->player->dirX * SPEED;
-	if(!d->map->matrix[(int)(d->player->posX)][(int)(d->player->posY + \
+	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
 		d->player->dirY * SPEED)])
 		d->player->posY -= d->player->dirY * SPEED;
 }
@@ -57,20 +57,20 @@ void	mooveS(t_global *d)
 
 // void	mooveE(t_global *d)
 // {
-// 	if(!d->map->matrix[(int)(d->player->posX + d->player->dirX * SPEED)]\
+// 	if(!d->map->map[(int)(d->player->posX + d->player->dirX * SPEED)]\
 // 		[(int)(d->player->posY)])
 // 		d->player->posX += d->player->dirY * SPEED;
-// 	if(!d->map->matrix[(int)(d->player->posX)][(int)(d->player->posY + \
+// 	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
 // 		d->player->dirY * SPEED)])
 // 		d->player->posY += d->player->dirX * SPEED;
 // }
 
 // void	mooveW(t_global *d)
 // {
-// 	if(!d->map->matrix[(int)(d->player->posX + d->player->dirX * SPEED)]\
+// 	if(!d->map->map[(int)(d->player->posX + d->player->dirX * SPEED)]\
 // 		[(int)(d->player->posY)])
 // 		d->player->posX -= d->player->dirY * SPEED;
-// 	if(!d->map->matrix[(int)(d->player->posX)][(int)(d->player->posY + \
+// 	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
 // 		d->player->dirY * SPEED)])
 // 		d->player->posY -= d->player->dirX * SPEED;
 // }

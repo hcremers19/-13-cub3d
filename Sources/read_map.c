@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/25 13:28:54 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:18:10 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 // 	free(d->map->matrix);
 // 	free(d->map);
 // }
+
 void	check_map(t_global *d)
 {
 	int	y;
@@ -72,9 +73,11 @@ void	check_map(t_global *d)
 						else
 						{
 							player++;
+							//-----------------------------------------------
 							d->player->orientation = d->map->matrix[y][x];
-							d->player->posX = x;
-							d->player->posY = y;
+							d->player->posX = x + 0.49;
+							d->player->posY = y + 0.49;
+							//-----------------------------------------------
 						}
 					}
 				}
@@ -168,7 +171,7 @@ void	alloc_map(t_global *d)
 
 	d->map->matrix = (char **)malloc(sizeof(char *) * d->map->map_height);
 	if (!d->map->matrix)
-		ft_exit(d, "Allocation error\n");
+		ft_exit(d, ER_MA);
 	i = 0;
 	while (i <= d->map->map_height)
 	{
@@ -178,7 +181,7 @@ void	alloc_map(t_global *d)
 			while (i >= 0)
 				free(d->map->matrix[i--]);
 			free(d->map->matrix);
-			ft_exit(d, "Allocation error\n");
+			ft_exit(d, ER_MA);
 		}
 		i++;
 	}
@@ -245,7 +248,7 @@ void	read_map(t_global *d, char *file, int lines)
 	get_dimensions1(d, file, lines);
 	alloc_map(d);
 	fill_matrix1(d, file, lines);
-	print_matrix(d);															// Juste pour les tests
+	// print_matrix(d);															// Juste pour les tests
 	check_map(d);
 	// free_all(d);
 }
