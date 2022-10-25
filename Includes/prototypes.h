@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 13:17:32 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:23:36 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	getSideDist(t_global *d);
 void	hitLoop(t_global *d);
 void	posTex(t_global *d);
 void	drawVert(t_global *d, int x);
-void	recastLoop(t_global *d);
+void	raycastLoop(t_global *d);
 
 //-------------------------------------------------------------
 //	Recast_utils

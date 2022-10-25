@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recast.c                                           :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/25 12:51:59 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:23:49 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	drawVert(t_global *d, int x)
 	while(++y < HEIGHT)
 	{
 		if(y < d->ray->drawStart)
-			color = (unsigned int)d->map->sky;
+			color = (unsigned int)d->map->ceiling;
 		else if(y < d->ray->drawEnd)
 		{
 			d->ray->texY = (int)d->ray->texPos;
@@ -122,7 +122,7 @@ void	drawVert(t_global *d, int x)
 	}
 }
 
-void	recastLoop(t_global *d)
+void	raycastLoop(t_global *d)
 {
 	int x;
 	

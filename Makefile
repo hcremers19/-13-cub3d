@@ -24,13 +24,20 @@ NAME		=	cub3d
 
 SRCS_DIR	=	./Sources/
 SRCS		=	main.c					\
-				recast.c				\
+				raycast.c				\
 				utils.c					\
 				exit.c					\
 				malloc.c				\
 				initDrawing.c			\
-				recast_utils.c			\
+				raycast_utils.c			\
 				key_hook.c				\
+				read_config.c			\
+				read_map.c				\
+				ft_atoi.c				\
+				ft_split.c				\
+				libft.c					\
+				ft_strtrim.c			\
+				get_next_line.c			\
 
 # -----------	Includes ------------ #
 
