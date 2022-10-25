@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/24 20:06:29 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:36:09 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_exit(t_global *d, char *str)
 	freeWalls(d);
 	if(str)
 		write(2, str, ft_strlen(str));
+	if(d->flags)
+		free(d->flags);
 	if(d->player)
 		free(d->player);
 	if(d->mlx)
