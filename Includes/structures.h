@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 12:25:53 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:46:29 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ struct s_flags
 	int		SO;
 	int		EA;
 	int		WE;
-	int		F;
-	int		C;
 	int		lines;
 };
 

@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/24 20:11:23 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:56:07 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,22 @@ void	initWalls(t_global *d)
 
 void	initDir(t_global *d)
 {
-	if(d->player->letter == 'N' || d->player->letter == 'S')
+	if(d->player->orientation == 'N' || d->player->orientation == 'S')
 	{
 		d->player->screenX = 0.6;
 		d->player->screenY = 0;
 		d->player->dirX = 0;
-		if(d->player->letter == 'N')
+		if(d->player->orientation == 'N')
 			d->player->dirY = 1;	
 		else
 			d->player->dirY = -1;
 	}
-	else if(d->player->letter == 'E' || d->player->letter == 'W')
+	else if(d->player->orientation == 'E' || d->player->orientation == 'W')
 	{
 		d->player->screenX = 0;
 		d->player->screenY = 0.6;	
 		d->player->dirY = 0;
-		if(d->player->letter == 'E')
+		if(d->player->orientation == 'E')
 			d->player->dirX = 1;
 		else
 			d->player->dirX = -1;
