@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 12:25:53 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:49:00 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ struct s_map
 	int			 map_height;
 	int			 map_width;
 	unsigned int floor;
-	unsigned int sky;
+	unsigned int ceiling;
 	t_wall	 	 *wallN;
 	t_wall	 	 *wallS;
 	t_wall	  	 *wallE;

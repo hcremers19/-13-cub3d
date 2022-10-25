@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 12:28:07 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:04:46 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
-void	ft_error(char *error);
-void	read_config(char *file);
-void	read_map(char *file, int lines);
+// void	ft_error(char *error);
+void	read_config(t_global *d, char *file);
+void	read_map(t_global *d, char *file, int lines);
 
 // Juste pour les tests
 void	ft_putchar_fd(char c, int fd);
@@ -87,7 +87,7 @@ void	init(t_global *d);
 //	Utils
 //-------------------------------------------------------------
 
-int		ft_strlen(char *str);
+// int		ft_strlen(char *str);
 
 //-------------------------------------------------------------
 //	Exit

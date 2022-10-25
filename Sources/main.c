@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/24 20:29:58 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:04:26 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,31 @@ int	main(int ac, char **av)
 	if (!d)
 		ft_exit(d, ER_MA);
 	structMalloc(d);
-	//---------------------------------------------------
-	// Parsing init
-	//---------------------------------------------------
-	(void)ac;
-	(void)av;
-	// map = test_map;
+	// //---------------------------------------------------
+	// // Parsing init
+	// //---------------------------------------------------
+	// (void)ac;
+	// (void)av;
+	// // map = test_map;
 
-	d->map->sizeX = 10;
-	d->map->sizeX = 10;
+	// d->map->sizeX = 10;
+	// d->map->sizeX = 10;
 
-	d->player->posX = 4; 
-	d->player->posY = 4;
-	d->player->letter = 'E';
+	// d->player->posX = 4; 
+	// d->player->posY = 4;
+	// d->player->letter = 'E';
 
-	d->map->wallS->path = "cat.xpm";
-	d->map->wallN->path = "cat.xpm";
-	d->map->wallE->path = "east.xpm";
-	d->map->wallW->path = "east.xpm";
+	// d->map->wallS->path = "cat.xpm";
+	// d->map->wallN->path = "cat.xpm";
+	// d->map->wallE->path = "east.xpm";
+	// d->map->wallW->path = "east.xpm";
 	
-	d->map->sky = 0x0000FF;
-	d->map->floor = 0x00000000;
-	//---------------------------------------------------
+	// d->map->sky = 0x0000FF;
+	// d->map->floor = 0x00000000;
+	// //---------------------------------------------------
+	if (ac != 2)
+		ft_exit(d, "Error: arguments\n");
+	read_config(d, av[1]);
 	init(d);
 	return (0);
 }
