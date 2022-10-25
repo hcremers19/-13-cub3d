@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 13:04:26 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:38:17 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		ft_exit(d, "Error: arguments\n");
 	read_config(d, av[1]);
+	// ft_putstr_fd(d->map->wallN->path, 1); ft_putchar_fd(10, 1);
 	init(d);
 	return (0);
 }

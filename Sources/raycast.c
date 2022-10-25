@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/25 13:23:49 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:55:20 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	hitLoop(t_global *d)
 			d->ray->mapY += d->ray->jumpY;
 			d->ray->side = 1;
 		}
-		if(d->map->matrix[d->ray->mapX][d->ray->mapY] == 1)
+		if (d->map->matrix[d->ray->mapX][d->ray->mapY] == '1')
 			hit = 1;
 	}	
 }

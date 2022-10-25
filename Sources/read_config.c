@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/25 13:10:40 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:37:26 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	init_files(t_global *d, char *line)			// Possible de raccourcir la fonction
 	if (line[i] == 'N' && !d->flags->NO)
 	{
 		export_path(&d->map->wallN->path, &path);
+		// ft_putstr_fd(d->map->wallN->path, 1); ft_putchar_fd(10, 1);
 		d->flags->NO++;
 	}
 	else if (line[i] == 'S' && !d->flags->SO)
@@ -165,9 +166,9 @@ void	read_config(t_global *d, char *file)
 	}
 	close(fd);
 	read_map(d, file, d->flags->lines);														// Lecture de la map (1)
-	free(d->map->wallN->path);
-	free(d->map->wallS->path);
-	free(d->map->wallE->path);
-	free(d->map->wallW->path);
+	// free(d->map->wallN->path);
+	// free(d->map->wallS->path);
+	// free(d->map->wallE->path);
+	// free(d->map->wallW->path);
 	free(line);
 }

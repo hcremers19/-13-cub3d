@@ -18,7 +18,7 @@
 
 # -----------	Name ---------------- #
 
-NAME		=	cub3d
+NAME		=	Cub3D
 
 # -----------	Sources ------------- #
 
@@ -77,7 +77,7 @@ PRI			= 	printf
 
 ${OBJS_DIR}%.o:${SRCS_DIR}%.c
 	@${CC} ${CFLAGS} -I ${INC} -Imlx -c $< -o $@
-	@${PRI} "${C_MAG}	Compiling cub3d:	\
+	@${PRI} "${C_MAG}	Compiling Cub3D:	\
 	${C_CYAN}[${C_ORANGE}$<${C_CYAN}] $(C_RESET) $(L_CLEAR)${C_DEFAUT}\r"
 #	 @${VEL} 0.5
 	@printf "$(L_CLEAR)\r"
@@ -109,6 +109,7 @@ clean :
 
 fclean : clean
 	@${RM} ${NAME}
+	@make clean -C mlx
 	@${PRI} "${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	${C_RED}Exe deleted${C_DEFAUT}\n"
 
 # ---------------------------------- #
