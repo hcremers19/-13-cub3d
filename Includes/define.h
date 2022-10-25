@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:22:06 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/24 20:08:45 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:12:10 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define HEIGHT 512
 # define SPEED 0.33
 # define ROT M_PI/12
+// # define __null (void *)0
 
 // Hook
 # define ESC 53

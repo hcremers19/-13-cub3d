@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/24 18:51:16 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:25:53 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_player	t_player;
 typedef struct s_ray	t_ray;
 typedef struct s_mlx	t_mlx;
 typedef struct s_wall	t_wall;
+typedef struct s_flags	t_flags;
 typedef struct s_global	t_global;
 
 struct s_wall
@@ -34,9 +35,9 @@ struct s_wall
 
 struct s_map
 {
-	// char	**map;
-	int			 sizeX;
-	int			 sizeY;
+	char		 **matrix;
+	int			 map_height;
+	int			 map_width;
 	unsigned int floor;
 	unsigned int sky;
 	t_wall	 	 *wallN;
@@ -47,7 +48,7 @@ struct s_map
 
 struct s_player
 {
-	char	letter;
+	char	orientation;
 	double	posX;
 	double	posY;
 	double	dirX;
@@ -96,8 +97,20 @@ struct s_mlx
 	int		endian;
 };
 
+struct s_flags
+{
+	int		NO;
+	int		SO;
+	int		EA;
+	int		WE;
+	int		F;
+	int		C;
+	int		lines;
+};
+
 struct s_global
 {
+	t_flags		*flags;
 	t_mlx		*mlx;
 	t_player	*player;
 	t_ray		*ray;
