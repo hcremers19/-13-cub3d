@@ -6,25 +6,25 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/25 13:11:00 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:28:54 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-void	free_all(t_global *d)
-{
-	int	i;
+// void	free_all(t_global *d)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i <= d->map->map_height)
-	{
-		free(d->map->matrix[i]);
-		i++;
-	}
-	free(d->map->matrix);
-	free(d->map);
-}
+// 	i = 0;
+// 	while (i <= d->map->map_height)
+// 	{
+// 		free(d->map->matrix[i]);
+// 		i++;
+// 	}
+// 	free(d->map->matrix);
+// 	free(d->map);
+// }
 void	check_map(t_global *d)
 {
 	int	y;
@@ -42,7 +42,7 @@ void	check_map(t_global *d)
 			{
 				if (d->map->matrix[y][x] != ' ' && d->map->matrix[y][x] != '1')
 				{
-					free_all(d->map);
+					// free_all(d);
 					ft_exit(d, "Error1: open map\n");
 				}
 			}
@@ -59,14 +59,14 @@ void	check_map(t_global *d)
 						d->map->matrix[y][x - 1] == ' ' ||
 						d->map->matrix[y][x + 1] == ' ')
 					{
-						free_all(d->map);
+						// free_all(d);
 						ft_exit(d, "Error2: open map\n");
 					}
 					if (d->map->matrix[y][x] != '0')								// Trouver le joueur
 					{
 						if (player)
 						{
-							free_all(d->map);
+							// free_all(d);
 							ft_exit(d, "Error: more than one player on map\n");
 						}
 						else
@@ -80,7 +80,7 @@ void	check_map(t_global *d)
 				}
 				else if (d->map->matrix[y][x] != '1' && d->map->matrix[y][x] != ' ')
 				{
-					free_all(d->map);
+					// free_all(d);
 					ft_exit(d, "Error: Invalid character on map\n");
 				}
 			}
@@ -90,7 +90,7 @@ void	check_map(t_global *d)
 	}
 	if (!player)
 	{
-		free_all(d->map);
+		// free_all(d);
 		ft_exit(d, "Error: no player on map\n");
 	}
 }
@@ -247,5 +247,5 @@ void	read_map(t_global *d, char *file, int lines)
 	fill_matrix1(d, file, lines);
 	print_matrix(d);															// Juste pour les tests
 	check_map(d);
-	free_all(d);
+	// free_all(d);
 }
