@@ -6,14 +6,11 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 18:14:47 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/19 10:26:27 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:59:48 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_header.h"
-
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(char *src);
+#include "../Includes/main.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

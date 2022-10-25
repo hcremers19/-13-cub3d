@@ -6,9 +6,11 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 19:10:45 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/18 11:15:57 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:59:15 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../Includes/main.h"
 
 int	ft_isdigit(int c)
 {

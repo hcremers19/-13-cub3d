@@ -6,11 +6,11 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:03:50 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/18 17:21:51 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:59:18 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_header.h"
+#include "../Includes/main.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
