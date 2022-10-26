@@ -1,6 +1,7 @@
-NO./textures/cat.xpm
-SO./textures/teapot.xpm
-WE./textures/tile.xpm
+NO./textures/north.xpm
+SO./textures/south.xpm
+EA./textures/east.xpm
+WE./textures/west.xpm
 
 F 220,100,0
 C 225,30,0

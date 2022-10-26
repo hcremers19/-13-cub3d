@@ -1,6 +1,6 @@
              C        255    ,      128           ,   0
 
-  NO./textures/cat.xpm
+  NO                              ./textures/cat.xpm
 
 
 
@@ -10,16 +10,16 @@
 
 
 
-             EA./textures/east.xpm
+             EA         ./textures/wall.xpm
 F128,0,255
 
 
 
 
 
-WE./textures/floar.xpm
+WE                                    ./textures/tile.xpm
 
-SO./textures/teapot.xpm
+SO ./textures/teapot.xpm
 1                                1
 
               1111111        

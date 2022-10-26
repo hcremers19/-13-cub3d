@@ -1,7 +1,7 @@
-NO ../../textures/cat.xpm
-SO ../../textures/cat.xpm
-WE ../../textures/east.xpm
-EA ../../textures/east.xpm
+NO /Users/hcremers/cub3d/textures/cat.xpm
+SO /Users/hcremers/cub3d/textures/wall.xpm
+WE /Users/hcremers/cub3d/textures/tile.xpm
+EA /Users/hcremers/cub3d/textures/teapot.xpm
 
 F 220,100,0
 C 225,30,0

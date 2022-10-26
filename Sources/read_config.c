@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_config.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/26 04:27:13 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 11:39:06 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,16 @@ void	export_path(t_global *d, char **str, char **path)
 void	init_files(t_global *d, char *line)			// Possible de raccourcir la fonction en incrémentant les flags directement dans export_path
 {
 	int		i;
+	int		j;
 	char	*path;
 
 	i = 0;
-	while (line[i] == ' ')
+	while (line[i] == ' ')														// Sauter les espaces avant les 2 lettres
 		i++;
-	path = ft_strtrim(&line[i + 2], "\n");// ! modifier le +2
+	j = i + 2;																	// Sauter les espaces après les 2 lettres
+	while (line[j] == ' ')
+		j++;
+	path = ft_strtrim(&line[j], "\n");
 	if (line[i] == 'N' && !d->flags->NO)
 	{
 		export_path(d, &d->map->wallN->path, &path);

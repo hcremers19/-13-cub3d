@@ -1,7 +1,7 @@
-NO./textures/cat.xpm
-SO./textures/teapot.xpm
-EA./textures/east.xpm
-WE./textures/floar.xpm
+ NO ./textures/cat.xpm
+  SO  ./textures/teapot.xpm
+   EA   ./textures/wall.xpm
+    WE    ./textures/tile.xpm
 
 F 250,0,0
 C 0,250,0
