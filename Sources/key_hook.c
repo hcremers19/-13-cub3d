@@ -6,74 +6,52 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:57:26 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/25 16:24:27 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 03:03:43 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-// int	d->map->map[15][15] =
-// {
-// 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,1,0,1,0,0,0,0,0,0,1},
-// 	{1,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,1,0,0,1,0,1,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-// };
-
-//------------------------------------------------------------------
-
 void	mooveN(t_global *d)
 {
-	if(!d->map->map[(int)(d->player->posX + d->player->dirX * SPEED)]\
-		[(int)(d->player->posY)])
-		d->player->posX += d->player->dirX * SPEED;
-	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
-		d->player->dirY * SPEED)])
+	if (d->map->matrix[(int)(d->player->posY + d->player->dirY * SPEED)]\
+		[(int)(d->player->posX)] != '1')
 		d->player->posY += d->player->dirY * SPEED;
+	if (d->map->matrix[(int)(d->player->posY)][(int)(d->player->posX + \
+		d->player->dirX * SPEED)] != '1')
+		d->player->posX += d->player->dirX * SPEED;
 }
 
 void	mooveS(t_global *d)
 {
-	if(!d->map->map[(int)(d->player->posX - d->player->dirX * SPEED)]\
-		[(int)(d->player->posY)])
-		d->player->posX -= d->player->dirX * SPEED;
-	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
-		d->player->dirY * SPEED)])
+	if (d->map->matrix[(int)(d->player->posY - d->player->dirY * SPEED)]\
+		[(int)(d->player->posX)] != '1')
 		d->player->posY -= d->player->dirY * SPEED;
+
+	if (d->map->matrix[(int)(d->player->posY)]\
+		[(int)(d->player->posX - d->player->dirX * SPEED)] != '1')
+		d->player->posX -= d->player->dirX * SPEED;
 }
 
-// PROBLEM AVANCER DANS BONNE DIRECTION
+void	mooveE(t_global *d)
+{
+	if (d->map->matrix[(int)(d->player->posY)]\
+		[(int)(d->player->posX - d->player->screenX * SPEED)] != '1')
+		d->player->posX -= d->player->screenX * SPEED;
+	if (d->map->matrix[(int)(d->player->posY - d->player->screenY * SPEED)]\
+		[(int)(d->player->posX)] != '1')
+		d->player->posY -= d->player->screenY * SPEED;
+}
 
-// void	mooveE(t_global *d)
-// {
-// 	if(!d->map->map[(int)(d->player->posX + d->player->dirX * SPEED)]\
-// 		[(int)(d->player->posY)])
-// 		d->player->posX += d->player->dirY * SPEED;
-// 	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
-// 		d->player->dirY * SPEED)])
-// 		d->player->posY += d->player->dirX * SPEED;
-// }
-
-// void	mooveW(t_global *d)
-// {
-// 	if(!d->map->map[(int)(d->player->posX + d->player->dirX * SPEED)]\
-// 		[(int)(d->player->posY)])
-// 		d->player->posX -= d->player->dirY * SPEED;
-// 	if(!d->map->map[(int)(d->player->posX)][(int)(d->player->posY + \
-// 		d->player->dirY * SPEED)])
-// 		d->player->posY -= d->player->dirX * SPEED;
-// }
+void	mooveW(t_global *d)
+{
+	if (d->map->matrix[(int)(d->player->posY)][(int)(d->player->posX + \
+		d->player->screenX * SPEED)] != '1')
+		d->player->posX += d->player->screenX * SPEED;
+	if (d->map->matrix[(int)(d->player->posY + d->player->screenY * SPEED)]\
+		[(int)(d->player->posX)] != '1')
+		d->player->posY += d->player->screenY * SPEED;
+}
 
 void	rotE(t_global *d)
 {
@@ -119,10 +97,10 @@ int	key_hook(int keycode, t_global *d)
 		mooveN(d);
 	if (keycode == S)
 		mooveS(d);
-	// if(keycode == A)
-	// 	mooveE(d);  
-	// if(keycode == D)
-	// 	mooveW(d);
+	if(keycode == A)
+		mooveE(d);  
+	if(keycode == D)
+		mooveW(d);
 	if (keycode == RIGHT_ARR)
 		rotE(d);
 	if (keycode == LEFT_ARR)

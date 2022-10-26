@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/25 18:18:10 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 04:28:49 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ void	check_map(t_global *d)
 							player++;
 							//-----------------------------------------------
 							d->player->orientation = d->map->matrix[y][x];
-							d->player->posX = x + 0.49;
-							d->player->posY = y + 0.49;
+							d->player->posX = x + 0.40;
+							d->player->posY = y + 0.40;
+							d->map->matrix[y][x] = 0;
 							//-----------------------------------------------
 						}
 					}
@@ -84,7 +85,7 @@ void	check_map(t_global *d)
 				else if (d->map->matrix[y][x] != '1' && d->map->matrix[y][x] != ' ')
 				{
 					// free_all(d);
-					ft_exit(d, "Error: Invalid character on map\n");
+					ft_exit(d, ER_CHA);
 				}
 			}
 			x++;
@@ -94,7 +95,7 @@ void	check_map(t_global *d)
 	if (!player)
 	{
 		// free_all(d);
-		ft_exit(d, "Error: no player on map\n");
+		ft_exit(d, ER_NP);
 	}
 }
 
@@ -146,16 +147,18 @@ void	fill_matrix2(t_global *d, char *line, int fd)
 	free(trim);
 }
 
-void	fill_matrix1(t_global *d, char *file, int lines)
+void	fill_matrix1(t_global *d, char *file)
 {
 	int		fd;
 	int		i;
 	char	*line;
 
-	fd = open(file, O_RDONLY);													// Ouvrir le fichier pour remplir la matrice
+	fd = open(file, O_RDONLY);
+	if (fd < 1 || fd > OPEN_MAX || read(fd, NULL, 0) < 0)
+		ft_exit(d, ER_OP);												// Ouvrir le fichier pour remplir la matrice
 	line = get_next_line(fd);
 	i = 0;
-	while (i < lines)
+	while (i < d->flags->lines)
 	{
 		free(line);
 		line = get_next_line(fd);
@@ -210,18 +213,18 @@ void	get_dimensions2(t_global *d, char *line, int fd)
 	free(trim);
 }
 
-void	get_dimensions1(t_global *d, char *file, int lines)
+void	get_dimensions1(t_global *d, char *file)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
 	fd = open(file, O_RDONLY);													// Ouvrir le fichier pour trouver les dimensions de la zone de map
-	if (fd < 1 || read(fd, NULL, 0) < 0)
-		ft_exit(d, "Error: invalid path\n");										// Doit peut-être être closed
+	if (fd < 1 || fd > OPEN_MAX || read(fd, NULL, 0) < 0)
+		ft_exit(d, ER_OP);										// Doit peut-être être closed
 	line = get_next_line(fd);
 	i = 0;
-	while (i < lines)
+	while (i < d->flags->lines)
 	{
 		free(line);
 		line = get_next_line(fd);
@@ -232,22 +235,22 @@ void	get_dimensions1(t_global *d, char *file, int lines)
 		free(line);
 		// free(map);
 		close(fd);
-		ft_exit(d, "Error: empty map\n");
+		ft_exit(d, ER_EMP);
 	}
 	get_dimensions2(d, line, fd);
 	close(fd);
 }
 
-void	read_map(t_global *d, char *file, int lines)
+void	read_map(t_global *d, char *file)
 {
 	// t_map	*map;
 
 	// map = (t_map *)malloc(sizeof(t_map));
 	// if (!map)
 	// 	ft_exit(d, "Allocation error\n");
-	get_dimensions1(d, file, lines);
+	get_dimensions1(d, file);
 	alloc_map(d);
-	fill_matrix1(d, file, lines);
+	fill_matrix1(d, file);
 	// print_matrix(d);															// Juste pour les tests
 	check_map(d);
 	// free_all(d);

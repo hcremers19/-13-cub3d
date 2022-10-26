@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 15:04:49 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 04:14:30 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 void	getDrawLines(t_global *d)
 {
 		if(!d->ray->side)
-			d->ray->sizeRay = (d->ray->sideDistX - d->ray->deltaDistX);
+			d->ray->sizeRay = fabs((d->ray->mapX - d->player->posX + \
+				(1 - d->ray->jumpX) / 2) / d->ray->rayDirX);
 		else
-			d->ray->sizeRay = (d->ray->sideDistY - d->ray->deltaDistY);
+			d->ray->sizeRay = fabs((d->ray->mapY - d->player->posY + \
+				(1 - d->ray->jumpY) / 2) / d->ray->rayDirY);
 		d->ray->lineH = (int)(HEIGHT / d->ray->sizeRay);
 		d->ray->drawStart = (-d->ray->lineH / 2 ) + (HEIGHT / 2);
 		if(d->ray->drawStart < 0)
@@ -71,18 +73,18 @@ void	initTex(t_global *d)
 	{
 		d->ray->hitpt = \
 		d->player->posY + d->ray->sizeRay * d->ray->rayDirY;
-		initImg(d, d->map->wallE);//E
+		initImg(d, d->map->wallE);
 	}
 	else if(d->ray->jumpY == -1)
 	{
 		d->ray->hitpt = \
 		d->player->posX + d->ray->sizeRay * d->ray->rayDirX;
-		initImg(d, d->map->wallS);//S
+		initImg(d, d->map->wallN);
 	}
 	else
 	{
 		d->ray->hitpt = \
 		d->player->posX + d->ray->sizeRay * d->ray->rayDirX;
-		initImg(d, d->map->wallN);//N
+		initImg(d, d->map->wallS);
 	}
 }

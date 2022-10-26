@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 12:49:06 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 04:19:52 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,18 @@ void	structMalloc(t_global *d)
 	d->map = (t_map *)malloc(sizeof(t_map));
 	if(!d->map)
 		ft_exit(d, ER_MA);
+	nullWalls(d);
 	d->ray = (t_ray *)malloc(sizeof(t_ray));
 	if(!d->ray)
 		ft_exit(d, ER_MA);
 	wallStructMalloc(d);
+}
+
+void	initStruct(t_global *d)
+{
+	d->flags = NULL;
+	d->player = NULL;
+	d->mlx = NULL;
+	d->map = NULL;
+	d->ray = NULL;
 }

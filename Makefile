@@ -36,6 +36,7 @@ SRCS		=	main.c					\
 				ft_atoi.c				\
 				ft_split.c				\
 				libft.c					\
+				initWalls.c				\
 				ft_strtrim.c			\
 				get_next_line.c			\
 

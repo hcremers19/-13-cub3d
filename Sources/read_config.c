@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_config.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/25 14:37:26 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/26 04:27:13 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ void	init_colors(t_global *d, char *line)
 	}
 }
 
-void	export_path(char **str, char **path)
+void	export_path(t_global *d, char **str, char **path)
 {
 	*str = ft_strdup(*path);
+	if (!*str) // assez protege ?
+		ft_exit(d, ER_MA);
 	free(*path);
 }
 
@@ -70,26 +72,25 @@ void	init_files(t_global *d, char *line)			// Possible de raccourcir la fonction
 	i = 0;
 	while (line[i] == ' ')
 		i++;
-	path = ft_strtrim(&line[i + 2], "\n");
+	path = ft_strtrim(&line[i + 2], "\n");// ! modifier le +2
 	if (line[i] == 'N' && !d->flags->NO)
 	{
-		export_path(&d->map->wallN->path, &path);
-		// ft_putstr_fd(d->map->wallN->path, 1); ft_putchar_fd(10, 1);
+		export_path(d, &d->map->wallN->path, &path);
 		d->flags->NO++;
 	}
 	else if (line[i] == 'S' && !d->flags->SO)
 	{
-		export_path(&d->map->wallS->path, &path);
+		export_path(d, &d->map->wallS->path, &path);
 		d->flags->SO++;
 	}
 	else if (line[i] == 'E' && !d->flags->EA)
 	{
-		export_path(&d->map->wallE->path, &path);
+		export_path(d, &d->map->wallE->path, &path);
 		d->flags->EA++;
 	}
 	else if (line[i] == 'W' && !d->flags->WE)
 	{
-		export_path(&d->map->wallW->path, &path);
+		export_path(d, &d->map->wallW->path, &path);
 		d->flags->WE++;
 	}
 	else
@@ -114,7 +115,7 @@ int	open_fd(t_global *d, char *file)
 	int	fd;
 
 	fd = open(file, O_RDONLY);
-	if (fd < 1 || read(fd, NULL, 0) < 0 || ft_strlen(file) < 4)					// Protéger fd ET pré-vérifier l'extension
+	if (fd < 1 || fd > OPEN_MAX || read(fd, NULL, 0) < 0 || ft_strlen(file) < 4)					// Protéger fd ET pré-vérifier l'extension
 	{
 		close(fd);
 		ft_exit(d, "Error: invalid path\n");
@@ -122,7 +123,7 @@ int	open_fd(t_global *d, char *file)
 	if (ft_strncmp(&file[ft_strlen(file) - 4], ".cub", 4))						// Vérifier l'extension
 	{
 		close(fd);
-		ft_exit(d, "Error: wrong file extension\n");
+		ft_exit(d, ER_EX);
 	}
 	return (fd);
 }
@@ -143,7 +144,7 @@ void	read_config(t_global *d, char *file)
 		{
 			free(line);
 			close(fd);
-			ft_exit(d, "Error: empty file\n");
+			ft_exit(d, ER_EMP);
 		}
 		d->flags->lines++;
 		i = 0;
@@ -165,7 +166,7 @@ void	read_config(t_global *d, char *file)
 		line = get_next_line(fd);												// Retour en début de boucle si fin de ligne
 	}
 	close(fd);
-	read_map(d, file, d->flags->lines);														// Lecture de la map (1)
+	read_map(d, file);														// Lecture de la map (1)
 	// free(d->map->wallN->path);
 	// free(d->map->wallS->path);
 	// free(d->map->wallE->path);

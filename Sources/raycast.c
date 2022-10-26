@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/25 17:36:55 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 01:10:46 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	getSideDist(t_global *d)
 {
-	if(d->ray->rayDirX < 0)
+	if (d->ray->rayDirX < 0)
 	{
 		d->ray->jumpX = -1;
 		d->ray->sideDistX = (d->player->posX - d->ray->mapX) \
@@ -26,7 +26,7 @@ void	getSideDist(t_global *d)
 		d->ray->sideDistX = (d->ray->mapX + 1.0 - d->player->posX) \
 			* d->ray->deltaDistX;
 	}
-	if(d->ray->rayDirY < 0)
+	if (d->ray->rayDirY < 0)
 	{
 		d->ray->jumpY = -1;
 		d->ray->sideDistY = (d->player->posY - d->ray->mapY) \
@@ -45,7 +45,7 @@ void	hitLoop(t_global *d)
 	int hit;
 
 	hit = 0;
-	while(!hit)
+	while (!hit)
 	{
 		if(d->ray->sideDistX < d->ray->sideDistY)
 		{
@@ -59,7 +59,7 @@ void	hitLoop(t_global *d)
 			d->ray->mapY += d->ray->jumpY;
 			d->ray->side = 1;
 		}
-		if (d->map->map[d->ray->mapX][d->ray->mapY] == 1)
+		if (d->map->matrix[d->ray->mapY][d->ray->mapX] == '1')
 			hit = 1;
 	}
 }

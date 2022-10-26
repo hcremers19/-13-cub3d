@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 16:10:07 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 04:32:46 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define STRUCTURES_H
 
 typedef struct s_map	t_map;
-typedef struct s_player	t_player;
 typedef struct s_ray	t_ray;
 typedef struct s_mlx	t_mlx;
 typedef struct s_wall	t_wall;
 typedef struct s_flags	t_flags;
+typedef struct s_player	t_player;
 typedef struct s_global	t_global;
 
 struct s_wall
@@ -36,7 +36,6 @@ struct s_wall
 struct s_map
 {
 	char		 **matrix;
-	int			 **map;
 	int			 map_height;
 	int			 map_width;
 	unsigned int floor;

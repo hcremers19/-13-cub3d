@@ -1,6 +1,6 @@
              C        255    ,      128           ,   0
 
-  NO ./random_text
+  NO./textures/cat.xpm
 
 
 
@@ -10,16 +10,16 @@
 
 
 
-             EA              ../../../../file_that_doesnt_exist
+             EA./textures/east.xpm
 F128,0,255
 
 
 
 
 
-WEfile
+WE./textures/floar.xpm
 
-SO ./HITHISISFILE
+SO./textures/teapot.xpm
 1                                1
 
               1111111        

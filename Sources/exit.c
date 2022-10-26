@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 12:36:09 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 03:33:47 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_exit_cross(t_global *d)
 
 void	ft_exit(t_global *d, char *str)
 {
-	freeWalls(d);
+	// freeWalls(d);
 	if(str)
 		write(2, str, ft_strlen(str));
 	if(d->flags)
