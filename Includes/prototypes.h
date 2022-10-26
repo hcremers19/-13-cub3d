@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 04:20:41 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:15:28 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(char *src);
 char	*ft_strnstr(const char *haystack, const char *needle, int n);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*get_next_line(int fd);
-char	**ft_split(char const *s, char c);
+char	**ft_split(t_global *d, char const *s, char c);
 int		ft_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);

@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:03:50 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/25 14:59:18 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:15:12 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	**ft_clean(char **s, int i)
 	return (0);
 }
 
-static int	wrdnbr(char const *s, char c)
+static int	wrdnbr(t_global *d, char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -56,6 +56,8 @@ static int	wrdnbr(char const *s, char c)
 			count++;
 		i = i + j;
 	}
+	if (count != 3)
+		ft_exit(d, "Configuration error\n");
 	return (count);
 }
 
@@ -84,14 +86,14 @@ static char	**ft_split2(char const *s, char c, char **tab, unsigned int w)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(t_global *d, char const *s, char c)
 {
 	unsigned int	w;
 	char			**tab;
 
 	if (!s)
 		return (0);
-	w = wrdnbr(s, c);
+	w = wrdnbr(d, s, c);
 	tab = malloc(sizeof(char *) * (w + 1));
 	if (!tab)
 		return (0);

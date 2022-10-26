@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/26 11:39:06 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:16:12 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	init_color(t_global *d, char *line, int *color)
 	i = 0;
 	while (line[i] == ' ')															// Passer les espaces en début de ligne
 		i++;
-	split = ft_split(&line[i + 1], ',');											// À protéger pour être sûr qu'il n'y ait que 3 éléments
+	split = ft_split(d, &line[i + 1], ',');											// À protéger pour être sûr qu'il n'y ait que 3 éléments
 	if (ft_atoi(split[0]) < 0 || 0xff < ft_atoi(split[0]) ||
 		ft_atoi(split[1]) < 0 || 0xff < ft_atoi(split[1]) ||
 		ft_atoi(split[2]) < 0 || 0xff < ft_atoi(split[2]))
