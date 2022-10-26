@@ -19,18 +19,21 @@
 # -----------	Name ---------------- #
 
 NAME		=	Cub3D
+NAME_BONUS	=	Cub3D_Bonus
 
 # -----------	Sources ------------- #
 
 SRCS_DIR	=	./Sources/
-SRCS		=	main.c					\
-				raycast.c				\
+
+SRCS		=	raycast.c				\
 				utils.c					\
 				exit.c					\
 				malloc.c				\
 				initDrawing.c			\
 				raycast_utils.c			\
-				key_hook.c				\
+				hook.c					\
+				moovePOV.c				\
+				mouvement.c				\
 				read_config.c			\
 				read_map.c				\
 				ft_atoi.c				\
@@ -39,6 +42,12 @@ SRCS		=	main.c					\
 				initWalls.c				\
 				ft_strtrim.c			\
 				get_next_line.c			\
+				mini_map_bonus.c
+
+SRCS_MAIN	=	main.c
+
+SRCS_BONUS	=	main_bonus.c			\
+#				mini_map_bonus.c
 
 # -----------	Includes ------------ #
 
@@ -48,6 +57,8 @@ INC			=	./Includes/main.h
 
 OBJS_DIR	=	./Objects/
 OBJS		=	${addprefix ${OBJS_DIR}, ${SRCS:%.c=%.o}}
+OBJS_MAIN	=	${addprefix ${OBJS_DIR}, ${SRCS_MAIN:%.c=%.o}}
+OBJS_BONUS	=	${addprefix ${OBJS_DIR}, ${SRCS_BONUS:%.c=%.o}}
 OBJS_FIL	= 	object_file
 
 # -----------	Flags --------------- #
@@ -88,9 +99,15 @@ all : ${OBJS_FIL} ${NAME}
 ${OBJS_FIL} :
 	@${MK} ${OBJS_DIR}
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJS_MAIN} ${OBJS}
 	@${MMLX} ./mlx
-	@${CC} ${CFLAGS} ${MLX} ${OBJS} -o ${NAME}
+	@${CC} ${CFLAGS} ${MLX} ${OBJS_MAIN} ${OBJS} -o ${NAME}
+	@${PRI} "\n${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	\
+	${C_GREEN}$@ 🧊🧊🧊 ${C_GREEN}Successfully built${C_DEFAUT}\n\n"
+
+${NAME_BONUS}: ${OBJS_BONUS} ${OBJS}
+	@${MMLX} ./mlx
+	@${CC} ${CFLAGS} ${MLX} ${OBJS_BONUS} ${OBJS} -o ${NAME_BONUS}
 	@${PRI} "\n${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	\
 	${C_GREEN}$@ 🧊🧊🧊 ${C_GREEN}Successfully built${C_DEFAUT}\n\n"
 
@@ -98,7 +115,7 @@ ${NAME}: ${OBJS}
 # 				Bonus	 			 #
 # ---------------------------------- #
 
-#bonus :
+bonus :	${OBJS_FIL} ${NAME_BONUS}
 
 # ---------------------------------- #
 # 				Clean	 			 #
@@ -110,8 +127,9 @@ clean :
 
 fclean : clean
 	@${RM} ${NAME}
+	@${RM} ${NAME_BONUS}
 #	@make clean -C mlx
-	@${PRI} "${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	${C_RED}Exe deleted${C_DEFAUT}\n"
+	@${PRI} "${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	${C_RED}Exe & mlx files deleted${C_DEFAUT}\n"
 
 # ---------------------------------- #
 # 				Re		 			 #

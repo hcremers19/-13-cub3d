@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 04:20:41 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/26 22:38:21 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PROTOTYPES_H
 
 //-------------------------------------------------------------
-//	Hugo
+//		Hugo
 //-------------------------------------------------------------
 
 char	*ft_strdup(char *src);
@@ -42,19 +42,29 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *str, int fd);
 
 //-------------------------------------------------------------
-//	Key_hook
+//		MoovePOV
+//-------------------------------------------------------------
+
+void	rotE(t_global *d);
+void	rotW(t_global *d);
+
+//-------------------------------------------------------------
+//		Mouvement
 //-------------------------------------------------------------
 
 void	mooveN(t_global *d);
 void	mooveE(t_global *d);
 void	mooveS(t_global *d);
 void	mooveW(t_global *d);
-void	rotE(t_global *d);
-void	rotW(t_global *d);
+
+//-------------------------------------------------------------
+//		Hoock
+//-------------------------------------------------------------
+
 int		key_hook(int keycode, t_global *d);
 
 //-------------------------------------------------------------
-//	InitWalls
+//		InitWalls
 //-------------------------------------------------------------
 
 void	initOneWall(t_global *d, t_wall *wall);
@@ -62,7 +72,7 @@ void	initWalls(t_global *d);
 void	nullWalls(t_global *d);
 
 //-------------------------------------------------------------
-//	InitDrawing
+//		InitDrawing
 //-------------------------------------------------------------
 
 void	initDir1(t_global *d);
@@ -71,7 +81,7 @@ void	initWindow(t_global *d);
 void	init(t_global *d);
 
 //-------------------------------------------------------------
-//	Draw
+//		Draw
 //-------------------------------------------------------------
 
 void	getSideDist(t_global *d);
@@ -81,7 +91,7 @@ void	drawVert(t_global *d, int x);
 void	raycastLoop(t_global *d);
 
 //-------------------------------------------------------------
-//	Recast_utils
+//		Recast_utils
 //-------------------------------------------------------------
 
 void	my_mlx_pixel_put(t_global *d, int x, int y, int color);
@@ -91,20 +101,20 @@ void	initImg(t_global *d, t_wall *curWall);
 void	initTex(t_global *d);
 
 //-------------------------------------------------------------
-//	Mini_map_bonus
+//		Mini_map_bonus
 //-------------------------------------------------------------
 
 void	printBlock(t_global *d, int x, int y, int color);
 void	drawMap2D(t_global *d);
 
 //-------------------------------------------------------------
-//	Utils
+//		Utils
 //-------------------------------------------------------------
 
 void	ft_free_mat(char **mat);
 
 //-------------------------------------------------------------
-//	Exit
+//		Exit
 //-------------------------------------------------------------
 
 int		ft_exit_cross(t_global *d);
@@ -112,7 +122,7 @@ void	freeWalls(t_global *d);
 void	ft_exit(t_global *d, char *str);
 
 //-------------------------------------------------------------
-//	Malloc
+//		Malloc
 //-------------------------------------------------------------
 
 void	wallStructMalloc(t_global *d);
