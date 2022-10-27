@@ -3,56 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   initDrawing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 13:28:38 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:17:49 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-void	initDir1(t_global *d)
+void	init_dir1(t_global *d)
 {
-	if(d->player->orientation == 'W')
+	if (d->player->orientation == 'W')
 	{
-		d->player->dirX = 1.0;
-		d->player->dirY = 0.0;
-		d->player->screenX = 0.0;
-		d->player->screenY = 1.0;
+		d->player->dir_x = 1.0;
+		d->player->dir_y = 0.0;
+		d->player->screen_x = 0.0;
+		d->player->screen_y = 1.0;
 	}
-	else if(d->player->orientation == 'E')
+	else if (d->player->orientation == 'E')
 	{
-		d->player->dirX = -1.0;
-		d->player->dirY = 0.0;
-		d->player->screenX = 0.0;
-		d->player->screenY = -1.0;
+		d->player->dir_x = -1.0;
+		d->player->dir_y = 0.0;
+		d->player->screen_x = 0.0;
+		d->player->screen_y = -1.0;
 	}
 }
 
-void	initDir(t_global *d)
+void	init_dir(t_global *d)
 {
-	if(d->player->orientation == 'N')
+	if (d->player->orientation == 'N')
 	{
-		d->player->dirX = 0.0;
-		d->player->dirY = -1.0;
-		d->player->screenX = 1.0;
-		d->player->screenY = 0.0;
+		d->player->dir_x = 0.0;
+		d->player->dir_y = -1.0;
+		d->player->screen_x = 1.0;
+		d->player->screen_y = 0.0;
 	}
-	else if(d->player->orientation == 'S')
+	else if (d->player->orientation == 'S')
 	{
-		d->player->dirX = 0.0;
-		d->player->dirY = 1.0;
-		d->player->screenX = -1.0;
-		d->player->screenY = 0.0;
+		d->player->dir_x = 0.0;
+		d->player->dir_y = 1.0;
+		d->player->screen_x = -1.0;
+		d->player->screen_y = 0.0;
 	}
 	else
 	{
-		initDir1(d);
+		init_dir1(d);
 	}
 }
 
-void	initWindow(t_global *d)
+void	init_window(t_global *d)
 {
 	d->mlx->img = mlx_new_image(d->mlx->mlx, WIDTH, HEIGHT);
 	if (!d->mlx->img)
@@ -61,7 +61,7 @@ void	initWindow(t_global *d)
 		&d->mlx->line_len, &d->mlx->endian);
 	if (!d->mlx->addr)
 		ft_exit(d, ER_MLX_AD);
-	raycastLoop(d);
+	raycast_loop(d);
 	// drawMap2D(d); // mini map
 	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
 	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
@@ -70,14 +70,14 @@ void	initWindow(t_global *d)
 void	init(t_global *d)
 {
 	d->mlx->mlx = mlx_init();
-	if(!d->mlx->mlx)
+	if (!d->mlx->mlx)
 		ft_exit(d, ER_MLX_IN);
 	d->mlx->mlx_win = mlx_new_window(d->mlx->mlx, WIDTH, HEIGHT, "cub3D");
-	if(!d->mlx->mlx_win)
+	if (!d->mlx->mlx_win)
 		ft_exit(d, ER_MLX_IN);
-	initDir(d);
-	initWalls(d);
-	initWindow(d);
+	init_dir(d);
+	init_walls(d);
+	init_window(d);
 	// mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);
 	// mlx_hook(d->mlx->mlx_win, 3, 0, &key_hook_release, d);
 	// mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_cross, d);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 15:38:17 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:20:10 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ void	ft_putstr_fd(char *str, int fd);
 //		MoovePOV
 //-------------------------------------------------------------
 
-void	rotE(t_global *d);
-void	rotW(t_global *d);
+void	rot_e(t_global *d);
+void	rot_w(t_global *d);
 
 //-------------------------------------------------------------
 //		Mouvement
 //-------------------------------------------------------------
 
-void	mooveN(t_global *d);
-void	mooveE(t_global *d);
-void	mooveS(t_global *d);
-void	mooveW(t_global *d);
+void	move_n(t_global *d);
+void	move_e(t_global *d);
+void	move_s(t_global *d);
+void	move_w(t_global *d);
 
 //-------------------------------------------------------------
 //		Hoock
@@ -69,47 +69,47 @@ int		key_hook(t_global *d);
 //		InitWalls
 //-------------------------------------------------------------
 
-void	initOneWall(t_global *d, t_wall *wall);
-void	initWalls(t_global *d);
-void	nullWalls(t_global *d);
+void	init_one_wall(t_global *d, t_wall *wall);
+void	init_walls(t_global *d);
+void	null_walls(t_global *d);
 
 //-------------------------------------------------------------
 //		InitDrawing
 //-------------------------------------------------------------
 
-void	initDir1(t_global *d);
-void	initDir(t_global *d);
-void	initWindow(t_global *d);
+void	init_dir1(t_global *d);
+void	init_dir(t_global *d);
+void	init_window(t_global *d);
 void	init(t_global *d);
 
 //-------------------------------------------------------------
 //		Draw
 //-------------------------------------------------------------
 
-void	getSideDist(t_global *d);
-void	hitLoop(t_global *d);
-void	posTex(t_global *d);
-void	drawVert(t_global *d, int x);
-void	raycastLoop(t_global *d);
+void	get_side_dist(t_global *d);
+void	hit_loop(t_global *d);
+void	pos_tex(t_global *d);
+void	draw_vert(t_global *d, int x);
+void	raycast_loop(t_global *d);
 
 //-------------------------------------------------------------
 //		Recast_utils
 //-------------------------------------------------------------
 
 void	my_mlx_pixel_put(t_global *d, int x, int y, int color);
-void	getDrawLines(t_global *d);
-void	initRay(t_global *d, int x);
-void	initImg(t_global *d, t_wall *curWall);
-void	initTex(t_global *d);
+void	get_draw_lines(t_global *d);
+void	init_ray(t_global *d, int x);
+void	init_img(t_global *d, t_wall *cur_wall);
+void	init_tex(t_global *d);
 
 //-------------------------------------------------------------
 //		Mini_map_bonus
 //-------------------------------------------------------------
 
-void			printBlock(t_global *d, int x, int y, int color);
-void			drawMap2D(t_global *d);
+void	printBlock(t_global *d, int x, int y, int color);
+void	drawMap2D(t_global *d);
 
-unsigned int	miniMap(t_global *d, int x, int y);
+unsigned int	mini_map(t_global *d, int x, int y);
 
 //-------------------------------------------------------------
 //		Utils
@@ -122,16 +122,16 @@ void	ft_free_mat(char **mat);
 //-------------------------------------------------------------
 
 int		ft_exit_cross(t_global *d);
-void	freeWalls(t_global *d);
+void	free_walls(t_global *d);
 void	ft_exit(t_global *d, char *str);
 
 //-------------------------------------------------------------
 //		Malloc
 //-------------------------------------------------------------
 
-void	wallStructMalloc(t_global *d);
-void	structMalloc(t_global *d);
-void	initStruct(t_global *d);
+void	wall_struct_malloc(t_global *d);
+void	struct_malloc(t_global *d);
+void	init_struct(t_global *d);
 
 //-------------------------------------------------------------
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 15:48:25 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:58:10 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,50 +41,50 @@ struct s_map
 	int			 map_width;
 	unsigned int floor;
 	unsigned int ceiling;
-	t_wall	 	 *wallN;
-	t_wall	 	 *wallS;
-	t_wall	  	 *wallE;
-	t_wall	 	 *wallW;
+	t_wall	 	 *wall_n;
+	t_wall	 	 *wall_s;
+	t_wall	  	 *wall_e;
+	t_wall	 	 *wall_w;
 };
 
 struct s_player
 {
 	char	orientation;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	screenX;
-	double	screenY;
-	double	camX;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	screen_x;
+	double	screen_y;
+	double	cam_x;
 };
 
 struct s_ray
 {
-	double	rayDirX;
-	double	rayDirY;
-	double	sizeRay;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
+	double	raydir_x;
+	double	raydir_y;
+	double	size_ray;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
 	double	hitpt;
 	double	step;
-	double	texPos;
-	int		mapX;
-	int		mapY;
-	int		jumpX;
-	int		jumpY;
+	double	tex_pos;
+	int		map_x;
+	int		map_y;
+	int		jump_x;
+	int		jump_y;
 	int		side;
-	int		lineH;
-	int		drawStart;
-	int		drawEnd;
-	int		texX;
-	int		texY;
-	int		texH;
-	int		texW;
+	int		line_h;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	int		tex_y;
+	int		tex_h;
+	int		tex_w;
 	void	*ptr;
-	t_wall	*curWall;
+	t_wall	*cur_wall;
 };
 
 struct s_mlx
@@ -100,12 +100,12 @@ struct s_mlx
 
 struct s_flags
 {
-	int		NO;
-	int		SO;
-	int		EA;
-	int		WE;
-	int		F;
-	int		C;
+	int		no;
+	int		so;
+	int		ea;
+	int		we;
+	int		f;
+	int		c;
 	int		lines;
 };
 

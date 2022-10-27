@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 13:30:29 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:07:31 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	main(int ac, char **av)
 		ft_putstr_fd(ER_MA, 1);
 		return (0);
 	}
-	initStruct(d);
+	init_struct(d);
 	if (ac != 2)
 		ft_exit(d, ER_ARG);
-	structMalloc(d);
+	struct_malloc(d);
 	read_config(d, av[1]);
 	init(d);
 	// -----------------

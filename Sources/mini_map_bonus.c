@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:25:35 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 15:23:05 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:12:46 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	drawMap2D(t_global *d)
 	}
 }
 
-unsigned int miniMap(t_global *d, int x, int y)
+unsigned int	mini_map(t_global *d, int x, int y)
 {
-	unsigned int color;
+	unsigned int	color;
 	// (void)x;
 	// (void)y;
 	// (void)d;
 
-	if(d->map->matrix[y % 4][x % 8] == '1')
+	if (d->map->matrix[y % 4][x % 8] == '1')
 		color = 0x00FFFFFF;
 	else
 		color = 0x00000000;
-	return (color);	
+	return (color);
 }

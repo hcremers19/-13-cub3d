@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:22:06 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 15:37:57 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:01:18 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define HEIGHT 512
 # define SPEED 0.15
 # define ROT (M_PI/24)
-# define __null (void *)0 // erreur norme
 
 // Hook
 # define ESC 53

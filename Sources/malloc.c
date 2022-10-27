@@ -3,56 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 13:05:17 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:12:00 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-void	wallStructMalloc(t_global *d)
+void	wall_struct_malloc(t_global *d)
 {
-	d->map->wallN = (t_wall *)malloc(sizeof(t_wall));
-	if(!d->map->wallN)
+	d->map->wall_n = (t_wall *)malloc(sizeof(t_wall));
+	if (!d->map->wall_n)
 		ft_exit(d, ER_MA);
-	d->map->wallS = (t_wall *)malloc(sizeof(t_wall));
-	if(!d->map->wallS)
+	d->map->wall_s = (t_wall *)malloc(sizeof(t_wall));
+	if (!d->map->wall_s)
 		ft_exit(d, ER_MA);
-	d->map->wallE = (t_wall *)malloc(sizeof(t_wall));
-	if(!d->map->wallE)
+	d->map->wall_e = (t_wall *)malloc(sizeof(t_wall));
+	if (!d->map->wall_e)
 		ft_exit(d, ER_MA);
-	d->map->wallW = (t_wall *)malloc(sizeof(t_wall));
-	if(!d->map->wallW)
+	d->map->wall_w = (t_wall *)malloc(sizeof(t_wall));
+	if (!d->map->wall_w)
 		ft_exit(d, ER_MA);
 }
 
-void	structMalloc(t_global *d)
+void	struct_malloc(t_global *d)
 {
 	d->flags = (t_flags *)malloc(sizeof(t_flags));
-	if(!d->flags)
+	if (!d->flags)
 		ft_exit(d, ER_MA);
 	d->player = (t_player *)malloc(sizeof(t_player));
-	if(!d->player)
+	if (!d->player)
 		ft_exit(d, ER_MA);
 	d->mlx = (t_mlx *)malloc(sizeof(t_mlx));
-	if(!d->mlx)
+	if (!d->mlx)
 		ft_exit(d, ER_MA);
 	d->map = (t_map *)malloc(sizeof(t_map));
-	if(!d->map)
+	if (!d->map)
 		ft_exit(d, ER_MA);
-	nullWalls(d);
+	null_walls(d);
 	d->ray = (t_ray *)malloc(sizeof(t_ray));
-	if(!d->ray)
+	if (!d->ray)
 		ft_exit(d, ER_MA);
 	d->key = (t_key *)malloc(sizeof(t_key));
 	if (!d->key)
 		ft_exit(d, ER_MA);
-	wallStructMalloc(d);
+	wall_struct_malloc(d);
 }
 
-void	initStruct(t_global *d)
+void	init_struct(t_global *d)
 {
 	d->flags = NULL;
 	d->player = NULL;

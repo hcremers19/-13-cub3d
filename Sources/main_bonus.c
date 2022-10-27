@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:19:17 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/26 21:27:51 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/27 16:11:41 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-int	main()//int ac, char **av)
+int	main(void)//int ac, char **av)
 {
 	return (0);
 }

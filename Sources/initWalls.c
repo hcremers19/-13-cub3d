@@ -6,13 +6,13 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 03:49:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 11:19:00 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:18:48 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-static int	findFormat(char *str, char *set)
+static int	find_format(char *str, char *set)
 {
 	int	len;
 	int	i;
@@ -29,17 +29,17 @@ static int	findFormat(char *str, char *set)
 	return (0);
 }
 
-void	initOneWall(t_global *d, t_wall *wall)
+void	init_one_wall(t_global *d, t_wall *wall)
 {
 	int	fd;
 
 	fd = open(wall->path, O_RDONLY);
-	if(fd <= 0)
+	if (fd <= 0)
 		ft_exit(d, ER_OP);
-	if (!findFormat(wall->path, ".xpm"))
+	if (!find_format(wall->path, ".xpm"))
 		wall->ptr = mlx_xpm_file_to_image(d->mlx->mlx, wall->path, \
 			&wall->sizeX, &wall->sizeY);
-	// else if (!findFormat(wall->path, ".png"))
+	// else if (!find_format(wall->path, ".png"))
 	// 	wall->ptr = mlx_png_file_to_image(d->mlx->mlx, wall->path, \
 	// 		&wall->sizeX, &wall->sizeY);
 	else
@@ -49,18 +49,18 @@ void	initOneWall(t_global *d, t_wall *wall)
 	close(fd);
 }
 
-void	initWalls(t_global *d)
+void	init_walls(t_global *d)
 {
-	initOneWall(d, d->map->wallN);
-	initOneWall(d, d->map->wallS);
-	initOneWall(d, d->map->wallE);
-	initOneWall(d, d->map->wallW);
+	init_one_wall(d, d->map->wall_n);
+	init_one_wall(d, d->map->wall_s);
+	init_one_wall(d, d->map->wall_e);
+	init_one_wall(d, d->map->wall_w);
 }
 
-void	nullWalls(t_global *d)
+void	null_walls(t_global *d)
 {
-	d->map->wallN = NULL;
-	d->map->wallS = NULL;
-	d->map->wallE = NULL;
-	d->map->wallW = NULL;
+	d->map->wall_n = NULL;
+	d->map->wall_s = NULL;
+	d->map->wall_e = NULL;
+	d->map->wall_w = NULL;
 }

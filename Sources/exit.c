@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 13:06:07 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:09:28 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-void	freeWalls(t_global *d)
+void	free_walls(t_global *d)
 {
-	if(d->map->wallN)
-		free(d->map->wallN);
-	if(d->map->wallS)
-		free(d->map->wallS);
-	if(d->map->wallE)
-		free(d->map->wallE);
-	if(d->map->wallW)
-		free(d->map->wallW);
+	if (d->map->wall_n)
+		free(d->map->wall_n);
+	if (d->map->wall_s)
+		free(d->map->wall_s);
+	if (d->map->wall_e)
+		free(d->map->wall_e);
+	if (d->map->wall_w)
+		free(d->map->wall_w);
 }
 
-int		ft_exit_cross(t_global *d)
+int	ft_exit_cross(t_global *d)
 {
 	ft_exit(d, EXIT_S);
 	return (0);
@@ -32,22 +32,22 @@ int		ft_exit_cross(t_global *d)
 
 void	ft_exit(t_global *d, char *str)
 {
-	// freeWalls(d);
-	if(str)
+	// free_walls(d);
+	if (str)
 		write(2, str, ft_strlen(str));
-	if(d->flags)
+	if (d->flags)
 		free(d->flags);
-	if(d->player)
+	if (d->player)
 		free(d->player);
-	if(d->mlx)
+	if (d->mlx)
 		free(d->mlx);
-	if(d->map)
+	if (d->map)
 		free(d->map);
-	if(d->ray)
+	if (d->ray)
 		free(d->ray);
-	if(d->key)
+	if (d->key)
 		free(d->key);
-	if(d)
+	if (d)
 		free(d);
 	exit(1);
 }

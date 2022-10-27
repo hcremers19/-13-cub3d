@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 13:28:19 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:16:37 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,74 +17,74 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 	char	*dst;
 
 	dst = d->mlx->addr + (y * d->mlx->line_len + x * (d->mlx->bpp / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
-void	getDrawLines(t_global *d)
+void	get_draw_lines(t_global *d)
 {
-		if(!d->ray->side)
-			d->ray->sizeRay = fabs((d->ray->mapX - d->player->posX + \
-				(1 - d->ray->jumpX) / 2) / d->ray->rayDirX);
-		else
-			d->ray->sizeRay = fabs((d->ray->mapY - d->player->posY + \
-				(1 - d->ray->jumpY) / 2) / d->ray->rayDirY);
-		d->ray->lineH = (int)(HEIGHT / d->ray->sizeRay);
-		d->ray->drawStart = (-d->ray->lineH / 2 ) + (HEIGHT / 2);
-		if(d->ray->drawStart < 0)
-			d->ray->drawStart = 0;
-		d->ray->drawEnd = (d->ray->lineH / 2) + (HEIGHT / 2);
-		if(d->ray->drawEnd >= HEIGHT)
-			d->ray->drawEnd = HEIGHT - 1;
+	if (!d->ray->side)
+		d->ray->size_ray = fabs((d->ray->map_x - d->player->pos_x + \
+			(1 - d->ray->jump_x) / 2) / d->ray->raydir_x);
+	else
+		d->ray->size_ray = fabs((d->ray->map_y - d->player->pos_y + \
+			(1 - d->ray->jump_y) / 2) / d->ray->raydir_y);
+	d->ray->line_h = (int)(HEIGHT / d->ray->size_ray);
+	d->ray->draw_start = (-d->ray->line_h / 2 ) + (HEIGHT / 2);
+	if (d->ray->draw_start < 0)
+		d->ray->draw_start = 0;
+	d->ray->draw_end = (d->ray->line_h / 2) + (HEIGHT / 2);
+	if (d->ray->draw_end >= HEIGHT)
+		d->ray->draw_end = HEIGHT - 1;
 }
 
-void	initRay(t_global *d, int x)
+void	init_ray(t_global *d, int x)
 {
-		d->player->camX = 2 * x / (double)WIDTH - 1;
-		d->ray->rayDirX = d->player->dirX + d->player->screenX * d->player->camX;
-		d->ray->rayDirY = d->player->dirY + d->player->screenY * d->player->camX;
-
-		d->ray->mapX = (int)d->player->posX;
-		d->ray->mapY = (int)d->player->posY;
-
-		d->ray->deltaDistX = sqrt(1 + (d->ray->rayDirY * d->ray->rayDirY) \
-			/ (d->ray->rayDirX * d->ray->rayDirX));
-		d->ray->deltaDistY = sqrt(1 + (d->ray->rayDirX * d->ray->rayDirX) \
-			/ (d->ray->rayDirY * d->ray->rayDirY));	
+	d->player->cam_x = 2 * x / (double)WIDTH - 1;
+	d->ray->raydir_x = d->player->dir_x \
+		+ d->player->screen_x * d->player->cam_x;
+	d->ray->raydir_y = d->player->dir_y \
+		+ d->player->screen_y * d->player->cam_x;
+	d->ray->map_x = (int)d->player->pos_x;
+	d->ray->map_y = (int)d->player->pos_y;
+	d->ray->delta_dist_x = sqrt(1 + (d->ray->raydir_y * d->ray->raydir_y) \
+		/ (d->ray->raydir_x * d->ray->raydir_x));
+	d->ray->delta_dist_y = sqrt(1 + (d->ray->raydir_x * d->ray->raydir_x) \
+		/ (d->ray->raydir_y * d->ray->raydir_y));
 }
 
-void	initImg(t_global *d, t_wall *curWall)
+void	init_img(t_global *d, t_wall *cur_wall)
 {
-	d->ray->curWall = curWall;
-	d->ray->texW = curWall->sizeX;
-	d->ray->texH = curWall->sizeY;
-	d->ray->ptr = curWall->ptr;
+	d->ray->cur_wall = cur_wall;
+	d->ray->tex_w = cur_wall->sizeX;
+	d->ray->tex_h = cur_wall->sizeY;
+	d->ray->ptr = cur_wall->ptr;
 }
 
-void	initTex(t_global *d)
+void	init_tex(t_global *d)
 {
-	d->ray->texY = 0;
-	if(!d->ray->side && d->ray->jumpX == 1)
+	d->ray->tex_y = 0;
+	if (!d->ray->side && d->ray->jump_x == 1)
 	{
 		d->ray->hitpt = \
-		d->player->posY + d->ray->sizeRay * d->ray->rayDirY;
-		initImg(d, d->map->wallW);
+		d->player->pos_y + d->ray->size_ray * d->ray->raydir_y;
+		init_img(d, d->map->wall_w);
 	}
 	else if (!d->ray->side)
 	{
 		d->ray->hitpt = \
-		d->player->posY + d->ray->sizeRay * d->ray->rayDirY;
-		initImg(d, d->map->wallE);
+		d->player->pos_y + d->ray->size_ray * d->ray->raydir_y;
+		init_img(d, d->map->wall_e);
 	}
-	else if(d->ray->jumpY == -1)
+	else if (d->ray->jump_y == -1)
 	{
 		d->ray->hitpt = \
-		d->player->posX + d->ray->sizeRay * d->ray->rayDirX;
-		initImg(d, d->map->wallN);
+		d->player->pos_x + d->ray->size_ray * d->ray->raydir_x;
+		init_img(d, d->map->wall_n);
 	}
 	else
 	{
 		d->ray->hitpt = \
-		d->player->posX + d->ray->sizeRay * d->ray->rayDirX;
-		initImg(d, d->map->wallS);
+		d->player->pos_x + d->ray->size_ray * d->ray->raydir_x;
+		init_img(d, d->map->wall_s);
 	}
 }

@@ -3,97 +3,97 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/27 15:36:27 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:18:02 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-void	getSideDist(t_global *d)
+void	get_side_dist(t_global *d)
 {
-	if (d->ray->rayDirX < 0)
+	if (d->ray->raydir_x < 0)
 	{
-		d->ray->jumpX = -1;
-		d->ray->sideDistX = (d->player->posX - d->ray->mapX) \
-			* d->ray->deltaDistX;
+		d->ray->jump_x = -1;
+		d->ray->side_dist_x = (d->player->pos_x - d->ray->map_x) \
+			* d->ray->delta_dist_x;
 	}
 	else
 	{
-		d->ray->jumpX = 1;
-		d->ray->sideDistX = (d->ray->mapX + 1.0 - d->player->posX) \
-			* d->ray->deltaDistX;
+		d->ray->jump_x = 1;
+		d->ray->side_dist_x = (d->ray->map_x + 1.0 - d->player->pos_x) \
+			* d->ray->delta_dist_x;
 	}
-	if (d->ray->rayDirY < 0)
+	if (d->ray->raydir_y < 0)
 	{
-		d->ray->jumpY = -1;
-		d->ray->sideDistY = (d->player->posY - d->ray->mapY) \
-			 * d->ray->deltaDistY;
+		d->ray->jump_y = -1;
+		d->ray->side_dist_y = (d->player->pos_y - d->ray->map_y) \
+			* d->ray->delta_dist_y;
 	}
 	else
 	{
-		d->ray->jumpY = 1;
-		d->ray->sideDistY = (d->ray->mapY + 1.0 - d->player->posY) \
-			* d->ray->deltaDistY;
+		d->ray->jump_y = 1;
+		d->ray->side_dist_y = (d->ray->map_y + 1.0 - d->player->pos_y) \
+			* d->ray->delta_dist_y;
 	}
 }
 
-void	hitLoop(t_global *d)
+void	hit_loop(t_global *d)
 {
-	int hit;
+	int	hit;
 
 	hit = 0;
 	while (!hit)
 	{
-		if(d->ray->sideDistX < d->ray->sideDistY)
+		if (d->ray->side_dist_x < d->ray->side_dist_y)
 		{
-			d->ray->sideDistX += d->ray->deltaDistX;
-			d->ray->mapX += d->ray->jumpX;
+			d->ray->side_dist_x += d->ray->delta_dist_x;
+			d->ray->map_x += d->ray->jump_x;
 			d->ray->side = 0;
 		}
 		else
 		{
-			d->ray->sideDistY += d->ray->deltaDistY;
-			d->ray->mapY += d->ray->jumpY;
+			d->ray->side_dist_y += d->ray->delta_dist_y;
+			d->ray->map_y += d->ray->jump_y;
 			d->ray->side = 1;
 		}
-		if (d->map->matrix[d->ray->mapY][d->ray->mapX] == '1')
+		if (d->map->matrix[d->ray->map_y][d->ray->map_x] == '1')
 			hit = 1;
 	}
 }
 
-void	posTex(t_global *d)
+void	pos_tex(t_global *d)
 {
 	d->ray->hitpt -= floor(d->ray->hitpt);
-	d->ray->texX = (int)(d->ray->hitpt * (double)d->ray->texW);
-	if (d->ray->side == 0 && d->ray->rayDirX > 0)
-		d->ray->texX = d->ray->texW - d->ray->texX - 1;
-	if (d->ray->side == 1 && d->ray->rayDirY < 0)
-		d->ray->texX = d->ray->texW - d->ray->texX - 1;
-	d->ray->step = (double)d->ray->texH / d->ray->lineH;
-	d->ray->texPos = (d->ray->drawStart - HEIGHT / 2 + d->ray->lineH / 2) \
+	d->ray->tex_x = (int)(d->ray->hitpt * (double)d->ray->tex_w);
+	if (d->ray->side == 0 && d->ray->raydir_x > 0)
+		d->ray->tex_x = d->ray->tex_w - d->ray->tex_x - 1;
+	if (d->ray->side == 1 && d->ray->raydir_y < 0)
+		d->ray->tex_x = d->ray->tex_w - d->ray->tex_x - 1;
+	d->ray->step = (double)d->ray->tex_h / d->ray->line_h;
+	d->ray->tex_pos = (d->ray->draw_start - HEIGHT / 2 + d->ray->line_h / 2) \
 		* d->ray->step;
 }
 
-void	drawVert(t_global *d, int x)
+void	draw_vert(t_global *d, int x)
 {
 	int				y;
 	unsigned int 	color;
 
 	y = -1;
-	while(++y < HEIGHT)
+	while (++y < HEIGHT)
 	{
-		if(y < d->ray->drawStart)
+		if (y < d->ray->draw_start)
 			color = (unsigned int)d->map->ceiling;
-		else if(y < d->ray->drawEnd)
+		else if (y < d->ray->draw_end)
 		{
-			d->ray->texY = (int)d->ray->texPos;
-			d->ray->texPos += d->ray->step;
-			color = *(unsigned int *)(d->ray->curWall->addr + \
-			(d->ray->texY * d->ray->curWall->line_len + \
-			d->ray->texX * (d->ray->curWall->bpp / 8)));
+			d->ray->tex_y = (int)d->ray->tex_pos;
+			d->ray->tex_pos += d->ray->step;
+			color = *(unsigned int *)(d->ray->cur_wall->addr + \
+			(d->ray->tex_y * d->ray->cur_wall->line_len + \
+			d->ray->tex_x * (d->ray->cur_wall->bpp / 8)));
 		}
 		else
 			color = (unsigned int)d->map->floor;
@@ -102,25 +102,25 @@ void	drawVert(t_global *d, int x)
 }
 
 // BONUS -----------------------------------------------
-void	drawVertplus(t_global *d, int x)
+void	draw_vertplus(t_global *d, int x)
 {
 	int				y;
-	unsigned int 	color;
+	unsigned int	color;
 
 	y = -1;
-	while(++y < HEIGHT)
+	while (++y < HEIGHT)
 	{
 		if (y > (int)(HEIGHT / 2) && x < (int)(2 * WIDTH / 8))
 			color = 0x00FFFFFF;
-		else if(y < d->ray->drawStart)
+		else if (y < d->ray->draw_start)
 			color = (unsigned int)d->map->ceiling;
-		else if(y < d->ray->drawEnd)
+		else if (y < d->ray->draw_end)
 		{
-			d->ray->texY = (int)d->ray->texPos;
-			d->ray->texPos += d->ray->step;
-			color = *(unsigned int *)(d->ray->curWall->addr + \
-			(d->ray->texY * d->ray->curWall->line_len + \
-			d->ray->texX * (d->ray->curWall->bpp / 8)));
+			d->ray->tex_y = (int)d->ray->tex_pos;
+			d->ray->tex_pos += d->ray->step;
+			color = *(unsigned int *)(d->ray->cur_wall->addr + \
+			(d->ray->tex_y * d->ray->cur_wall->line_len + \
+			d->ray->tex_x * (d->ray->cur_wall->bpp / 8)));
 		}
 		else
 			color = (unsigned int)d->map->floor;
@@ -129,22 +129,22 @@ void	drawVertplus(t_global *d, int x)
 }
 // ---------------------------------------------------------
 
-void	raycastLoop(t_global *d)
+void	raycast_loop(t_global *d)
 {
-	int x;
-	
+	int	x;
+
 	x = 0;
-	while(x < WIDTH)
+	while (x < WIDTH)
 	{
-		initRay(d, x);
-		getSideDist(d);
-		hitLoop(d);
-		getDrawLines(d);
-		initTex(d);
-		posTex(d);
-		// drawVert(d, x);
+		init_ray(d, x);
+		get_side_dist(d);
+		hit_loop(d);
+		get_draw_lines(d);
+		init_tex(d);
+		pos_tex(d);
+		// draw_vert(d, x);
 		// BONUS --------------------
-		drawVertplus(d, x);
+		draw_vertplus(d, x);
 		// --------------------------
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/26 17:16:12 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:18:18 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	free_split(char **split)
 
 int	init_color(t_global *d, char *line, int *color)
 {
-	int	i;
-	char **split;
+	int		i;
+	char	**split;
 
 	i = 0;
 	while (line[i] == ' ')															// Passer les espaces en début de ligne
@@ -47,12 +47,12 @@ void	init_colors(t_global *d, char *line)
 	if (line[i] == 'F')
 	{
 		d->map->floor = color;
-		d->flags->F++;
+		d->flags->f++;
 	}
 	else if (line[i] == 'C')
 	{
 		d->map->ceiling = color;
-		d->flags->C++;
+		d->flags->c++;
 	}
 }
 
@@ -77,25 +77,25 @@ void	init_files(t_global *d, char *line)			// Possible de raccourcir la fonction
 	while (line[j] == ' ')
 		j++;
 	path = ft_strtrim(&line[j], "\n");
-	if (line[i] == 'N' && !d->flags->NO)
+	if (line[i] == 'N' && !d->flags->no)
 	{
-		export_path(d, &d->map->wallN->path, &path);
-		d->flags->NO++;
+		export_path(d, &d->map->wall_n->path, &path);
+		d->flags->no++;
 	}
-	else if (line[i] == 'S' && !d->flags->SO)
+	else if (line[i] == 'S' && !d->flags->so)
 	{
-		export_path(d, &d->map->wallS->path, &path);
-		d->flags->SO++;
+		export_path(d, &d->map->wall_s->path, &path);
+		d->flags->so++;
 	}
-	else if (line[i] == 'E' && !d->flags->EA)
+	else if (line[i] == 'E' && !d->flags->ea)
 	{
-		export_path(d, &d->map->wallE->path, &path);
-		d->flags->EA++;
+		export_path(d, &d->map->wall_e->path, &path);
+		d->flags->ea++;
 	}
-	else if (line[i] == 'W' && !d->flags->WE)
+	else if (line[i] == 'W' && !d->flags->we)
 	{
-		export_path(d, &d->map->wallW->path, &path);
-		d->flags->WE++;
+		export_path(d, &d->map->wall_w->path, &path);
+		d->flags->we++;
 	}
 	else
 	{
@@ -105,12 +105,12 @@ void	init_files(t_global *d, char *line)			// Possible de raccourcir la fonction
 
 void	init_flags(t_global *d)
 {
-	d->flags->NO = 0;
-	d->flags->SO = 0;
-	d->flags->EA = 0;
-	d->flags->WE = 0;
-	d->flags->C = 0;
-	d->flags->F = 0;
+	d->flags->no = 0;
+	d->flags->so = 0;
+	d->flags->ea = 0;
+	d->flags->we = 0;
+	d->flags->c = 0;
+	d->flags->f = 0;
 	d->flags->lines = 0;
 }
 
@@ -141,8 +141,8 @@ void	read_config(t_global *d, char *file)
 	fd = open_fd(d, file);
 	init_flags(d);
 	line = get_next_line(fd);													// Lire la première ligne et vérifier qu'elle n'est pas vide
-	while (!d->flags->NO || !d->flags->SO || !d->flags->EA ||
-		!d->flags->WE || !d->flags->F || !d->flags->C)										// Vérifier le nombre d'éléments qui ont déjà été initialisés
+	while (!d->flags->no || !d->flags->so || !d->flags->ea ||
+		!d->flags->we || !d->flags->f || !d->flags->c)										// Vérifier le nombre d'éléments qui ont déjà été initialisés
 	{
 		if (!line)
 		{
@@ -171,9 +171,9 @@ void	read_config(t_global *d, char *file)
 	}
 	close(fd);
 	read_map(d, file);														// Lecture de la map (1)
-	// free(d->map->wallN->path);
-	// free(d->map->wallS->path);
-	// free(d->map->wallE->path);
-	// free(d->map->wallW->path);
+	// free(d->map->wall_n->path);
+	// free(d->map->wall_s->path);
+	// free(d->map->wall_e->path);
+	// free(d->map->wall_w->path);
 	free(line);
 }

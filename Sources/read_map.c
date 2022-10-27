@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/26 04:28:49 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:51:11 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	check_map(t_global *d)
 							player++;
 							//-----------------------------------------------
 							d->player->orientation = d->map->matrix[y][x];
-							d->player->posX = x + 0.40;
-							d->player->posY = y + 0.40;
+							d->player->pos_x = x + 0.40;
+							d->player->pos_y = y + 0.40;
 							d->map->matrix[y][x] = 0;
 							//-----------------------------------------------
 						}
