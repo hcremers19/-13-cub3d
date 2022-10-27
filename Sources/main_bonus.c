@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 20:10:19 by I-lan            ###   ########.fr       */
+/*   Created: 2022/10/26 20:19:17 by I-lan             #+#    #+#             */
+/*   Updated: 2022/10/26 21:27:51 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
-int	main(int ac, char **av)
+int	main()//int ac, char **av)
 {
-	t_global	*d;
-
-	d = (t_global *)malloc(sizeof(t_global));
-	if (!d)
-	{
-		ft_putstr_fd(ER_MA, 1);
-		return (0);
-	}
-	initStruct(d);
-	if (ac != 2)
-		ft_exit(d, ER_ARG);
-	structMalloc(d);
-	read_config(d, av[1]);
-	init(d);
 	return (0);
 }
-
-// To do
-//	- verifier leaks
-//  - creer/github des maps
-//	- makefile bonus
-//	- commentaires ?
