@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/27 16:52:44 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:21:43 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,34 +101,6 @@ void	draw_vert(t_global *d, int x)
 	}
 }
 
-// BONUS -----------------------------------------------
-void	draw_vertplus(t_global *d, int x)
-{
-	int				y;
-	unsigned int	color;
-
-	y = -1;
-	while (++y < HEIGHT)
-	{
-		if (y > (int)(HEIGHT / 2) && x < (int)(2 * WIDTH / 8))
-			color = 0x00FFFFFF;
-		else if (y < d->ray->draw_start)
-			color = (unsigned int)d->map->ceiling;
-		else if (y < d->ray->draw_end)
-		{
-			d->ray->tex_y = (int)d->ray->tex_pos;
-			d->ray->tex_pos += d->ray->step;
-			color = *(unsigned int *)(d->ray->cur_wall->addr + \
-			(d->ray->tex_y * d->ray->cur_wall->line_len + \
-			d->ray->tex_x * (d->ray->cur_wall->bpp / 8)));
-		}
-		else
-			color = (unsigned int)d->map->floor;
-		my_mlx_pixel_put(d, x, y, color);
-	}
-}
-// ---------------------------------------------------------
-
 void	raycast_loop(t_global *d)
 {
 	int	x;
@@ -142,10 +114,7 @@ void	raycast_loop(t_global *d)
 		get_draw_lines(d);
 		init_tex(d);
 		pos_tex(d);
-		// draw_vert(d, x);
-		// BONUS --------------------
-		draw_vertplus(d, x);
-		// --------------------------
+		draw_vert(d, x);
 		x++;
 	}
 }

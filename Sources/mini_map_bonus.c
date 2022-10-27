@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:25:35 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:54:49 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:16:25 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,23 @@ void	drawMap2D(t_global *d)
 	}
 }
 
-unsigned int	mini_map(t_global *d, int x, int y)
+void	draw_mini_map(t_global *d) // draw square
 {
-	unsigned int	color;
-	// (void)x;
-	// (void)y;
-	// (void)d;
+	int	y;
+	int	x;
 
-	if (d->map->matrix[y % 4][x % 8] == '1')
-		color = 0x00FFFFFF;
-	else
-		color = 0x00000000;
-	return (color);
+	y = (3 * HEIGHT / 4) - 11;
+	while (++y < HEIGHT - 10)
+	{
+		x = 9;
+		while (++x < (WIDTH / 8) + 10)
+		{
+			my_mlx_pixel_put(d, x, y, 0x00FFFFFF);
+		}
+	}
 }
+
+// h_square = H / 4;
+// w_square = W / 8;
+// surface = (H * W) / 32
+// len 1 bloc = W / (8 * 11) (ou H / 8 * 11)

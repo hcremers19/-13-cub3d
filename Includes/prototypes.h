@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:20:10 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:26:38 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	init_tex(t_global *d);
 void	printBlock(t_global *d, int x, int y, int color);
 void	drawMap2D(t_global *d);
 
-unsigned int	mini_map(t_global *d, int x, int y);
+void	draw_mini_map(t_global *d);
 
 //-------------------------------------------------------------
 //		Utils

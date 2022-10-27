@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initDrawing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:17:49 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:25:30 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_window(t_global *d)
 	if (!d->mlx->addr)
 		ft_exit(d, ER_MLX_AD);
 	raycast_loop(d);
-	// drawMap2D(d); // mini map
+	draw_mini_map(d); // mini map
 	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
 	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
 }
