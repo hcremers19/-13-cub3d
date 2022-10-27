@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 04:32:46 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:48:25 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_mlx	t_mlx;
 typedef struct s_wall	t_wall;
 typedef struct s_flags	t_flags;
 typedef struct s_player	t_player;
+typedef struct s_key	t_key;
 typedef struct s_global	t_global;
 
 struct s_wall
@@ -108,6 +109,16 @@ struct s_flags
 	int		lines;
 };
 
+struct s_key
+{
+	int		kw;
+	int		ks;
+	int		ka;
+	int		kd;
+	int		kleft;
+	int		kright;
+};
+
 struct s_global
 {
 	t_flags		*flags;
@@ -115,6 +126,7 @@ struct s_global
 	t_player	*player;
 	t_ray		*ray;
 	t_map		*map;
+	t_key		*key;
 };
 
 #endif /* STRUCTURES_H */

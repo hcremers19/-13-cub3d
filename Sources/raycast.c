@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/26 01:10:46 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:36:27 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,40 @@ void	drawVert(t_global *d, int x)
 	}
 }
 
+// BONUS -----------------------------------------------
+void	drawVertplus(t_global *d, int x)
+{
+	int				y;
+	unsigned int 	color;
+
+	y = -1;
+	while(++y < HEIGHT)
+	{
+		if (y > (int)(HEIGHT / 2) && x < (int)(2 * WIDTH / 8))
+			color = 0x00FFFFFF;
+		else if(y < d->ray->drawStart)
+			color = (unsigned int)d->map->ceiling;
+		else if(y < d->ray->drawEnd)
+		{
+			d->ray->texY = (int)d->ray->texPos;
+			d->ray->texPos += d->ray->step;
+			color = *(unsigned int *)(d->ray->curWall->addr + \
+			(d->ray->texY * d->ray->curWall->line_len + \
+			d->ray->texX * (d->ray->curWall->bpp / 8)));
+		}
+		else
+			color = (unsigned int)d->map->floor;
+		my_mlx_pixel_put(d, x, y, color);
+	}
+}
+// ---------------------------------------------------------
+
 void	raycastLoop(t_global *d)
 {
 	int x;
 	
 	x = 0;
-	while(x < WIGHT)
+	while(x < WIDTH)
 	{
 		initRay(d, x);
 		getSideDist(d);
@@ -114,7 +142,10 @@ void	raycastLoop(t_global *d)
 		getDrawLines(d);
 		initTex(d);
 		posTex(d);
-		drawVert(d, x);
+		// drawVert(d, x);
+		// BONUS --------------------
+		drawVertplus(d, x);
+		// --------------------------
 		x++;
 	}
 }

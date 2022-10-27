@@ -64,7 +64,7 @@ OBJS_FIL	= 	object_file
 # -----------	Flags --------------- #
 
 CC			=	gcc
-MK			=	mkdir
+MK			=	mkdir -p
 CFLAGS		=	-Wall -Werror -Wextra
 
 # -----------	MLX ----------------- #

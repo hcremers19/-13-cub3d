@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 04:13:06 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:28:38 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	initDir(t_global *d)
 
 void	initWindow(t_global *d)
 {
-	d->mlx->img = mlx_new_image(d->mlx->mlx, WIGHT, HEIGHT);
+	d->mlx->img = mlx_new_image(d->mlx->mlx, WIDTH, HEIGHT);
 	if (!d->mlx->img)
 		ft_exit(d, ER_MLX_IM);
 	d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, \
@@ -72,13 +72,15 @@ void	init(t_global *d)
 	d->mlx->mlx = mlx_init();
 	if(!d->mlx->mlx)
 		ft_exit(d, ER_MLX_IN);
-	d->mlx->mlx_win = mlx_new_window(d->mlx->mlx, WIGHT, HEIGHT, "cub3D");
+	d->mlx->mlx_win = mlx_new_window(d->mlx->mlx, WIDTH, HEIGHT, "cub3D");
 	if(!d->mlx->mlx_win)
 		ft_exit(d, ER_MLX_IN);
 	initDir(d);
 	initWalls(d);
 	initWindow(d);
-	mlx_hook(d->mlx->mlx_win, 2, (1L << 0), &key_hook, d);
-	mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_cross, d);
-	mlx_loop(d->mlx->mlx);
-}  
+	// mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);
+	// mlx_hook(d->mlx->mlx_win, 3, 0, &key_hook_release, d);
+	// mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_cross, d);
+	// mlx_loop_hook(d->mlx->mlx, &key_hook, d);
+	// mlx_loop(d->mlx->mlx);
+}

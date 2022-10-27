@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 04:14:30 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:28:19 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	getDrawLines(t_global *d)
 
 void	initRay(t_global *d, int x)
 {
-		d->player->camX = 2 * x / (double)WIGHT - 1;
+		d->player->camX = 2 * x / (double)WIDTH - 1;
 		d->ray->rayDirX = d->player->dirX + d->player->screenX * d->player->camX;
 		d->ray->rayDirY = d->player->dirY + d->player->screenY * d->player->camX;
 

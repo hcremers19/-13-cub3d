@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 20:10:19 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/27 13:30:29 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,18 @@ int	main(int ac, char **av)
 	structMalloc(d);
 	read_config(d, av[1]);
 	init(d);
+	// -----------------
+	mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);
+	mlx_hook(d->mlx->mlx_win, 3, 0, &key_hook_release, d);
+	mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_cross, d);
+	mlx_loop_hook(d->mlx->mlx, &key_hook, d);
+	mlx_loop(d->mlx->mlx);
+	// -----------------
 	return (0);
 }
 
 // To do
+//	- mini map
 //	- verifier leaks
 //  - creer/github des maps
-//	- makefile bonus
 //	- commentaires ?

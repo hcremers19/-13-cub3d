@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 03:33:47 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:06:07 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	freeWalls(t_global *d)
 int		ft_exit_cross(t_global *d)
 {
 	ft_exit(d, EXIT_S);
-	return(0);
+	return (0);
 }
 
 void	ft_exit(t_global *d, char *str)
@@ -45,6 +45,8 @@ void	ft_exit(t_global *d, char *str)
 		free(d->map);
 	if(d->ray)
 		free(d->ray);
+	if(d->key)
+		free(d->key);
 	if(d)
 		free(d);
 	exit(1);

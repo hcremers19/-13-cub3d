@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 11:03:55 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:38:17 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ void	mooveW(t_global *d);
 //		Hoock
 //-------------------------------------------------------------
 
-int		key_hook(int keycode, t_global *d);
+int		key_hook_press(int keycode, t_global *d);
+int		key_hook_release(int keycode, t_global *d);
+int		key_hook(t_global *d);
 
 //-------------------------------------------------------------
 //		InitWalls
@@ -104,8 +106,10 @@ void	initTex(t_global *d);
 //		Mini_map_bonus
 //-------------------------------------------------------------
 
-void	printBlock(t_global *d, int x, int y, int color);
-void	drawMap2D(t_global *d);
+void			printBlock(t_global *d, int x, int y, int color);
+void			drawMap2D(t_global *d);
+
+unsigned int	miniMap(t_global *d, int x, int y);
 
 //-------------------------------------------------------------
 //		Utils

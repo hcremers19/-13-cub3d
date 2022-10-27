@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:25:35 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 22:42:10 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/10/27 15:23:05 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,6 @@ void	printBlock(t_global *d, int x, int y, int color)
 	}				
 }
 
-void	drawVertplus(t_global *d, int x)
-{
-	int				y;
-	unsigned int 	color;
-
-	y = -1;
-	while(++y < HEIGHT)
-	{
-		if(y < d->ray->drawStart)
-			color = (unsigned int)d->map->ceiling;
-		else if(y < d->ray->drawEnd)
-		{
-			d->ray->texY = (int)d->ray->texPos;
-			d->ray->texPos += d->ray->step;
-			color = *(unsigned int *)(d->ray->curWall->addr + \
-			(d->ray->texY * d->ray->curWall->line_len + \
-			d->ray->texX * (d->ray->curWall->bpp / 8)));
-		}
-		else
-			color = (unsigned int)d->map->floor;
-		my_mlx_pixel_put(d, x, y, color);
-	}
-}
-
 void	drawMap2D(t_global *d)
 {
 	int	x;
@@ -67,4 +43,18 @@ void	drawMap2D(t_global *d)
 				printBlock(d, x, y, 0x00000000);		
 		}
 	}
+}
+
+unsigned int miniMap(t_global *d, int x, int y)
+{
+	unsigned int color;
+	// (void)x;
+	// (void)y;
+	// (void)d;
+
+	if(d->map->matrix[y % 4][x % 8] == '1')
+		color = 0x00FFFFFF;
+	else
+		color = 0x00000000;
+	return (color);	
 }

@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 04:19:52 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:05:17 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	structMalloc(t_global *d)
 	nullWalls(d);
 	d->ray = (t_ray *)malloc(sizeof(t_ray));
 	if(!d->ray)
+		ft_exit(d, ER_MA);
+	d->key = (t_key *)malloc(sizeof(t_key));
+	if (!d->key)
 		ft_exit(d, ER_MA);
 	wallStructMalloc(d);
 }
