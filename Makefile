@@ -69,8 +69,7 @@ CFLAGS		=	-Wall -Werror -Wextra
 
 # -----------	MLX ----------------- #
 
-MMLX		= 	make -s -C 
-MLX			= 	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
+MLX			= 	-lmlx -framework OpenGL -framework AppKit
 
 # -----------	Fonctions ----------- #
 
@@ -100,13 +99,11 @@ ${OBJS_FIL} :
 	@${MK} ${OBJS_DIR}
 
 ${NAME}: ${OBJS_MAIN} ${OBJS}
-	@${MMLX} ./mlx
 	@${CC} ${CFLAGS} ${MLX} ${OBJS_MAIN} ${OBJS} -o ${NAME}
 	@${PRI} "\n${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	\
 	${C_GREEN}$@ 🧊🧊🧊 ${C_GREEN}Successfully built${C_DEFAUT}\n\n"
 
 ${NAME_BONUS}: ${OBJS_BONUS} ${OBJS}
-	@${MMLX} ./mlx
 	@${CC} ${CFLAGS} ${MLX} ${OBJS_BONUS} ${OBJS} -o ${NAME_BONUS}
 	@${PRI} "\n${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	\
 	${C_GREEN}$@ 🧊🧊🧊 ${C_GREEN}Successfully built${C_DEFAUT}\n\n"
@@ -128,7 +125,6 @@ clean :
 fclean : clean
 	@${RM} ${NAME}
 	@${RM} ${NAME_BONUS}
-#	@make clean -C mlx
 	@${PRI} "${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	${C_RED}Exe & mlx files deleted${C_DEFAUT}\n"
 
 # ---------------------------------- #

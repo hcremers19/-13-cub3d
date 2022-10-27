@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initWalls.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 03:49:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/26 04:34:49 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/27 11:19:00 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	initOneWall(t_global *d, t_wall *wall)
 	if (!findFormat(wall->path, ".xpm"))
 		wall->ptr = mlx_xpm_file_to_image(d->mlx->mlx, wall->path, \
 			&wall->sizeX, &wall->sizeY);
-	else if (!findFormat(wall->path, ".png"))
-		wall->ptr = mlx_png_file_to_image(d->mlx->mlx, wall->path, \
-			&wall->sizeX, &wall->sizeY);
+	// else if (!findFormat(wall->path, ".png"))
+	// 	wall->ptr = mlx_png_file_to_image(d->mlx->mlx, wall->path, \
+	// 		&wall->sizeX, &wall->sizeY);
 	else
 		ft_exit(d, ER_EX);
 	wall->addr = mlx_get_data_addr(wall->ptr, &wall->bpp, \
