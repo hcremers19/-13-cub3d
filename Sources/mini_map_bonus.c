@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:25:35 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:12:46 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:54:49 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	printBlock(t_global *d, int x, int y, int color)
 {
-	int p;
-	int k;
+	int	p;
+	int	k;
 
 	k = y / (d->map->map_height);
 	while (++k < ((y + 1) / (d->map->map_height)))
@@ -32,15 +32,15 @@ void	drawMap2D(t_global *d)
 	int	y;
 
 	y = -1;
-	while(++y < d->map->map_height)
+	while (++y < d->map->map_height)
 	{
 		x = -1;
-		while(++x < d->map->map_width)
+		while (++x < d->map->map_width)
 		{
-			if(d->map->matrix[y][x] == '1')
+			if (d->map->matrix[y][x] == '1')
 				printBlock(d, x, y, 0x00FFFFFF);
 			else
-				printBlock(d, x, y, 0x00000000);		
+				printBlock(d, x, y, 0x00000000);
 		}
 	}
 }

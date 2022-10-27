@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/27 16:18:02 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:52:44 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	pos_tex(t_global *d)
 void	draw_vert(t_global *d, int x)
 {
 	int				y;
-	unsigned int 	color;
+	unsigned int	color;
 
 	y = -1;
 	while (++y < HEIGHT)

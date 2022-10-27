@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 15:58:10 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:50:38 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,21 @@ struct s_wall
 	int		line_len;
 	int		bpp;
 	int		endian;	
-	int		sizeX;
-	int		sizeY;
+	int		size_x;
+	int		size_y;
 };
 
 struct s_map
 {
-	char		 **matrix;
-	int			 map_height;
-	int			 map_width;
-	unsigned int floor;
-	unsigned int ceiling;
-	t_wall	 	 *wall_n;
-	t_wall	 	 *wall_s;
-	t_wall	  	 *wall_e;
-	t_wall	 	 *wall_w;
+	char			**matrix;
+	int				map_height;
+	int				map_width;
+	unsigned int	floor;
+	unsigned int	ceiling;
+	t_wall			*wall_n;
+	t_wall			*wall_s;
+	t_wall			*wall_e;
+	t_wall			*wall_w;
 };
 
 struct s_player

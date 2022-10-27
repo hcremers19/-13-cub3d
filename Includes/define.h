@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:22:06 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:01:18 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:51:22 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define RED_CROSS 17
 
 // Message
-# define EXIT_S "Thanks for playing, bye !\n"
+# define EXIT_S "Thanks for playing, bye!\n"
 
 // Error
 # define ER_ARG "Error\n--> Wrong number of arguments\n"

@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:16:37 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/27 16:52:27 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	get_draw_lines(t_global *d)
 		d->ray->size_ray = fabs((d->ray->map_y - d->player->pos_y + \
 			(1 - d->ray->jump_y) / 2) / d->ray->raydir_y);
 	d->ray->line_h = (int)(HEIGHT / d->ray->size_ray);
-	d->ray->draw_start = (-d->ray->line_h / 2 ) + (HEIGHT / 2);
+	d->ray->draw_start = (-d->ray->line_h / 2) + (HEIGHT / 2);
 	if (d->ray->draw_start < 0)
 		d->ray->draw_start = 0;
 	d->ray->draw_end = (d->ray->line_h / 2) + (HEIGHT / 2);
@@ -55,8 +55,8 @@ void	init_ray(t_global *d, int x)
 void	init_img(t_global *d, t_wall *cur_wall)
 {
 	d->ray->cur_wall = cur_wall;
-	d->ray->tex_w = cur_wall->sizeX;
-	d->ray->tex_h = cur_wall->sizeY;
+	d->ray->tex_w = cur_wall->size_x;
+	d->ray->tex_h = cur_wall->size_y;
 	d->ray->ptr = cur_wall->ptr;
 }
 
