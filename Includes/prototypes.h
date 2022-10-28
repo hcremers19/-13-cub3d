@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 18:26:38 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:58:56 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	ft_strlen(const char *s);
 void	fill_matrix1(t_global *d, char *file);
 void	fill_matrix2(t_global *d, char *line, int fd);
 
-void	read_config(t_global *d, char *file);
+void	read_config1(t_global *d, char *file);
 void	read_map(t_global *d, char *file);
 
 void	get_dimensions2(t_global *d, char *line, int fd);

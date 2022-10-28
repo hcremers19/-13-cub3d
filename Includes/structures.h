@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:50:38 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 10:41:28 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ struct s_flags
 	int		f;
 	int		c;
 	int		lines;
+	int		players;
 };
 
 struct s_key

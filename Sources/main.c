@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:07:31 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:00:36 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		ft_exit(d, ER_ARG);
 	struct_malloc(d);
-	read_config(d, av[1]);
+	read_config1(d, av[1]);
 	init(d);
 	// -----------------
 	mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);

@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:03:50 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/26 17:15:12 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:45:11 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	wrdnbr(t_global *d, char const *s, char c)
 		i = i + j;
 	}
 	if (count != 3)
-		ft_exit(d, "Configuration error\n");
+		ft_exit(d, ER_RGB);
 	return (count);
 }
 
