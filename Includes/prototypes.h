@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 18:10:59 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:15:33 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_strjoin(char *s1, char *s2);
 int		ft_srch_nl(const char *str);
 char	**ft_split(t_global *d, char const *s, char c);
 int		ft_atoi(const char *str);
+void	read_config1(t_global *d, char *file);
+void	ft_putstr_fd(char *str, int fd);
 
 //-------------------------------------------------------------
 //		MoovePOV
