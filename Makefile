@@ -25,24 +25,28 @@ NAME_BONUS	=	Cub3D_Bonus
 
 SRCS_DIR	=	./Sources/
 
-SRCS		=	raycast.c				\
-				utils.c					\
+SRCS		=							\
 				exit.c					\
-				malloc.c				\
-				initDrawing.c			\
-				raycast_utils.c			\
-				hook.c					\
-				moovePOV.c				\
-				mouvement.c				\
-				read_config.c			\
-				read_map.c				\
 				ft_atoi.c				\
 				ft_split.c				\
-				libft.c					\
-				initWalls.c				\
 				ft_strtrim.c			\
-				get_next_line.c			\
-				mini_map_bonus.c
+				get_next_line1.c		\
+				get_next_line2.c		\
+				hook.c					\
+				initDrawing.c			\
+				initWalls.c				\
+				libft.c					\
+				malloc.c				\
+				mini_map_bonus.c		\
+				moovePOV.c				\
+				mouvement.c				\
+				raycast.c				\
+				raycast_utils.c			\
+				read_config1.c			\
+				read_config2.c			\
+				read_map1.c				\
+				read_map2.c				\
+				utils.c					\
 
 SRCS_MAIN	=	main.c
 

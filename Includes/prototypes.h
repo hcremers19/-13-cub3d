@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 15:58:56 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:04:27 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,22 @@
 //		Hugo
 //-------------------------------------------------------------
 
-char	*ft_strdup(char *src);
-char	*ft_strnstr(const char *haystack, const char *needle, int n);
-char	*ft_strtrim(const char *s1, const char *set);
+void	init_files(t_global *d, char *line, char flag);
+void	init_color1(t_global *d, char *line, char flag);
+size_t	ft_strlen(const char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*get_next_line(int fd);
+void	read_map(t_global *d, char *file);
+char	*ft_strtrim(const char *s1, const char *set);
+void	fill_matrix1(t_global *d, char *file);
+void	valid_map(t_global *d);
+char	*ft_strdup(char *src);
+char	*ft_calloc(int count, int size);
+void	ft_free(char **ptr);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_srch_nl(const char *str);
 char	**ft_split(t_global *d, char const *s, char c);
 int		ft_atoi(const char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t	ft_strlen(const char *s);
-// void	ft_error(char *error);
-
-void	fill_matrix1(t_global *d, char *file);
-void	fill_matrix2(t_global *d, char *line, int fd);
-
-void	read_config1(t_global *d, char *file);
-void	read_map(t_global *d, char *file);
-
-void	get_dimensions2(t_global *d, char *line, int fd);
-void	get_dimensions1(t_global *d, char *file);
-
-// Juste pour les tests
-void	ft_putchar_fd(char c, int fd);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putstr_fd(char *str, int fd);
 
 //-------------------------------------------------------------
 //		MoovePOV
