@@ -46,12 +46,15 @@ SRCS		=							\
 				read_config2.c			\
 				read_map1.c				\
 				read_map2.c				\
-				utils.c					\
+				utils.c					\		\
+				mouse_hook_bonus.c
+
 
 SRCS_MAIN	=	main.c
 
 SRCS_BONUS	=	main_bonus.c			\
-#				mini_map_bonus.c
+#				mini_map_bonus.c		\
+#				mouse_hook_bonus.c
 
 # -----------	Includes ------------ #
 

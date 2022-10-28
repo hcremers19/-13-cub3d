@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 18:25:30 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:47:46 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	init_window(t_global *d)
 	if (!d->mlx->addr)
 		ft_exit(d, ER_MLX_AD);
 	raycast_loop(d);
+	/// BONUS --------------------
 	draw_mini_map(d); // mini map
+	// ---------------------------
 	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
 	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
 }
@@ -78,9 +80,4 @@ void	init(t_global *d)
 	init_dir(d);
 	init_walls(d);
 	init_window(d);
-	// mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);
-	// mlx_hook(d->mlx->mlx_win, 3, 0, &key_hook_release, d);
-	// mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_cross, d);
-	// mlx_loop_hook(d->mlx->mlx, &key_hook, d);
-	// mlx_loop(d->mlx->mlx);
 }
