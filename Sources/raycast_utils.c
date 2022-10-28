@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:52:27 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:27:38 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
+
+/* ----------------------------------------------------------------------------
+Put a colored pixel on the screen at X and Y given positions using MLX image 
+data.
+---------------------------------------------------------------------------- */
 
 void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 {
@@ -19,6 +24,10 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 	dst = d->mlx->addr + (y * d->mlx->line_len + x * (d->mlx->bpp / 8));
 	*(unsigned int *)dst = color;
 }
+
+/* ----------------------------------------------------------------------------
+
+---------------------------------------------------------------------------- */
 
 void	get_draw_lines(t_global *d)
 {
@@ -37,6 +46,10 @@ void	get_draw_lines(t_global *d)
 		d->ray->draw_end = HEIGHT - 1;
 }
 
+/* ----------------------------------------------------------------------------
+
+---------------------------------------------------------------------------- */
+
 void	init_ray(t_global *d, int x)
 {
 	d->player->cam_x = 2 * x / (double)WIDTH - 1;
@@ -52,6 +65,10 @@ void	init_ray(t_global *d, int x)
 		/ (d->ray->raydir_y * d->ray->raydir_y));
 }
 
+/* ----------------------------------------------------------------------------
+
+---------------------------------------------------------------------------- */
+
 void	init_img(t_global *d, t_wall *cur_wall)
 {
 	d->ray->cur_wall = cur_wall;
@@ -59,6 +76,10 @@ void	init_img(t_global *d, t_wall *cur_wall)
 	d->ray->tex_h = cur_wall->size_y;
 	d->ray->ptr = cur_wall->ptr;
 }
+
+/* ----------------------------------------------------------------------------
+
+---------------------------------------------------------------------------- */
 
 void	init_tex(t_global *d)
 {

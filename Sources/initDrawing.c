@@ -6,11 +6,15 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 17:47:46 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:25:16 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
+
+/* ----------------------------------------------------------------------------
+See "init_dir" below.
+---------------------------------------------------------------------------- */
 
 void	init_dir1(t_global *d)
 {
@@ -29,6 +33,11 @@ void	init_dir1(t_global *d)
 		d->player->screen_y = -1.0;
 	}
 }
+/* ----------------------------------------------------------------------------
+Set the init direction of the POV and the screen of the player depending on 
+the letter (N, S, E or W) found in the map. Note that the dir(x, y) is always
+perpendicular to screen(x, y) of the player.
+---------------------------------------------------------------------------- */
 
 void	init_dir(t_global *d)
 {
@@ -52,6 +61,12 @@ void	init_dir(t_global *d)
 	}
 }
 
+/* ----------------------------------------------------------------------------
+Initialise window image pointeur and image adress pointeur to print, when it is 
+necessary, a new image. Call "raycast_loop" to draw on the image and then
+use "put_image_to_window" to put the image on the given window.
+---------------------------------------------------------------------------- */
+
 void	init_window(t_global *d)
 {
 	d->mlx->img = mlx_new_image(d->mlx->mlx, WIDTH, HEIGHT);
@@ -68,6 +83,12 @@ void	init_window(t_global *d)
 	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
 	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
 }
+
+/* ----------------------------------------------------------------------------
+Initialise MLX library and create a new window instance.
+Initialise initiale directions of the player.
+Initialise walls structure with they different textures.
+---------------------------------------------------------------------------- */
 
 void	init(t_global *d)
 {

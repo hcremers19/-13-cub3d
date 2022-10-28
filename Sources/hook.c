@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:57:26 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/27 16:10:16 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:59:33 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
+
+/* ----------------------------------------------------------------------------
+Set key flag to one when specific keyboard is pressed. The flag is after that
+used in key_hook fonction. Exit if ESC is pressed.
+---------------------------------------------------------------------------- */
 
 int	key_hook_press(int keycode, t_global *d)
 {
@@ -34,6 +39,10 @@ int	key_hook_press(int keycode, t_global *d)
 	return (0);
 }
 
+/* ----------------------------------------------------------------------------
+Set key flag to zero if the key button is released.
+---------------------------------------------------------------------------- */
+
 int	key_hook_release(int keycode, t_global *d)
 {
 	if (keycode == W || keycode == UP_ARR)
@@ -50,6 +59,12 @@ int	key_hook_release(int keycode, t_global *d)
 		d->key->kleft = 0;
 	return (0);
 }
+
+/* ----------------------------------------------------------------------------
+Key hook is constandly called in a mlx_loop_hook (main). It check if the key 
+flag if one or zero. If it is 1 it can calls 4 differents mouvements fonctions 
+or 2 rotation of the POV fonctions.
+---------------------------------------------------------------------------- */
 
 int	key_hook(t_global *d)
 {

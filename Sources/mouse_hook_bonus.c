@@ -6,11 +6,17 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:13:42 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 17:13:58 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:18:18 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
+
+/* ----------------------------------------------------------------------------
+Fonction for hook into mouse events. X and y are position of the mouse.
+Allow the programm to rotate POV of the player by fallowing the mouse
+position on the sreen.
+---------------------------------------------------------------------------- */
 
 int	mouse_hook(int x, int y, t_global *d)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:22:06 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 18:10:59 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:12:15 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define HEIGHT		512
 # define WIDTH		1024
 # define SPEED		0.15
-# define ROT		24
+# define ROT		48
 
 // Hook
 # define ESC		53

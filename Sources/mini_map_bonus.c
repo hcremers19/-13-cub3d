@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:25:35 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 17:59:01 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:48:15 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,36 +51,42 @@ void	draw_mini_map(t_global *d) // draw square
 	int	x;
 	// int	mapx;
 	// int	mapy;
-	// int	i;
+	int	i;
+	int	down_y = 3 * HEIGHT / 4;
 	int	len_w = (WIDTH / 8) / 11;
 	int	len_h = (HEIGHT / 4) / 11;
 
-	y = (3 * HEIGHT / 4);// - 11;
-	while (++y < HEIGHT)// - 10)
+	y = down_y;// - 11;
+	while (++y < (down_y) + (11 * len_h))// - 10)
 	{
 		x = 0;//9 - 10;
+		i = 0;
 		while (x <= 11 * len_w)// + 10)
 		{
-			if (x % len_w != 0 && y % len_h != 0)
-				my_mlx_pixel_put(d, x, y, 0x00FFFFFF);
-			else if (x > (5 * len_w) && x < (6 * len_w) && y > (4 * len_h) && y < (5 * len_h))
+			// Player
+			if (x > (5 * len_w) && x < (6 * len_w) && y > (down_y + 5 * len_h) && y < (down_y + (6 * len_h)))
 				my_mlx_pixel_put(d, x, y, 0x00FF0000);
+			// else if (x % len_w != 0 && y % len_h != 0)
+			// 	my_mlx_pixel_put(d, x, y, 0x00FFFFFF);
+			else if (x > (i * len_w) && x < ((i + 1) * len_w) && y > (down_y + (i * len_h)) && y < (down_y + (i + 1) * len_h))
+				my_mlx_pixel_put(d, x, y, 0x000000FF);
 			else
 				my_mlx_pixel_put(d, x, y, 0x00000000);
+			if (x == (i + 1) * len_w)
+				i++;
 			x++;
 		}
 	}
 }
 
-				// if (x % len == 0 || y % len == 0)
-				// else
-				// 	my_mlx_pixel_put(d, x, y, 0x00FFFFFF);
-				// 	my_mlx_pixel_put(d, x, y, 0x00000000);					
-	// if (x % ((WIDTH / 8) / 11) == 0)// || y % ((HEIGHT / 4) / 11) == 0)
-	// else if (x == WIDTH / 16 && y == 3 * HEIGHT / 8)
-	// 	my_mlx_pixel_put(d, x, y, 0x00FF0000);
-	// else
-	// 	my_mlx_pixel_put(d, x, y, 0x00000000);
+// if (x % len == 0 || y % len == 0)
+// 	my_mlx_pixel_put(d, x, y, 0x00FFFFFF);
+// 	my_mlx_pixel_put(d, x, y, 0x00000000);					
+// if (x % ((WIDTH / 8) / 11) == 0)// || y % ((HEIGHT / 4) / 11) == 0)
+// else if (x == WIDTH / 16 && y == 3 * HEIGHT / 8)
+// 	my_mlx_pixel_put(d, x, y, 0x00FF0000);
+// 	my_mlx_pixel_put(d, x, y, 0x00000000);
+
 // h_square = H / 4;
 // w_square = W / 8;
 // surface = (H * W) / 32

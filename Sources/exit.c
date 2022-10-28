@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:09:28 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:55:21 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
+/* ----------------------------------------------------------------------------
+Free the four wall structures of the map.
+---------------------------------------------------------------------------- */
 void	free_walls(t_global *d)
 {
 	if (d->map->wall_n)
@@ -24,11 +27,19 @@ void	free_walls(t_global *d)
 		free(d->map->wall_w);
 }
 
+/* ----------------------------------------------------------------------------
+Exit with an Integer return for mlx_hook ESC.
+---------------------------------------------------------------------------- */
+
 int	ft_exit_cross(t_global *d)
 {
 	ft_exit(d, EXIT_S);
 	return (0);
 }
+
+/* ----------------------------------------------------------------------------
+Free the all the pointeur of the global data struct and exit.
+---------------------------------------------------------------------------- */
 
 void	ft_exit(t_global *d, char *str)
 {

@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 16:12:00 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:16:17 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
+
+/* ----------------------------------------------------------------------------
+Memory allocation of the 4 wall structure of the map.
+---------------------------------------------------------------------------- */
 
 void	wall_struct_malloc(t_global *d)
 {
@@ -27,6 +31,10 @@ void	wall_struct_malloc(t_global *d)
 	if (!d->map->wall_w)
 		ft_exit(d, ER_MA);
 }
+
+/* ----------------------------------------------------------------------------
+Memory allocation of all pointeurs of t_glabal data struct.
+---------------------------------------------------------------------------- */
 
 void	struct_malloc(t_global *d)
 {
@@ -51,6 +59,10 @@ void	struct_malloc(t_global *d)
 		ft_exit(d, ER_MA);
 	wall_struct_malloc(d);
 }
+
+/* ----------------------------------------------------------------------------
+Set initially all of global data struct pointeurs to NULL to simplificate free.
+---------------------------------------------------------------------------- */
 
 void	init_struct(t_global *d)
 {

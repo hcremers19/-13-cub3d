@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 18:10:59 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:23:18 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,14 @@ int	main(int ac, char **av)
 	struct_malloc(d);
 	read_config1(d, av[1]);
 	init(d);
-	// -----------------
 	mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);
 	mlx_hook(d->mlx->mlx_win, 3, 0, &key_hook_release, d);
 	mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_cross, d);
-	// BONUS
-	mlx_hook(d->mlx->mlx_win, 6, 0, &mouse_hook, d);
-	//------
+	// BONUS--------------------
+	// mlx_hook(d->mlx->mlx_win, 6, 0, &mouse_hook, d);
+	//--------------------------
 	mlx_loop_hook(d->mlx->mlx, &key_hook, d);
 	mlx_loop(d->mlx->mlx);
-	// -----------------
 	return (0);
 }
 
