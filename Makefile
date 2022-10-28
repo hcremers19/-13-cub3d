@@ -42,12 +42,15 @@ SRCS		=	raycast.c				\
 				initWalls.c				\
 				ft_strtrim.c			\
 				get_next_line.c			\
-				mini_map_bonus.c
+				mini_map_bonus.c		\
+				mouse_hook_bonus.c
+
 
 SRCS_MAIN	=	main.c
 
 SRCS_BONUS	=	main_bonus.c			\
-#				mini_map_bonus.c
+#				mini_map_bonus.c		\
+#				mouse_hook_bonus.c
 
 # -----------	Includes ------------ #
 

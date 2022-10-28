@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/27 18:26:38 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:01:36 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ void	move_w(t_global *d);
 int		key_hook_press(int keycode, t_global *d);
 int		key_hook_release(int keycode, t_global *d);
 int		key_hook(t_global *d);
+
+//-------------------------------------------------------------
+//		Mouse hoock bonus
+//-------------------------------------------------------------
+
+int		mouse_hook(int x, int y, t_global *d);
 
 //-------------------------------------------------------------
 //		InitWalls
