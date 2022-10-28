@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 16:15:58 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:03:07 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	init_color2(t_global *d, char *line)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction init_color2 utilise ft_split pour récupérer séparément les couleurs
-rouge, vert et bleu se trouvant sur la ligne reçue, sous forme d'un int compris
-entre 0 et 255. Elle transforme ensuite ces 3 entiers en un seul qui sera celui
-que pourra utiliser la mlx.
-Une erreur est renvoyée si l'une des 3 couleurs est en-dehors du range.
-NB : ft_split a été modifié pour renvoyer une erreur s'il ne trouve pas exacte-
-ment 3 couleurs.
+The init_color2 function uses ft_split to separately get the red, green and
+blue colors on the received line, in the form of an int between 0 and 255. It
+then transforms these 3 integers into a single integer which will be the one
+the mlx will use.
+An error is sent if one of the 3 colors is out of range.
+NB: ft_split has been modified to send an error if it does not find exactly 3
+colors.
 ---------------------------------------------------------------------------- */
 
 void	init_color1(t_global *d, char *line, char flag)
@@ -60,9 +60,8 @@ void	init_color1(t_global *d, char *line, char flag)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction init_color1 récupère l'int renvoyé par init_color2 et l'assigne à
-la variable correspondante, en en profitant pour incrémenter le flag correspon-
-dant
+The init_color1 function fetches the int returned by init_color2 and assigns it
+to the corresponding variable, as well as incrementing the corresponding flag.
 ---------------------------------------------------------------------------- */
 
 void	export_path(t_global *d, char **str, char *path, int *flag)
@@ -96,11 +95,11 @@ void	init_files(t_global *d, char *line, char flag)
 }
 
 /* ----------------------------------------------------------------------------
-Les fonctions init_files et export_path fonctionnent en harmonie pour isoler
-les chemins d'accès aux fichiers de texture.
-init_files reçoit la ligne de configuration à partir du premier caractère après
-l'identificateur et supprime les espaces de début de ligne et le retour à la
-ligne pour ne garder que le path.
-Elle envoie ensuite cette string à export_path qui la copie dans la bonne
-structure, et en profite pour incrémenter le flag correspondant.
+The init_files and export_path functions work in harmony to isolate the paths
+to the texture files.
+init_files receives the configuration line starting from the first character
+after the identifier and removes the leading spaces and the line break to keep
+only the path.
+It then sends this string to export_path which copies it into the right struc-
+ture, as well as incrementing the corresponding flag.
 ---------------------------------------------------------------------------- */

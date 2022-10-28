@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:13:18 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 16:13:36 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:46:23 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ void	valid_map(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction valid_map parcourt la matrice pour s'assurer que la map est bien
-fermée, c'est-à-dire que la zone jouable (0) est entièrement entourée par des
-murs (1).
-Elle vérifie donc qu'aucun 0 ne se trouve au bord de la zone brute de map, puis
-qu'aucun espace (zone non-jouable) ne se trouve à côté d'un 0.
+The valid_map function scans the matrix to make sure that the map is closed,
+i.e. that the playable area (0) is entirely surrounded by walls (1).
+It therefore checks that no 0 is at the edge of the raw map area, and that no
+' ' (non-playable area) is next to a 0.
 ---------------------------------------------------------------------------- */
 
 void	valid_char(t_global *d, char *line, int x, int y)
@@ -68,11 +67,11 @@ void	valid_char(t_global *d, char *line, int x, int y)
 }
 
 /* ----------------------------------------------------------------------------
-Si le caractère analysé par la fonction valid_char correspond à la position de
-départ du joueur, elle conserve l'orientation et la position de ce dernier,
-puis remplace le caractère en question par un '0'.
-Dans le cas contraire, elle le copie simplement dans la matrice, à condition
-qu'il soit valide.
+If the character analyzed by the valid_char function determines the starting
+position of the player, the function keeps the orientation and position of the
+player, and then replaces that character with a '0'.
+Otherwise, it simply copies it into the matrix, assuming it is a valid charac-
+ter.
 ---------------------------------------------------------------------------- */
 
 void	fill_matrix2(t_global *d, char *line, int fd)
@@ -126,14 +125,12 @@ void	fill_matrix1(t_global *d, char *file)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction fill_matrix a dû être coupée en 2 à cause de la Norme.
-Elle parcourt une deuxième fois la map texte afin d'en extraire les caractères
-et les insérer dans le tableau à 2 dimensions "matrix".
-Comme dans get_dimensions, les premières lignes du fichier sont ignorées grâce
-au flag "lines". Les lignes suivantes sont ensuite lues avec get_next_line et
-les caractères sont copiés un à un dans la matrice, en ignorant le retour à la
-ligne s'il y en a un.
-Pour les lignes plus petites que la largeur de la zone brute de map, les espa-
-ces mémoire manquants sont remplis avec des ' ', caractère correspondant aux
-cases situées en-dehors de la zone jouable.
+The fill_matrix function had to be cut in 2 because of the Norm.
+It goes through the text map a second time in order to extract the characters
+and insert them in the 2-dimensional array "matrix".
+As in get_dimensions, the first lines of the file are ignored using the "lines"
+flag. The following lines are then read with get_next_line and the characters
+are copied one by one into the matrix, ignoring the line break if there is one.
+For lines smaller than the width of the rectangle, the missing memory spaces
+are filled with ' ', which corresponds to the cells outside the playable area.
 ---------------------------------------------------------------------------- */

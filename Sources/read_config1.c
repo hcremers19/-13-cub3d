@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 16:15:21 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:06:18 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_flags(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction init_flags initialise les variables de la structure t_flags, qui
-serviront pour différentes fonctions de la partie "parsing" du programme.
+The init_flags function initializes the variables of the t_flags structure,
+which will be used for different functions in the parsing part of the program.
 ---------------------------------------------------------------------------- */
 
 int	open_fd(t_global *d, char *file)
@@ -48,9 +48,8 @@ int	open_fd(t_global *d, char *file)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction open_fd protège l'ouverture du fichier et vérifie que son extension
-est correcte, elle renvoie une erreur si quelque chose ne se passe pas comme
-prévu.
+The open_fd function protects the opening of the file and checks that its ex-
+tension is correct, it sends an error if something goes wrong.
 ---------------------------------------------------------------------------- */
 
 void	read_config2(t_global *d, char *line)
@@ -99,15 +98,14 @@ void	read_config1(t_global *d, char *file)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction read_config a dû être divisée à cause de la Norme.
-Elle lit les premières lignes du fichier de configuration et parse les données
-en fonction de ce qu'elle trouve. Elle ignore d'abord les éventuels espaces en
-début de ligne puis vérifie que ce qui suit est l'un des identificateurs qu'el-
-le connaît ou un renvoi à la ligne. Si ce n'est pas le cas, elle renvoie une
-erreur.
-À chaque nouvelle ligne, elle s'assure qu'il reste encore des éléments à trou-
-ver, car si les 6 éléments nécessaires à la configuration ont déjà été trouvés,
-la fonction s'arrête et le programme passe à la lecture de la map.
-Elle compte aussi le nombre de lignes que comporte cette partie du fichier afin
-que la fonction read_map puisse les ignorer et lire directement la map texte.
+The read_config function had to be split in 2 because of the Norm.
+It reads the first lines of the configuration file and parses the data accord-
+ing to what it finds. It first ignores any leading spaces and then checks that
+what follows is either one of the identifiers it recognizes or a line break.
+If it is not, it returns an error.
+With each new line, it makes sure that there are still elements to be found,
+because if all 6 elements needed for the configuration have already been found,
+the function stops and the program moves on to reading the map.
+It also counts the number of lines in the top part of the file so that the
+read_map function can ignore them and read the text map directly.
 ---------------------------------------------------------------------------- */

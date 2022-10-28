@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 16:13:39 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:37:32 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	alloc_map(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction alloc_map initialise le tableau à 2 dimensions "matrix" en lui al-
-louant juste assez de mémoire pour plus tard y insérer la map.
+The alloc_map function initializes the 2-dimensional array "matrix" by allocat-
+ing it just enough memory for later insertion of the map.
 ---------------------------------------------------------------------------- */
 
 void	get_dimensions2(t_global *d, char *line, int fd)
@@ -90,19 +90,18 @@ void	get_dimensions1(t_global *d, char *file)
 }
 
 /* ----------------------------------------------------------------------------
-La fonction get_dimensions a dû être coupée en 2 à cause de la Norme.
-Elle consiste à parcourir une première fois la map texte afin de déterminer la
-hauteur et la largeur du rectangle brut dans lequel est inscrite la map. On dé-
-termine la hauteur avec le nombre de lignes qui ont été lues la largeur avec la
-taille de la ligne la plus longue ayant été lue.
-Ces valeurs permettront plus tard d'allouer juste assez de mémoire pour la mat-
-rice.
-Les lignes de texte sont lues avec get_next_line.
-Le flag "lines" correspond au nombre de lignes à passer dans le fichier de con-
-figuration pour atteindre directement les lignes qui concernent la map et igno-
-rer celle des textures.
-L'utilisation d'une variable temporaire "trim" était nécessaire pour pouvoir
-free le retour de ft_strtrim.
+The get_dimensions function had to be split in 2 because of the Norm.
+It consists in scanning the text map a first time in order to determine the
+height and width of the rectangle in which the map is inscribed. The height is
+determined by the number of lines that have been read and the width by the
+size of the longest line that has been read. These values will later allow to
+allocate just enough memory for the matrix.
+The text lines are read with get_next_line.
+The "lines" flag corresponds to the number of lines to skip in the configura-
+tion file to reach directly the lines that concern the map and ignore the tex-
+ture ones.
+The use of a temporary variable "trim" was necessary to free the return of
+ft_strtrim.
 ---------------------------------------------------------------------------- */
 
 void	read_map(t_global *d, char *file)
