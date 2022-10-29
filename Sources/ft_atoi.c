@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 19:10:45 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/25 14:59:15 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:02:14 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-static int	ft_limits(long long n, const char *str, int s)
+int	ft_limits(long long n, const char *str, int s)
 {
 	long long	lim;
 

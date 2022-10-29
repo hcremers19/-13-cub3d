@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:13:18 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 18:46:23 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:41:13 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	fill_matrix2(t_global *d, char *line, int fd)
 		len = ft_strlen(trim);
 		x = -1;
 		while (++x < len)
-			valid_char(d, line, x, y);
+			valid_char(d, trim, x, y);
 		while (x < d->map->map_width)
 			d->map->matrix[y][x++] = ' ';
 		free(trim);
@@ -108,7 +108,7 @@ void	fill_matrix1(t_global *d, char *file)
 	char	*line;
 
 	fd = open(file, O_RDONLY);
-	if (fd < 1 || fd > OPEN_MAX || read(fd, NULL, 0) < 0)
+	if (fd < 1 || fd > FOPEN_MAX || read(fd, NULL, 0) < 0)
 		ft_exit(d, ER_OP);
 	line = get_next_line(fd);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 19:06:18 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/29 11:04:21 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	open_fd(t_global *d, char *file)
 	int	fd;
 
 	fd = open(file, O_RDONLY);
-	if (fd < 1 || fd > OPEN_MAX || read(fd, NULL, 0) < 0 || ft_strlen(file) < 4)
+	if (fd < 1 || fd > FOPEN_MAX \
+		|| read(fd, NULL, 0) < 0 || ft_strlen(file) < 4)
 	{
 		close(fd);
 		ft_exit(d, ER_IP);

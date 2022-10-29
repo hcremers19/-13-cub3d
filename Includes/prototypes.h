@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 18:15:33 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:16:46 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,77 @@
 # define PROTOTYPES_H
 
 //-------------------------------------------------------------
-//		Hugo
+//		ft_atoi.c
 //-------------------------------------------------------------
 
-void	init_files(t_global *d, char *line, char flag);
-void	init_color1(t_global *d, char *line, char flag);
-size_t	ft_strlen(const char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*get_next_line(int fd);
-void	read_map(t_global *d, char *file);
+int		ft_atoi(const char *str);
+
+//-------------------------------------------------------------
+//		ft_split.c
+//-------------------------------------------------------------
+
+char	**ft_split(t_global *d, char const *s, char c);
+
+//-------------------------------------------------------------
+//		ft_strtrim.c
+//-------------------------------------------------------------
+
 char	*ft_strtrim(const char *s1, const char *set);
-void	fill_matrix1(t_global *d, char *file);
-void	valid_map(t_global *d);
-char	*ft_strdup(char *src);
-char	*ft_calloc(int count, int size);
+
+//-------------------------------------------------------------
+//		get_next_line1.c
+//-------------------------------------------------------------
+
+char	*get_next_line(int fd);
+
+//-------------------------------------------------------------
+//		get_next_line2.c
+//-------------------------------------------------------------
+
 void	ft_free(char **ptr);
+char	*ft_calloc(int count, int size);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_srch_nl(const char *str);
-char	**ft_split(t_global *d, char const *s, char c);
-int		ft_atoi(const char *str);
-void	read_config1(t_global *d, char *file);
+
+//-------------------------------------------------------------
+//		libft1.c
+//-------------------------------------------------------------
+
 void	ft_putstr_fd(char *str, int fd);
+
+//-------------------------------------------------------------
+//		libft2.c
+//-------------------------------------------------------------
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(char *src);
+
+//-------------------------------------------------------------
+//		read_config1.c
+//-------------------------------------------------------------
+
+void	read_config1(t_global *d, char *file);
+
+//-------------------------------------------------------------
+//		read_config2.c
+//-------------------------------------------------------------
+
+void	init_color1(t_global *d, char *line, char flag);
+void	init_files(t_global *d, char *line, char flag);
+
+//-------------------------------------------------------------
+//		read_map1.c
+//-------------------------------------------------------------
+
+void	read_map(t_global *d, char *file);
+
+//-------------------------------------------------------------
+//		read_map2.c
+//-------------------------------------------------------------
+
+void	valid_map(t_global *d);
+void	fill_matrix1(t_global *d, char *file);
 
 //-------------------------------------------------------------
 //		MoovePOV

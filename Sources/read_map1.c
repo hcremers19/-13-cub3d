@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 18:37:32 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/29 11:05:04 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	get_dimensions1(t_global *d, char *file)
 	int		i;
 
 	fd = open(file, O_RDONLY);
-	if (fd < 1 || fd > OPEN_MAX || read(fd, NULL, 0) < 0)
+	if (fd < 1 || fd > FOPEN_MAX || read(fd, NULL, 0) < 0)
 		ft_exit(d, ER_OP);
 	line = get_next_line(fd);
 	i = 0;

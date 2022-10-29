@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:03:50 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 11:45:11 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:04:39 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (s);
 }
 
-static char	**ft_clean(char **s, int i)
+char	**ft_clean(char **s, int i)
 {
 	while (i--)
 		free(s[i]);
 	return (0);
 }
 
-static int	wrdnbr(t_global *d, char const *s, char c)
+int	wrdnbr(t_global *d, char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -61,7 +61,7 @@ static int	wrdnbr(t_global *d, char const *s, char c)
 	return (count);
 }
 
-static char	**ft_split2(char const *s, char c, char **tab, unsigned int w)
+char	**ft_split2(char const *s, char c, char **tab, unsigned int w)
 {
 	unsigned int	i;
 	unsigned int	j;

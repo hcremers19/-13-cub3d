@@ -1,12 +1,12 @@
-    # **************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+         #
+#    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/10/17 17:36:46 by acaillea         ###   ########.fr        #
+#    Updated: 2022/10/29 20:23:15 by hcremers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS		=							\
 				hook.c					\
 				initDrawing.c			\
 				initWalls.c				\
-				libft.c					\
+				libft1.c				\
+				libft2.c				\
 				malloc.c				\
 				moovePOV.c				\
 				mouvement.c				\
@@ -76,6 +77,7 @@ CFLAGS		=	-Wall -Werror -Wextra
 # -----------	MLX ----------------- #
 
 MLX			= 	-lmlx -framework OpenGL -framework AppKit
+# MLX			= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 # -----------	Fonctions ----------- #
 
@@ -105,7 +107,7 @@ ${OBJS_FIL} :
 	@${MK} ${OBJS_DIR}
 
 ${NAME}: ${OBJS_MAIN} ${OBJS}
-	@${CC} ${CFLAGS} ${MLX} ${OBJS_MAIN} ${OBJS} -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS_MAIN} ${OBJS} ${MLX} -o ${NAME}
 	@${PRI} "\n${C_CYAN}[${C_GREEN}✔︎${C_CYAN}]	\
 	${C_GREEN}$@ 🧊🧊🧊 ${C_GREEN}Successfully built${C_DEFAUT}\n\n"
 

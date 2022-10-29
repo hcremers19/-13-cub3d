@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:54 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/25 12:11:45 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/29 09:55:10 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <limits.h>
-// # include "wraloc/wraloc.h"
 
 /*** Personnal Librabries ***/
 
 # include "define.h"
 # include "structures.h"
 # include "prototypes.h"
+// # include "wraloc/wraloc.h"
 
 #endif /* MAIN_H */
