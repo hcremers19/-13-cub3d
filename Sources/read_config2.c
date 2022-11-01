@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_config2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 19:03:07 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/01 13:53:25 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ to the corresponding variable, as well as incrementing the corresponding flag.
 void	export_path(t_global *d, char **str, char *path, int *flag)
 {
 	*str = ft_strdup(path);
-	if (!*str) // assez protege ?
+	if (!*str)
 		ft_exit(d, ER_MA);
 	*flag += 1;
 	free(path);

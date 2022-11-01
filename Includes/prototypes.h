@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 02:00:52 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/01 14:02:07 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 //		exit.c
 //-------------------------------------------------------------
 
-int		ft_exit_cross(t_global *d);
 void	free_walls(t_global *d);
-void	ft_exit(t_global *d, char *str);
+int		ft_exit(t_global *d, char *str);
 
 //-------------------------------------------------------------
 //		ft_atoi.c

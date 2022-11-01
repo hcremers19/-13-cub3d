@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 19:16:17 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:12:39 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void	init_struct(t_global *d)
 	d->mlx = NULL;
 	d->map = NULL;
 	d->ray = NULL;
+	d->key = NULL;
 }

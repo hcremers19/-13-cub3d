@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+         #
+#    By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/01 01:53:46 by I-lan            ###   ########.fr        #
+#    Updated: 2022/11/01 13:49:48 by acaillea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,7 @@ NAME_BONUS	=	Cub3D_Bonus
 
 SRCS_DIR	=	./Sources/
 
-SRCS		=							\
-				exit.c					\
+SRCS		=	exit.c					\
 				ft_atoi.c				\
 				ft_split.c				\
 				ft_strtrim.c			\
@@ -73,8 +72,8 @@ CFLAGS		=	-Wall -Werror -Wextra
 
 # -----------	MLX ----------------- #
 
-#MLX			= 	-lmlx -framework OpenGL -framework AppKit
-MLX				= -L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
+MLX			= 	-lmlx -framework OpenGL -framework AppKit
+# MLX				= -L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
 # MLX			= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 # -----------	Fonctions ----------- #
@@ -142,6 +141,3 @@ re : fclean all
 # ----------------------------------- #
 
 .PHONY : all clean fclean re
-
-
-# rajouter suppression object MLX

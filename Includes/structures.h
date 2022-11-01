@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:00 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 10:41:28 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:18:27 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
+typedef struct s_wall	t_wall;
 typedef struct s_map	t_map;
+typedef struct s_player	t_player;
 typedef struct s_ray	t_ray;
 typedef struct s_mlx	t_mlx;
-typedef struct s_wall	t_wall;
 typedef struct s_flags	t_flags;
-typedef struct s_player	t_player;
 typedef struct s_key	t_key;
 typedef struct s_global	t_global;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 01:58:22 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/01 14:01:23 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 	init(d);
 	mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);
 	mlx_hook(d->mlx->mlx_win, 3, 0, &key_hook_release, d);
-	mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_cross, d);
+	mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit, d);
 	mlx_loop_hook(d->mlx->mlx, &key_hook, d);
 	mlx_loop(d->mlx->mlx);
 	return (0);
@@ -41,4 +41,5 @@ int	main(int ac, char **av)
 
 // To do
 //	- verifier leaks
-//  - creer/github des maps
+//  - creer/github des maps + textures
+//	- Hugo : relir commentaire Alan pcq alan est nul en orthographe merci <3

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initDrawing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/31 17:07:52 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/01 13:47:43 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,6 @@ void	init_window(t_global *d)
 	if (!d->mlx->addr)
 		ft_exit(d, ER_MLX_AD);
 	raycast_loop(d);
-	/// BONUS --------------------
-	draw_mini_map(d); // mini map
-	// ---------------------------
 	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
 	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
 }

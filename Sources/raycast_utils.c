@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/31 18:32:27 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/01 13:53:04 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 /* ----------------------------------------------------------------------------
 Raycast_loop order : 4/7.
 Calcule the length between the player (POV) and the wall the dertermine 
-the verticals distances between the bottom of the screen and the wall (draw_start), 
-the heigth of the wall (draw_end - draw_start) and finally the distance between 
-the wall and the top of the screen.
+the verticals distances between the bottom of the screen and the wall 
+(draw_start), the heigth of the wall (draw_end - draw_start) and finally 
+the distance between the wall and the top of the screen.
 ---------------------------------------------------------------------------- */
 
 void	get_draw_lines(t_global *d)

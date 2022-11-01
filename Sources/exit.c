@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 18:55:21 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:02:58 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* ----------------------------------------------------------------------------
 Free the four wall structures of the map.
 ---------------------------------------------------------------------------- */
+
 void	free_walls(t_global *d)
 {
 	if (d->map->wall_n)
@@ -28,24 +29,14 @@ void	free_walls(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Exit with an Integer return for mlx_hook ESC.
----------------------------------------------------------------------------- */
-
-int	ft_exit_cross(t_global *d)
-{
-	ft_exit(d, EXIT_S);
-	return (0);
-}
-
-/* ----------------------------------------------------------------------------
 Free the all the pointeur of the global data struct and exit.
 ---------------------------------------------------------------------------- */
 
-void	ft_exit(t_global *d, char *str)
+int	ft_exit(t_global *d, char *str)
 {
-	// free_walls(d);
+	free_walls(d);
 	if (str)
-		write(2, str, ft_strlen(str));
+		write(1, str, ft_strlen(str));
 	if (d->flags)
 		free(d->flags);
 	if (d->player)
@@ -60,5 +51,6 @@ void	ft_exit(t_global *d, char *str)
 		free(d->key);
 	if (d)
 		free(d);
-	exit(1);
+	exit(0);
+	return (0);
 }
