@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initDrawing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 19:25:16 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:07:52 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,9 @@ void	init_window(t_global *d)
 
 /* ----------------------------------------------------------------------------
 Initialise MLX library and create a new window instance.
-Initialise initiale directions of the player.
-Initialise walls structure with they different textures.
+Initialise initial directions of the player and POV.
+Initialise walls structure with their different texture.
+Launch the image.
 ---------------------------------------------------------------------------- */
 
 void	init(t_global *d)

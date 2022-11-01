@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   moovePOV.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 19:38:41 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/28 19:16:51 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:47:25 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
 /* ----------------------------------------------------------------------------
-
+Change angles of the player's direction and then of screen's direction
+to rotate POV to the East (left).
 ---------------------------------------------------------------------------- */
 
 void	rot_e(t_global *d)
@@ -34,7 +35,8 @@ void	rot_e(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-
+Change angles of the player's direction and then of screen's direction
+to rotate POV to the West (rigth).
 ---------------------------------------------------------------------------- */
 
 void	rot_w(t_global *d)

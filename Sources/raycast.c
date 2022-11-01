@@ -3,17 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:24:31 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/28 19:26:59 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:32:06 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 2/7.
+SideDistX is the distance from the ray starting position to the first side 
+to the left, if the ray direciton has a positive x-component the first side 
+to the right is used instead.
+The same goes for the y-component, but now with the first side above or below 
+the position.
 ---------------------------------------------------------------------------- */
 
 void	get_side_dist(t_global *d)
@@ -45,7 +50,10 @@ void	get_side_dist(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 3/7.
+SideDistX and SideDistY get incremented with delta_dist_x with every jump in 
+their direction, and map_x and map_y get incremented with jmp_x and jump_y 
+respectively until the ray hit a wall.
 ---------------------------------------------------------------------------- */
 
 void	hit_loop(t_global *d)
@@ -73,7 +81,9 @@ void	hit_loop(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 6/7.
+Determine texture position depending the wall, the texture of it and the 
+hitpoint.
 ---------------------------------------------------------------------------- */
 
 void	pos_tex(t_global *d)
@@ -90,7 +100,10 @@ void	pos_tex(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 7/7.
+Using "my_mlx_pixel_put" and daw distances it determines which color of the
+x-coordinate vertical stripe the y-coordinate should be. Floor, textured 
+wall of sky.
 ---------------------------------------------------------------------------- */
 
 void	draw_vert(t_global *d, int x)
@@ -118,7 +131,8 @@ void	draw_vert(t_global *d, int x)
 }
 
 /* ----------------------------------------------------------------------------
-
+Main raycasting loop. Initiate, calculate and draw verticals stripes for every 
+x-coordinate on the screen to give the 3D impression.
 ---------------------------------------------------------------------------- */
 
 void	raycast_loop(t_global *d)

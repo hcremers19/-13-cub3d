@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
+#    By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/10/29 20:23:15 by hcremers         ###   ########.fr        #
+#    Updated: 2022/11/01 01:53:46 by I-lan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,15 +46,12 @@ SRCS		=							\
 				read_config2.c			\
 				read_map1.c				\
 				read_map2.c				\
-				utils.c					\
-				mini_map_bonus.c		\
-				mouse_hook_bonus.c
+				utils.c
 
 SRCS_MAIN	=	main.c
 
 SRCS_BONUS	=	main_bonus.c			\
-#				mini_map_bonus.c		\
-#				mouse_hook_bonus.c
+				mouse_hook_bonus.c
 
 # -----------	Includes ------------ #
 
@@ -76,7 +73,8 @@ CFLAGS		=	-Wall -Werror -Wextra
 
 # -----------	MLX ----------------- #
 
-MLX			= 	-lmlx -framework OpenGL -framework AppKit
+#MLX			= 	-lmlx -framework OpenGL -framework AppKit
+MLX				= -L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
 # MLX			= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 # -----------	Fonctions ----------- #

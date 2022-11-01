@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/28 19:27:38 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:32:27 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
 
 /* ----------------------------------------------------------------------------
+Raycast_loop order : 7'/7.
 Put a colored pixel on the screen at X and Y given positions using MLX image 
 data.
 ---------------------------------------------------------------------------- */
@@ -26,7 +27,11 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 }
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 4/7.
+Calcule the length between the player (POV) and the wall the dertermine 
+the verticals distances between the bottom of the screen and the wall (draw_start), 
+the heigth of the wall (draw_end - draw_start) and finally the distance between 
+the wall and the top of the screen.
 ---------------------------------------------------------------------------- */
 
 void	get_draw_lines(t_global *d)
@@ -47,7 +52,13 @@ void	get_draw_lines(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 1/7.
+Initiation of :
+	- camera plane x-coordinate (cam_x)
+	- vector directions of the ray (raydir)
+	- rounded position on the map (map)
+	- distance the ray has to travel to go from 1 x-side (or y) to the next 
+	  x-side (delta_dist)
 ---------------------------------------------------------------------------- */
 
 void	init_ray(t_global *d, int x)
@@ -66,7 +77,8 @@ void	init_ray(t_global *d, int x)
 }
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 5'/7.
+Initiate textures variables depending which wall the ray has hitten.
 ---------------------------------------------------------------------------- */
 
 void	init_img(t_global *d, t_wall *cur_wall)
@@ -78,7 +90,8 @@ void	init_img(t_global *d, t_wall *cur_wall)
 }
 
 /* ----------------------------------------------------------------------------
-
+Raycast_loop order : 5/7.
+Determine which wall and the exact position where the ray hits it.
 ---------------------------------------------------------------------------- */
 
 void	init_tex(t_global *d)
