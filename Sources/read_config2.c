@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/01 13:53:25 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:39:17 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,19 @@ int	init_color2(t_global *d, char *line)
 	char	**split;
 
 	split = ft_split(d, line, ',');
+	if (!split)
+	{
+		free(line);
+		ft_exit(d, ER_MA);
+	}
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
 	if (r < 0x0 || 0xff < r || g < 0x0 || 0xff < g || b < 0x0 || 0xff < b)
+	{
+		free(line);
 		ft_exit(d, ER_RGB);
+	}
 	free(split[2]);
 	free(split[1]);
 	free(split[0]);
@@ -73,7 +81,7 @@ void	export_path(t_global *d, char **str, char *path, int *flag)
 	free(path);
 }
 
-void	init_files(t_global *d, char *line, char flag)
+void	init_files(t_global *d, char *tmp, char *line, char flag)
 {
 	int		j;
 	char	*path;
@@ -82,6 +90,11 @@ void	init_files(t_global *d, char *line, char flag)
 	while (line[j] == ' ')
 		j++;
 	path = ft_strtrim(&line[j], "\n");
+	if (!path)
+	{
+		free(tmp);
+		ft_exit(d, ER_MA);
+	}
 	if (flag == 'N' && !d->flags->no)
 		export_path(d, &d->map->wall_n->path, path, &d->flags->no);
 	else if (flag == 'S' && !d->flags->so)

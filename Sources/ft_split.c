@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:03:50 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/29 20:04:39 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:38:31 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**ft_split2(char const *s, char c, char **tab, unsigned int w)
 		while (s[j + m] && (s[j + m] != c))
 			m++;
 		tab[i] = malloc(sizeof(char) * (m + 1));
-		if (!tab[i])
+		if (tab[i])
 			return (ft_clean(tab, i));
 		ft_strlcpy(tab[i], &s[j], m + 1);
 		j = j + m;

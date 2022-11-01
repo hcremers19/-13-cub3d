@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 18:39:45 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/28 16:22:22 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:45:15 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define BUFFER_SIZE 1
 
-char	*ft_keepend(char *str)
+char	*ft_keepend(t_global *d, char *str)
 {
 	int		i;
 	int		j;
@@ -25,7 +25,7 @@ char	*ft_keepend(char *str)
 		i++;
 	dest = ft_calloc(ft_strlen(str) - i + 1, sizeof(char));
 	if (!dest)
-		return (0);
+		ft_free_two_exit(d, &str, NULL, ER_MA);
 	j = 0;
 	i++;
 	while (str && str[i])
@@ -40,7 +40,7 @@ char	*ft_keepend(char *str)
 	return (dest);
 }
 
-char	*ft_keepstart(char *str)
+char	*ft_keepstart(t_global *d, char *str)
 {
 	int		i;
 	int		j;
@@ -51,7 +51,7 @@ char	*ft_keepstart(char *str)
 		i++;
 	dest = ft_calloc(i + 1, sizeof(char));
 	if (!dest)
-		return (0);
+		ft_free_two_exit(d, &str, NULL, ER_MA);
 	j = 0;
 	i++;
 	while (j < i)
@@ -65,19 +65,19 @@ char	*ft_keepstart(char *str)
 	return (dest);
 }
 
-char	*sub_gnl(char **stat)
+char	*sub_gnl(t_global *d, char **stat)
 {
 	char	*r;
 	char	*temp;
 
-	r = ft_keepstart(*stat);
+	r = ft_keepstart(d, *stat);
 	temp = *stat;
-	*stat = ft_keepend(temp);
+	*stat = ft_keepend(d, temp);
 	ft_free(&temp);
 	return (r);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(t_global *d, int fd)
 {
 	static char	*stat;
 	int			rd;
@@ -85,22 +85,20 @@ char	*get_next_line(int fd)
 
 	rd = BUFFER_SIZE;
 	if (fd < 0 || fd > 1023 || BUFFER_SIZE < 1 || BUFFER_SIZE > INT_MAX - 2)
-		return (0);
+		ft_exit(d, ER_OP);
 	while (rd > 0)
 	{
 		buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!buf)
-			return (0);
+			ft_exit(d, ER_MA);
 		rd = read(fd, buf, BUFFER_SIZE);
 		if (rd == -1)
-		{
-			ft_free(&buf);
-			ft_free(&stat);
-			return (0);
-		}
+			ft_free_two_exit(d, &buf, &stat, ER_RF);
 		stat = ft_strjoin(stat, buf);
+		if (!stat)
+			ft_free_two_exit(d, &buf, &stat, ER_MA);
 		if (ft_srch_nl(stat) != -1)
 			break ;
 	}
-	return (sub_gnl(&stat));
+	return (sub_gnl(d, &stat));
 }

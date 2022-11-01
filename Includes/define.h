@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:22:06 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 14:49:09 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:21:26 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define ER_NM		"\033[0;31mError\033[0;39m\n--> No map found\n"
 # define ER_NP		"\033[0;31mError\033[0;39m\n--> No player found\n"
 # define ER_OM		"\033[0;31mError\033[0;39m\n--> Open map\n"
+# define ER_RF		"\033[0;31mError\033[0;39m\n--> Reading file failed\n"
 # define ER_OP		"\033[0;31mError\033[0;39m\n--> Opening file\n"
 # define ER_RGB		"\033[0;31mError\033[0;39m\n--> RGB format\n"
 

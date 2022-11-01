@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/29 11:05:04 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:17:38 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	get_dimensions2(t_global *d, char *line, int fd)
 		if (d->map->map_width < len)
 			d->map->map_width = len;
 		free(trim);
-		line = get_next_line(fd);
+		line = get_next_line(d, fd);
 		trim = ft_strtrim(line, "\n");
 		free(line);
 	}
@@ -71,12 +71,12 @@ void	get_dimensions1(t_global *d, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 1 || fd > FOPEN_MAX || read(fd, NULL, 0) < 0)
 		ft_exit(d, ER_OP);
-	line = get_next_line(fd);
+	line = get_next_line(d, fd);
 	i = 0;
 	while (i < d->flags->lines)
 	{
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(d, fd);
 		i++;
 	}
 	if (!line)

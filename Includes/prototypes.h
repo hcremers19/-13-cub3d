@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 14:02:07 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:29:39 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 //		exit.c
 //-------------------------------------------------------------
 
+void	free_path(t_wall *wall);
 void	free_walls(t_global *d);
 int		ft_exit(t_global *d, char *str);
 
@@ -50,15 +51,16 @@ char	*ft_strtrim(const char *s1, const char *set);
 //		get_next_line1.c
 //-------------------------------------------------------------
 
-char	*ft_keepend(char *str);
-char	*ft_keepstart(char *str);
-char	*sub_gnl(char **stat);
-char	*get_next_line(int fd);
+char	*ft_keepend(t_global *d, char *str);
+char	*ft_keepstart(t_global *d, char *str);
+char	*sub_gnl(t_global *d, char **stat);
+char	*get_next_line(t_global *d, int fd);
 
 //-------------------------------------------------------------
 //		get_next_line2.c
 //-------------------------------------------------------------
 
+void	ft_free_two_exit(t_global *d, char **s1, char **s2, char *str);
 void	ft_free(char **ptr);
 char	*ft_calloc(int count, int size);
 char	*ft_strjoin(char *s1, char *s2);
@@ -172,7 +174,7 @@ void	read_config1(t_global *d, char *file);
 int		init_color2(t_global *d, char *line);
 void	init_color1(t_global *d, char *line, char flag);
 void	export_path(t_global *d, char **str, char *path, int *flag);
-void	init_files(t_global *d, char *line, char flag);
+void	init_files(t_global *d, char *tmp, char *line, char flag);
 
 //-------------------------------------------------------------
 //		read_map1.c

@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 14:12:39 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:56:52 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,19 @@ void	wall_struct_malloc(t_global *d)
 	d->map->wall_n = (t_wall *)malloc(sizeof(t_wall));
 	if (!d->map->wall_n)
 		ft_exit(d, ER_MA);
+	d->map->wall_n->path = NULL;
 	d->map->wall_s = (t_wall *)malloc(sizeof(t_wall));
 	if (!d->map->wall_s)
 		ft_exit(d, ER_MA);
+	d->map->wall_s->path = NULL;
 	d->map->wall_e = (t_wall *)malloc(sizeof(t_wall));
 	if (!d->map->wall_e)
 		ft_exit(d, ER_MA);
+	d->map->wall_e->path = NULL;
 	d->map->wall_w = (t_wall *)malloc(sizeof(t_wall));
 	if (!d->map->wall_w)
 		ft_exit(d, ER_MA);
+	d->map->wall_w->path = NULL;
 }
 
 /* ----------------------------------------------------------------------------

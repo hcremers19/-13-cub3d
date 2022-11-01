@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:13:18 by hcremers          #+#    #+#             */
-/*   Updated: 2022/10/29 18:41:13 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:18:04 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	fill_matrix2(t_global *d, char *line, int fd)
 		while (x < d->map->map_width)
 			d->map->matrix[y][x++] = ' ';
 		free(trim);
-		line = get_next_line(fd);
+		line = get_next_line(d, fd);
 		trim = ft_strtrim(line, "\n");
 		free(line);
 		y++;
@@ -110,12 +110,12 @@ void	fill_matrix1(t_global *d, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 1 || fd > FOPEN_MAX || read(fd, NULL, 0) < 0)
 		ft_exit(d, ER_OP);
-	line = get_next_line(fd);
+	line = get_next_line(d, fd);
 	i = 0;
 	while (i < d->flags->lines)
 	{
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(d, fd);
 		i++;
 	}
 	fill_matrix2(d, line, fd);
