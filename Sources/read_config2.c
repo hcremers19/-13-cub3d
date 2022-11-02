@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_config2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/02 01:16:57 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 12:12:49 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	init_color2(t_global *d, char *line)
 
 	split = ft_split(d, line, ',');
 	if (!split)
-		ft_exit(d, "huih");
+		ft_exit(d, ER_MA);
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
@@ -71,7 +71,7 @@ void	export_path(t_global *d, char **str, char *path, int *flag)
 	*str = ft_strdup(path);
 	if (!*str)
 	{
-		free(path);	
+		free(path);
 		ft_exit(d, ER_MA);
 	}
 	*flag += 1;

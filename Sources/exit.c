@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 02:26:09 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 12:31:42 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ Free the all the pointeur of the global data struct and exit.
 
 void	ft_exit(t_global *d, char *str)
 {
+	int	i;
+
 	if (str)
 		write(1, str, ft_strlen(str));
 	if (d->flags)
@@ -80,16 +82,21 @@ void	ft_exit(t_global *d, char *str)
 	if (d->player)
 		free(d->player);
 	if (d->mlx)
-	// {
-	// 	if (d->mlx->mlx && d->mlx->mlx_win)
-	// 		mlx_destroy_window(d->mlx->mlx, d->mlx->mlx_win);
 		free(d->mlx);
-	// }
 	if (d->map)
 	{
 		free_walls(d);
 		if (d->map->matrix)
-			ft_free_mat(d->map->matrix);//free matrix
+		{
+			i = 0;
+			while (i < d->map->map_height)
+			{
+				if (d->map->matrix[i])
+					free(d->map->matrix[i]);
+				i++;
+			}
+			free(d->map->matrix);
+		}
 		free(d->map);
 	}
 	if (d->ray)

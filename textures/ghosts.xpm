@@ -1,5 +1,5 @@
 /* XPM */
-static char *_666978417299[] = {
+static char * ghosts_xpm[] = {
 /* columns rows colors chars-per-pixel */
 "192 192 7 1 ",
 "  c red",

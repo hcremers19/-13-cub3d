@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+         #
+#    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/02 02:28:47 by I-lan            ###   ########.fr        #
+#    Updated: 2022/11/02 12:27:58 by hcremers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,7 @@ SRCS		=	exit.c					\
 				read_config1.c			\
 				read_config2.c			\
 				read_map1.c				\
-				read_map2.c				\
-				utils.c
+				read_map2.c
 
 SRCS_MAIN	=	main.c
 
@@ -54,7 +53,7 @@ SRCS_BONUS	=	main_bonus.c			\
 
 # -----------	Includes ------------ #
 
-INC			=	./Includes/main.h
+# INC			=	./Includes/main.h
 
 # -----------	Objects ------------- #
 
