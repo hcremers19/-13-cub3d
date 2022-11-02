@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
+#    By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/02 16:00:30 by hcremers         ###   ########.fr        #
+#    Updated: 2022/11/02 16:15:41 by acaillea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ PRI			= 	printf
 ${OBJS_DIR}%.o:${SRCS_DIR}%.c
 	@${CC} ${CFLAGS} -I ${INC} -Imlx -c $< -o $@
 	@${PRI} "${C_MAG}	Compiling cub3D:	\
-	${C_CYAN}[${C_ORANGE}$<${C_CYAc}] $(C_RESET) $(L_CLEAR)${C_DEFAUT}\r"
+	${C_CYAN}[${C_ORANGE}$<${C_CYAN}] $(C_RESET) $(L_CLEAR)${C_DEFAUT}\r"
 	@${VEL} 0.1
 	@printf "$(L_CLEAR)\r"
 
