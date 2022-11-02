@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 17:29:39 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 01:35:27 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 void	free_path(t_wall *wall);
 void	free_walls(t_global *d);
-int		ft_exit(t_global *d, char *str);
+int		ft_exit_int(t_global *d);
+void	ft_exit(t_global *d, char *str);
 
 //-------------------------------------------------------------
 //		ft_atoi.c
@@ -164,7 +165,7 @@ void	raycast_loop(t_global *d);
 
 void	init_flags(t_global *d);
 int		open_fd(t_global *d, char *file);
-void	read_config2(t_global *d, char *line);
+void	read_config2(t_global *d);
 void	read_config1(t_global *d, char *file);
 
 //-------------------------------------------------------------
@@ -174,7 +175,7 @@ void	read_config1(t_global *d, char *file);
 int		init_color2(t_global *d, char *line);
 void	init_color1(t_global *d, char *line, char flag);
 void	export_path(t_global *d, char **str, char *path, int *flag);
-void	init_files(t_global *d, char *tmp, char *line, char flag);
+void	init_files(t_global *d, char *line, char flag);
 
 //-------------------------------------------------------------
 //		read_map1.c

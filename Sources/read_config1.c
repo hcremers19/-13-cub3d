@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_config1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/01 17:28:56 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 01:19:08 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,50 +53,48 @@ The open_fd function protects the opening of the file and checks that its ex-
 tension is correct, it sends an error if something goes wrong.
 ---------------------------------------------------------------------------- */
 
-void	read_config2(t_global *d, char *line)
+void	read_config2(t_global *d)
 {
-	int	i;
+	int		i;
+	char	*line;
 
 	d->flags->lines++;
+	line = d->flags->line;
 	i = 0;
 	while (line[i] == ' ')
 			i++;
 	if (!ft_strncmp(&line[i], "NO", 2) || !ft_strncmp(&line[i], "SO", 2) \
 		|| !ft_strncmp(&line[i], "EA", 2) || !ft_strncmp(&line[i], "WE", 2))
-		init_files(d, line, &line[i + 2], line[i]);
+		init_files(d, &line[i + 2], line[i]);
 	else if ((!ft_strncmp(&line[i], "F", 1)) || (!ft_strncmp(&line[i], "C", 1)))
 		init_color1(d, &line[i + 1], line[i]);
 	else if (line[i] == '\n')
 		;
 	else
-	{
-		free(line);
 		ft_exit(d, ER_IL);
-	}
 }
 
 void	read_config1(t_global *d, char *file)
 {
 	int			fd;
-	char		*line;
 
 	fd = open_fd(d, file);
 	init_flags(d);
-	line = get_next_line(d, fd);
+	d->flags->line = get_next_line(d, fd);
 	while (!d->flags->no || !d->flags->so || !d->flags->ea \
 		|| !d->flags->we || !d->flags->f || !d->flags->c)
 	{
-		if (!line)
+		if (!d->flags->line)
 		{
-			free(line);
 			close(fd);
 			ft_exit(d, ER_EMP);
 		}
-		read_config2(d, line);
-		free(line);
-		line = get_next_line(d, fd);
+		read_config2(d);
+		free(d->flags->line);
+		d->flags->line = get_next_line(d, fd);
 	}
-	free(line);
+	free(d->flags->line);
+	d->flags->line = NULL;
 	close(fd);
 	read_map(d, file);
 }

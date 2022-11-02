@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 16:56:52 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 02:25:34 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	struct_malloc(t_global *d)
 	d->flags = (t_flags *)malloc(sizeof(t_flags));
 	if (!d->flags)
 		ft_exit(d, ER_MA);
+	d->flags->line = NULL;
 	d->player = (t_player *)malloc(sizeof(t_player));
 	if (!d->player)
 		ft_exit(d, ER_MA);
@@ -55,6 +56,7 @@ void	struct_malloc(t_global *d)
 	if (!d->map)
 		ft_exit(d, ER_MA);
 	null_walls(d);
+	d->map->matrix = NULL;
 	d->ray = (t_ray *)malloc(sizeof(t_ray));
 	if (!d->ray)
 		ft_exit(d, ER_MA);

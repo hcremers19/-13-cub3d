@@ -6,7 +6,7 @@
 /*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:58:09 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/31 17:49:04 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 02:27:29 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ void	ft_free_mat(char **mat)
 
 	if (!mat)
 		return ;
-	i = -1;
-	while (mat[++i])
-		free(mat[i]);
+	i = 0;
+	while (mat[i])
+		i++;
+	while (i >= 0)
+		free(mat[i--]);
 	free(mat);
 	return ;
 }

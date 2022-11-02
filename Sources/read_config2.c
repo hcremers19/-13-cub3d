@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_config2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/01 17:39:17 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 01:16:57 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,16 @@ int	init_color2(t_global *d, char *line)
 
 	split = ft_split(d, line, ',');
 	if (!split)
-	{
-		free(line);
-		ft_exit(d, ER_MA);
-	}
+		ft_exit(d, "huih");
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
-	if (r < 0x0 || 0xff < r || g < 0x0 || 0xff < g || b < 0x0 || 0xff < b)
-	{
-		free(line);
-		ft_exit(d, ER_RGB);
-	}
 	free(split[2]);
 	free(split[1]);
 	free(split[0]);
 	free(split);
+	if (r < 0x0 || 0xff < r || g < 0x0 || 0xff < g || b < 0x0 || 0xff < b)
+		ft_exit(d, ER_RGB);
 	return ((r * 0x10000) + (g * 0x100) + b);
 }
 
@@ -76,12 +70,15 @@ void	export_path(t_global *d, char **str, char *path, int *flag)
 {
 	*str = ft_strdup(path);
 	if (!*str)
+	{
+		free(path);	
 		ft_exit(d, ER_MA);
+	}
 	*flag += 1;
 	free(path);
 }
 
-void	init_files(t_global *d, char *tmp, char *line, char flag)
+void	init_files(t_global *d, char *line, char flag)
 {
 	int		j;
 	char	*path;
@@ -91,10 +88,7 @@ void	init_files(t_global *d, char *tmp, char *line, char flag)
 		j++;
 	path = ft_strtrim(&line[j], "\n");
 	if (!path)
-	{
-		free(tmp);
 		ft_exit(d, ER_MA);
-	}
 	if (flag == 'N' && !d->flags->no)
 		export_path(d, &d->map->wall_n->path, path, &d->flags->no);
 	else if (flag == 'S' && !d->flags->so)
@@ -104,7 +98,10 @@ void	init_files(t_global *d, char *tmp, char *line, char flag)
 	else if (flag == 'W' && !d->flags->we)
 		export_path(d, &d->map->wall_w->path, path, &d->flags->we);
 	else
+	{
+		free(path);
 		ft_exit(d, ER_IL);
+	}
 }
 
 /* ----------------------------------------------------------------------------

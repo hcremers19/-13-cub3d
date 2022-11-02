@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/01 15:17:38 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 01:40:36 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	alloc_map(t_global *d)
 	if (!d->map->matrix)
 		ft_exit(d, ER_MA);
 	i = 0;
-	while (i <= d->map->map_height)
+	while (i < d->map->map_height)
 	{
 		d->map->matrix[i] = (char *)malloc(sizeof(char) * d->map->map_width);
 		if (!d->map->matrix[i])

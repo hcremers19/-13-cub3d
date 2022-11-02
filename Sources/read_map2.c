@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:13:18 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/01 15:18:04 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 02:09:40 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	valid_map(t_global *d)
 		{
 			if ((y == 0 || x == 0 || y == d->map->map_height - 1 || \
 				x == d->map->map_width - 1) && (d->map->matrix[y][x] == '0'))
-				ft_exit(d, ER_OM);
+				ft_exit(d, ER_OM);//free matrix + line(=trim)
 			else if ((d->map->matrix[y][x] == '0') && \
 				(d->map->matrix[y - 1][x] == ' ' || \
 				d->map->matrix[y + 1][x] == ' ' || \
 				d->map->matrix[y][x - 1] == ' ' || \
 				d->map->matrix[y][x + 1] == ' '))
-				ft_exit(d, ER_OM);
+				ft_exit(d, ER_OM);//free matrix + line(=trim)
 			x++;
 		}
 		y++;
@@ -50,7 +50,7 @@ void	valid_char(t_global *d, char *line, int x, int y)
 	if (line[x] == 'N' || line[x] == 'S' || line[x] == 'E' || line[x] == 'W')
 	{
 		if (d->flags->players)
-			ft_exit(d, ER_MP);
+			ft_exit(d, ER_MP);//free matrix + line(=trim)
 		else
 		{
 			d->flags->players++;
@@ -63,7 +63,7 @@ void	valid_char(t_global *d, char *line, int x, int y)
 	else if (line[x] == '0' || line[x] == '1' || line[x] == ' ')
 		d->map->matrix[y][x] = line[x];
 	else
-		ft_exit(d, ER_IC);
+		ft_exit(d, ER_IC);//free matrix + line(=trim)
 }
 
 /* ----------------------------------------------------------------------------
@@ -109,7 +109,7 @@ void	fill_matrix1(t_global *d, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 1 || fd > FOPEN_MAX || read(fd, NULL, 0) < 0)
-		ft_exit(d, ER_OP);
+		ft_exit(d, ER_OP);// free matrix
 	line = get_next_line(d, fd);
 	i = 0;
 	while (i < d->flags->lines)
@@ -120,7 +120,7 @@ void	fill_matrix1(t_global *d, char *file)
 	}
 	fill_matrix2(d, line, fd);
 	if (!d->flags->players)
-		ft_exit(d, ER_NP);
+		ft_exit(d, ER_NP);//free matrix
 	close(fd);
 }
 

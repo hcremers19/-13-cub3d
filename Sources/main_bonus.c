@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:19:17 by I-lan             #+#    #+#             */
-/*   Updated: 2022/11/01 14:02:36 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 01:35:57 by I-lan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	init(d);
 	mlx_hook(d->mlx->mlx_win, 2, 0, &key_hook_press, d);
 	mlx_hook(d->mlx->mlx_win, 3, 0, &key_hook_release, d);
-	mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit, d);
+	mlx_hook(d->mlx->mlx_win, RED_CROSS, 0, &ft_exit_int, d);
 	mlx_hook(d->mlx->mlx_win, 6, 0, &mouse_hook, d);
 	mlx_loop_hook(d->mlx->mlx, &key_hook, d);
 	mlx_loop(d->mlx->mlx);
