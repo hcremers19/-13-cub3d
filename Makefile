@@ -6,7 +6,7 @@
 #    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/02 15:25:42 by hcremers         ###   ########.fr        #
+#    Updated: 2022/11/02 16:00:30 by hcremers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@
 
 # -----------	Name ---------------- #
 
-NAME		=	Cub3D
-NAME_BONUS	=	Cub3D_Bonus
+NAME		=	cub3D
+NAME_BONUS	=	cub3D_bonus
 
 # -----------	Sources ------------- #
 
@@ -93,8 +93,8 @@ PRI			= 	printf
 
 ${OBJS_DIR}%.o:${SRCS_DIR}%.c
 	@${CC} ${CFLAGS} -I ${INC} -Imlx -c $< -o $@
-	@${PRI} "${C_MAG}	Compiling Cub3D:	\
-	${C_CYAN}[${C_ORANGE}$<${C_CYAN}] $(C_RESET) $(L_CLEAR)${C_DEFAUT}\r"
+	@${PRI} "${C_MAG}	Compiling cub3D:	\
+	${C_CYAN}[${C_ORANGE}$<${C_CYAc}] $(C_RESET) $(L_CLEAR)${C_DEFAUT}\r"
 	@${VEL} 0.1
 	@printf "$(L_CLEAR)\r"
 
