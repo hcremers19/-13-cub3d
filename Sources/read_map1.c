@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:47:15 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/02 01:40:36 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 15:46:37 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	alloc_map(t_global *d)
 
 	d->map->matrix = (char **)malloc(sizeof(char *) * d->map->map_height);
 	if (!d->map->matrix)
-		ft_exit(d, ER_MA);
+		ft_exit(d, ER_MA, 1);
 	i = 0;
 	while (i < d->map->map_height)
 	{
@@ -28,7 +28,7 @@ void	alloc_map(t_global *d)
 			while (i >= 0)
 				free(d->map->matrix[i--]);
 			free(d->map->matrix);
-			ft_exit(d, ER_MA);
+			ft_exit(d, ER_MA, 1);
 		}
 		i++;
 	}
@@ -70,7 +70,7 @@ void	get_dimensions1(t_global *d, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 1 || fd > FOPEN_MAX || read(fd, NULL, 0) < 0)
-		ft_exit(d, ER_OP);
+		ft_exit(d, ER_OP, 1);
 	line = get_next_line(d, fd);
 	i = 0;
 	while (i < d->flags->lines)
@@ -83,7 +83,7 @@ void	get_dimensions1(t_global *d, char *file)
 	{
 		free(line);
 		close(fd);
-		ft_exit(d, ER_NM);
+		ft_exit(d, ER_NM, 1);
 	}
 	get_dimensions2(d, line, fd);
 	close(fd);

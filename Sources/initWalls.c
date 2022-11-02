@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 03:49:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 14:04:29 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:45:21 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ void	init_one_wall(t_global *d, t_wall *wall)
 
 	fd = open(wall->path, O_RDONLY);
 	if (fd <= 0)
-		ft_exit_destroy(d, ER_OP);
+		ft_exit_destroy(d, ER_OP, 1);
 	if (!find_format(wall->path, ".xpm"))
 	{
 		wall->ptr = mlx_xpm_file_to_image(d->mlx->mlx, wall->path, \
 			&wall->size_x, &wall->size_y);
 		if (!wall->ptr)
-			ft_exit_destroy(d, ER_MLX_IM);
+			ft_exit_destroy(d, ER_MLX_IM, 1);
 	}
 	else
-		ft_exit_destroy(d, ER_EX);
+		ft_exit_destroy(d, ER_EX, 1);
 	wall->addr = mlx_get_data_addr(wall->ptr, &wall->bpp, \
 		&wall->line_len, &wall->endian);
 	if (!wall->addr)
-		ft_exit_destroy(d, ER_MLX_AD);
+		ft_exit_destroy(d, ER_MLX_AD, 1);
 	close(fd);
 }
 

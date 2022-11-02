@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:57:26 by I-lan             #+#    #+#             */
-/*   Updated: 2022/11/02 13:59:15 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:44:31 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_hook_press(int keycode, t_global *d)
 {
 	if (keycode == ESC)
-		ft_exit_destroy(d, EXIT_S);
+		ft_exit_destroy(d, EXIT_S, 0);
 	if (keycode == W || keycode == UP_ARR)
 		d->key->kw = 1;
 	if (keycode == S || keycode == DOWN_ARR)

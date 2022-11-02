@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 17:03:50 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/02 01:14:38 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 15:43:55 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	wrdnbr(t_global *d, char const *s, char c)
 		i = i + j;
 	}
 	if (count != 3)
-		ft_exit(d, ER_RGB);
+		ft_exit(d, ER_RGB, 1);
 	return (count);
 }
 

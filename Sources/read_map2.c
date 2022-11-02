@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:13:18 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/02 12:27:27 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:46:52 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	valid_map(t_global *d)
 		{
 			if ((y == 0 || x == 0 || y == d->map->map_height - 1 || \
 				x == d->map->map_width - 1) && (d->map->matrix[y][x] == '0'))
-				ft_exit(d, ER_OM);
+				ft_exit(d, ER_OM, 1);
 			else if ((d->map->matrix[y][x] == '0') && \
 				(d->map->matrix[y - 1][x] == ' ' || \
 				d->map->matrix[y + 1][x] == ' ' || \
 				d->map->matrix[y][x - 1] == ' ' || \
 				d->map->matrix[y][x + 1] == ' '))
-				ft_exit(d, ER_OM);
+				ft_exit(d, ER_OM, 1);
 			x++;
 		}
 		y++;
@@ -52,7 +52,7 @@ void	valid_char(t_global *d, char *line, int x, int y)
 		if (d->flags->players)
 		{
 			free(line);
-			ft_exit(d, ER_MP);
+			ft_exit(d, ER_MP, 1);
 		}
 		else
 		{
@@ -68,7 +68,7 @@ void	valid_char(t_global *d, char *line, int x, int y)
 	else
 	{
 		free(line);
-		ft_exit(d, ER_IC);
+		ft_exit(d, ER_IC, 1);
 	}
 }
 
@@ -115,7 +115,7 @@ void	fill_matrix1(t_global *d, char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 1 || fd > FOPEN_MAX || read(fd, NULL, 0) < 0)
-		ft_exit(d, ER_OP);
+		ft_exit(d, ER_OP, 1);
 	line = get_next_line(d, fd);
 	i = 0;
 	while (i < d->flags->lines)
@@ -126,7 +126,7 @@ void	fill_matrix1(t_global *d, char *file)
 	}
 	fill_matrix2(d, line, fd);
 	if (!d->flags->players)
-		ft_exit(d, ER_NP);
+		ft_exit(d, ER_NP, 1);
 	close(fd);
 }
 

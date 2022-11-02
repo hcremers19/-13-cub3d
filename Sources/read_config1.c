@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_config1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/02 01:19:08 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 15:46:11 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	open_fd(t_global *d, char *file)
 		|| read(fd, NULL, 0) < 0 || ft_strlen(file) < 4)
 	{
 		close(fd);
-		ft_exit(d, ER_IP);
+		ft_exit(d, ER_IP, 1);
 	}
 	if (ft_strncmp(&file[ft_strlen(file) - 4], ".cub", 4))
 	{
 		close(fd);
-		ft_exit(d, ER_EX);
+		ft_exit(d, ER_EX, 1);
 	}
 	return (fd);
 }
@@ -71,7 +71,7 @@ void	read_config2(t_global *d)
 	else if (line[i] == '\n')
 		;
 	else
-		ft_exit(d, ER_IL);
+		ft_exit(d, ER_IL, 1);
 }
 
 void	read_config1(t_global *d, char *file)
@@ -87,7 +87,7 @@ void	read_config1(t_global *d, char *file)
 		if (!d->flags->line)
 		{
 			close(fd);
-			ft_exit(d, ER_EMP);
+			ft_exit(d, ER_EMP, 1);
 		}
 		read_config2(d);
 		free(d->flags->line);

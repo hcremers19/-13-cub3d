@@ -6,7 +6,7 @@
 #    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/02 14:07:35 by hcremers         ###   ########.fr        #
+#    Updated: 2022/11/02 15:25:42 by hcremers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,4 +140,4 @@ re : fclean all
 
 # ----------------------------------- #
 
-.PHONY : all clean fclean re
+.PHONY : all bonus clean fclean re

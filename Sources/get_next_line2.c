@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 18:39:45 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/01 16:45:01 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:47:03 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_free_two_exit(t_global *d, char **s1, char **s2, char *str)
 		ft_free(s1);
 	if (s2)
 		ft_free(s2);
-	ft_exit(d, str);
+	ft_exit(d, str, 1);
 }
 
 void	ft_free(char **ptr)

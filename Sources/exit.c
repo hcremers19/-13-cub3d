@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 13:57:13 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:47:39 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_exit_int(t_global *d)
 {
 	mlx_destroy_window(d->mlx->mlx, d->mlx->mlx_win);
-	ft_exit(d, EXIT_S);
+	ft_exit(d, EXIT_S, 0);
 	return (0);
 }
 
@@ -23,20 +23,20 @@ int	ft_exit_int(t_global *d)
 Int return exit function for ESC window red cross MLX mouse hook.
 ---------------------------------------------------------------------------- */
 
-void	ft_exit_destroy(t_global *d, char *str)
+void	ft_exit_destroy(t_global *d, char *str, int status)
 {
 	mlx_destroy_window(d->mlx->mlx, d->mlx->mlx_win);
-	ft_exit(d, str);
+	ft_exit(d, str, status);
 }
 
 /* ----------------------------------------------------------------------------
 Void return exit function + destroy MLX window instance.
 ---------------------------------------------------------------------------- */
 
-void	ft_exit(t_global *d, char *str)
+void	ft_exit(t_global *d, char *str, int status)
 {
 	if (str)
-		write(1, str, ft_strlen(str));
+		ft_putstr_fd(str, status + 1);
 	if (d->flags)
 	{
 		if (d->flags->line)
@@ -51,10 +51,10 @@ void	ft_exit(t_global *d, char *str)
 		free(d->ray);
 	if (d->key)
 		free(d->key);
-	ft_exit1(d);
+	ft_exit1(d, status);
 }
 
-void	ft_exit1(t_global *d)
+void	ft_exit1(t_global *d, int status)
 {
 	if (d->map)
 	{
@@ -64,7 +64,7 @@ void	ft_exit1(t_global *d)
 	}
 	if (d)
 		free(d);
-	exit(0);
+	exit(status);
 }
 
 /* ----------------------------------------------------------------------------

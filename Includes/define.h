@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:22:06 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 15:21:26 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:22:16 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@
 # define ER_EX		"\033[0;31mError\033[0;39m\n--> Wrong file extension\n"
 # define ER_IC		"\033[0;31mError\033[0;39m\n--> Invalid character on map\n"
 # define ER_IL		"\033[0;31mError\033[0;39m\n\
-					--> Invalid line in configuration\n"
+--> Invalid line in configuration\n"
 # define ER_IP		"\033[0;31mError\033[0;39m\n--> Invalid path\n"
 # define ER_MA		"\033[0;31mError\033[0;39m\n--> Memory allocation\n"
 # define ER_MLX_AD	"\033[0;31mError\033[0;39m\n--> MLX address failed\n"
 # define ER_MLX_IM	"\033[0;31mError\033[0;39m\n--> MLX image failed\n"
 # define ER_MLX_IN	"\033[0;31mError\033[0;39m\n--> MLX init failed\n"
 # define ER_MP		"\033[0;31mError\033[0;39m\n\
-					--> More than one player on map\n"
+--> More than one player on map\n"
 # define ER_NM		"\033[0;31mError\033[0;39m\n--> No map found\n"
 # define ER_NP		"\033[0;31mError\033[0;39m\n--> No player found\n"
 # define ER_OM		"\033[0;31mError\033[0;39m\n--> Open map\n"

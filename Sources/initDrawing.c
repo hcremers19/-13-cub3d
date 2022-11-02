@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 14:01:31 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:45:09 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void	init_window(t_global *d)
 {
 	d->mlx->img = mlx_new_image(d->mlx->mlx, WIDTH, HEIGHT);
 	if (!d->mlx->img)
-		ft_exit_destroy(d, ER_MLX_IM);
+		ft_exit_destroy(d, ER_MLX_IM, 1);
 	d->mlx->addr = mlx_get_data_addr(d->mlx->img, &d->mlx->bpp, \
 		&d->mlx->line_len, &d->mlx->endian);
 	if (!d->mlx->addr)
-		ft_exit_destroy(d, ER_MLX_AD);
+		ft_exit_destroy(d, ER_MLX_AD, 1);
 	raycast_loop(d);
 	mlx_clear_window(d->mlx->mlx, d->mlx->mlx_win);
 	mlx_put_image_to_window(d->mlx->mlx, d->mlx->mlx_win, d->mlx->img, 0, 0);
@@ -86,10 +86,10 @@ void	init(t_global *d)
 {
 	d->mlx->mlx = mlx_init();
 	if (!d->mlx->mlx)
-		ft_exit(d, ER_MLX_IN);
+		ft_exit(d, ER_MLX_IN, 1);
 	d->mlx->mlx_win = mlx_new_window(d->mlx->mlx, WIDTH, HEIGHT, "cub3D");
 	if (!d->mlx->mlx_win)
-		ft_exit(d, ER_MLX_IN);
+		ft_exit(d, ER_MLX_IN, 1);
 	init_dir(d);
 	init_walls(d);
 	init_window(d);

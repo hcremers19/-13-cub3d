@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 18:39:45 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/01 16:45:15 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:44:14 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ char	*get_next_line(t_global *d, int fd)
 
 	rd = BUFFER_SIZE;
 	if (fd < 0 || fd > 1023 || BUFFER_SIZE < 1 || BUFFER_SIZE > INT_MAX - 2)
-		ft_exit(d, ER_OP);
+		ft_exit(d, ER_OP, 1);
 	while (rd > 0)
 	{
 		buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!buf)
-			ft_exit(d, ER_MA);
+			ft_exit(d, ER_MA, 1);
 		rd = read(fd, buf, BUFFER_SIZE);
 		if (rd == -1)
 			ft_free_two_exit(d, &buf, &stat, ER_RF);

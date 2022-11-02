@@ -6,7 +6,7 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:37:04 by hcremers          #+#    #+#             */
-/*   Updated: 2022/11/02 12:12:49 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:46:26 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	init_color2(t_global *d, char *line)
 
 	split = ft_split(d, line, ',');
 	if (!split)
-		ft_exit(d, ER_MA);
+		ft_exit(d, ER_MA, 1);
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
@@ -30,7 +30,7 @@ int	init_color2(t_global *d, char *line)
 	free(split[0]);
 	free(split);
 	if (r < 0x0 || 0xff < r || g < 0x0 || 0xff < g || b < 0x0 || 0xff < b)
-		ft_exit(d, ER_RGB);
+		ft_exit(d, ER_RGB, 1);
 	return ((r * 0x10000) + (g * 0x100) + b);
 }
 
@@ -72,7 +72,7 @@ void	export_path(t_global *d, char **str, char *path, int *flag)
 	if (!*str)
 	{
 		free(path);
-		ft_exit(d, ER_MA);
+		ft_exit(d, ER_MA, 1);
 	}
 	*flag += 1;
 	free(path);
@@ -88,7 +88,7 @@ void	init_files(t_global *d, char *line, char flag)
 		j++;
 	path = ft_strtrim(&line[j], "\n");
 	if (!path)
-		ft_exit(d, ER_MA);
+		ft_exit(d, ER_MA, 1);
 	if (flag == 'N' && !d->flags->no)
 		export_path(d, &d->map->wall_n->path, path, &d->flags->no);
 	else if (flag == 'S' && !d->flags->so)
@@ -100,7 +100,7 @@ void	init_files(t_global *d, char *line, char flag)
 	else
 	{
 		free(path);
-		ft_exit(d, ER_IL);
+		ft_exit(d, ER_IL, 1);
 	}
 }
 

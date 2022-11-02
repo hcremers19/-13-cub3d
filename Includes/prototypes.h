@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 13:33:04 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:42:39 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	free_walls(t_global *d);
 //-------------------------------------------------------------
 
 int		ft_exit_int(t_global *d);
-void	ft_exit_destroy(t_global *d, char *str);
-void	ft_exit(t_global *d, char *str);
-void	ft_exit1(t_global *d);
+void	ft_exit_destroy(t_global *d, char *str, int status);
+void	ft_exit(t_global *d, char *str, int status);
+void	ft_exit1(t_global *d, int status);
 
 //-------------------------------------------------------------
 //		ft_atoi.c
