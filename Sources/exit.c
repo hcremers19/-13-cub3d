@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:06:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 13:32:53 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 13:57:13 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-Int return exit fonction for ESC window red cross MLX mouse hook.
----------------------------------------------------------------------------- */
 
 int	ft_exit_int(t_global *d)
 {
@@ -24,7 +20,7 @@ int	ft_exit_int(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Void return exit fonction + destroy MLX window instance.
+Int return exit function for ESC window red cross MLX mouse hook.
 ---------------------------------------------------------------------------- */
 
 void	ft_exit_destroy(t_global *d, char *str)
@@ -34,7 +30,7 @@ void	ft_exit_destroy(t_global *d, char *str)
 }
 
 /* ----------------------------------------------------------------------------
-Free the all the pointeur of the global data struct and exit.
+Void return exit function + destroy MLX window instance.
 ---------------------------------------------------------------------------- */
 
 void	ft_exit(t_global *d, char *str)
@@ -70,3 +66,7 @@ void	ft_exit1(t_global *d)
 		free(d);
 	exit(0);
 }
+
+/* ----------------------------------------------------------------------------
+Free every pointer of the global data struct and exit.
+---------------------------------------------------------------------------- */

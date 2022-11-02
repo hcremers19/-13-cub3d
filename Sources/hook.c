@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:57:26 by I-lan             #+#    #+#             */
-/*   Updated: 2022/11/02 13:48:23 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 13:59:15 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-Set key flag to one when specific keyboard is pressed. The flag is after that
-used in key_hook fonction. Exit if ESC is pressed.
----------------------------------------------------------------------------- */
 
 int	key_hook_press(int keycode, t_global *d)
 {
@@ -37,7 +32,8 @@ int	key_hook_press(int keycode, t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Set key flag to zero if the key button is released.
+Set "key" flag to one when a specific key is pressed. The flag is then used in
+key_hook fonction. Exit if ESC is pressed.
 ---------------------------------------------------------------------------- */
 
 int	key_hook_release(int keycode, t_global *d)
@@ -58,9 +54,7 @@ int	key_hook_release(int keycode, t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Key hook is constandly called in a mlx_loop_hook (main). It check if the key 
-flag if one or zero. If it is 1 it can calls 4 differents mouvements fonctions 
-or 2 rotation of the POV fonctions.
+Set "key" flag to zero if the key button is released.
 ---------------------------------------------------------------------------- */
 
 int	key_hook(t_global *d)
@@ -81,3 +75,9 @@ int	key_hook(t_global *d)
 	init_window(d);
 	return (0);
 }
+
+/* ----------------------------------------------------------------------------
+Key hook is constantly called in a mlx_loop_hook (main). It checks if the "key"
+flag is one or zero. If it is 1 it can call 4 different movements functions 
+or 2 rotations of the POV functions.
+---------------------------------------------------------------------------- */

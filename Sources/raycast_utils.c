@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:27:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/01 13:53:04 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 14:11:16 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-Raycast_loop order : 7'/7.
-Put a colored pixel on the screen at X and Y given positions using MLX image 
-data.
----------------------------------------------------------------------------- */
 
 void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 {
@@ -27,11 +21,9 @@ void	my_mlx_pixel_put(t_global *d, int x, int y, int color)
 }
 
 /* ----------------------------------------------------------------------------
-Raycast_loop order : 4/7.
-Calcule the length between the player (POV) and the wall the dertermine 
-the verticals distances between the bottom of the screen and the wall 
-(draw_start), the heigth of the wall (draw_end - draw_start) and finally 
-the distance between the wall and the top of the screen.
+Raycast_loop order : 7'/7.
+Put a colored pixel on the screen at X and Y given positions using MLX image 
+data.
 ---------------------------------------------------------------------------- */
 
 void	get_draw_lines(t_global *d)
@@ -52,13 +44,11 @@ void	get_draw_lines(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Raycast_loop order : 1/7.
-Initiation of :
-	- camera plane x-coordinate (cam_x)
-	- vector directions of the ray (raydir)
-	- rounded position on the map (map)
-	- distance the ray has to travel to go from 1 x-side (or y) to the next 
-	  x-side (delta_dist)
+Raycast_loop order : 4/7.
+Calculate the length between the player (POV) and the wall to determine 
+the vertical distances between the bottom of the screen and the wall 
+(draw_start), the height of the wall (draw_end - draw_start) and finally 
+the distance between the wall and the top of the screen.
 ---------------------------------------------------------------------------- */
 
 void	init_ray(t_global *d, int x)
@@ -77,8 +67,13 @@ void	init_ray(t_global *d, int x)
 }
 
 /* ----------------------------------------------------------------------------
-Raycast_loop order : 5'/7.
-Initiate textures variables depending which wall the ray has hitten.
+Raycast_loop order : 1/7.
+Initialization of :
+	- camera plane x-coordinate (cam_x)
+	- vector directions of the ray (raydir)
+	- rounded position on the map (map)
+	- distance the ray has to travel to go from 1 x-side (or y) to the next 
+	  x-side (delta_dist)
 ---------------------------------------------------------------------------- */
 
 void	init_img(t_global *d, t_wall *cur_wall)
@@ -90,8 +85,8 @@ void	init_img(t_global *d, t_wall *cur_wall)
 }
 
 /* ----------------------------------------------------------------------------
-Raycast_loop order : 5/7.
-Determine which wall and the exact position where the ray hits it.
+Raycast_loop order : 5'/7.
+Initiate textures variables depending on which wall the ray has hit.
 ---------------------------------------------------------------------------- */
 
 void	init_tex(t_global *d)
@@ -122,3 +117,8 @@ void	init_tex(t_global *d)
 		init_img(d, d->map->wall_s);
 	}
 }
+
+/* ----------------------------------------------------------------------------
+Raycast_loop order : 5/7.
+Determine which wall and the exact position where the ray hits it.
+---------------------------------------------------------------------------- */

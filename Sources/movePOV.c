@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moovePOV.c                                         :+:      :+:    :+:   */
+/*   movePOV.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 19:38:41 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/31 17:47:25 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 14:06:44 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-Change angles of the player's direction and then of screen's direction
-to rotate POV to the East (left).
----------------------------------------------------------------------------- */
 
 void	rot_e(t_global *d)
 {
@@ -36,7 +31,7 @@ void	rot_e(t_global *d)
 
 /* ----------------------------------------------------------------------------
 Change angles of the player's direction and then of screen's direction
-to rotate POV to the West (rigth).
+to rotate POV to the East (left).
 ---------------------------------------------------------------------------- */
 
 void	rot_w(t_global *d)
@@ -55,3 +50,8 @@ void	rot_w(t_global *d)
 	d->player->screen_y = old_screen_x * sin(-(M_PI / ROT)) \
 		+ d->player->screen_y * cos(-(M_PI / ROT));
 }
+
+/* ----------------------------------------------------------------------------
+Change angles of the player's direction and then of screen's direction
+to rotate POV to the West (right).
+---------------------------------------------------------------------------- */

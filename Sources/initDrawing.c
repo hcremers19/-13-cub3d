@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initDrawing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:22:41 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 13:23:01 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 14:01:31 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-See "init_dir" below.
----------------------------------------------------------------------------- */
 
 void	init_dir1(t_global *d)
 {
@@ -33,10 +29,9 @@ void	init_dir1(t_global *d)
 		d->player->screen_y = -1.0;
 	}
 }
+
 /* ----------------------------------------------------------------------------
-Set the init direction of the POV and the screen of the player depending on 
-the letter (N, S, E or W) found in the map. Note that the dir(x, y) is always
-perpendicular to screen(x, y) of the player.
+See "init_dir" below.
 ---------------------------------------------------------------------------- */
 
 void	init_dir(t_global *d)
@@ -62,9 +57,9 @@ void	init_dir(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Initialise window image pointeur and image adress pointeur to print, when it is 
-necessary, a new image. Call "raycast_loop" to draw on the image and then
-use "put_image_to_window" to put the image on the given window.
+Set the initial direction of the POV and the screen of the player depending on
+the letter (N, S, E or W) found in the map. Note that the dir(x, y) is always
+perpendicular to screen(x, y) of the player.
 ---------------------------------------------------------------------------- */
 
 void	init_window(t_global *d)
@@ -82,10 +77,9 @@ void	init_window(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Initialise MLX library and create a new window instance.
-Initialise initial directions of the player and POV.
-Initialise walls structure with their different texture.
-Launch the image.
+Initialize window image pointer and image adress pointer to print, when it is
+necessary, a new image. Call "raycast_loop" to draw on the image and then
+use "put_image_to_window" to put the image on the given window.
 ---------------------------------------------------------------------------- */
 
 void	init(t_global *d)
@@ -100,3 +94,10 @@ void	init(t_global *d)
 	init_walls(d);
 	init_window(d);
 }
+
+/* ----------------------------------------------------------------------------
+Initialize MLX library and create a new window instance.
+Initialize initial directions of the player and POV.
+Initialize wall structures with their different textures.
+Launch the image.
+---------------------------------------------------------------------------- */

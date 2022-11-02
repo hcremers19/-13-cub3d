@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:17:38 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 02:25:34 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 14:05:37 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-Memory allocation of the 4 wall structure of the map.
----------------------------------------------------------------------------- */
 
 void	wall_struct_malloc(t_global *d)
 {
@@ -37,7 +33,7 @@ void	wall_struct_malloc(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Memory allocation of all pointeurs of t_glabal data struct.
+Memory allocation of the 4 wall structures of the map.
 ---------------------------------------------------------------------------- */
 
 void	struct_malloc(t_global *d)
@@ -67,7 +63,7 @@ void	struct_malloc(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Set initially all of global data struct pointeurs to NULL to simplificate free.
+Memory allocation of all pointers of t_glabal data struct.
 ---------------------------------------------------------------------------- */
 
 void	init_struct(t_global *d)
@@ -79,3 +75,7 @@ void	init_struct(t_global *d)
 	d->ray = NULL;
 	d->key = NULL;
 }
+
+/* ----------------------------------------------------------------------------
+Set initially all of global data struct pointers to NULL to simplify free.
+---------------------------------------------------------------------------- */

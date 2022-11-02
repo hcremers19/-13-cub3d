@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initWalls.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 03:49:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 13:28:09 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 14:04:29 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-Read the end of the wall_path(str) to check its format(*set).
----------------------------------------------------------------------------- */
 
 static int	find_format(char *str, char *set)
 {
@@ -34,8 +30,7 @@ static int	find_format(char *str, char *set)
 }
 
 /* ----------------------------------------------------------------------------
-Read the path of the wall's texture, check ".xpm" format and then converts .xpm 
-file to a new image instance for each wall.
+Read the end of the wall_path(str) to check its format(*set).
 ---------------------------------------------------------------------------- */
 
 void	init_one_wall(t_global *d, t_wall *wall)
@@ -69,7 +64,8 @@ Handle ".png" image format :
 ------------------------- */
 
 /* ----------------------------------------------------------------------------
-Calls "init_one_wall" for each of the 4 walls of the map. 
+Read the path of the wall's texture, check ".xpm" format and then convert .xpm 
+file to a new image instance for each wall.
 ---------------------------------------------------------------------------- */
 
 void	init_walls(t_global *d)
@@ -81,7 +77,7 @@ void	init_walls(t_global *d)
 }
 
 /* ----------------------------------------------------------------------------
-Set initially all of wall structurs pointeurs to NULL to simplificate free.
+Calls "init_one_wall" for each of the 4 walls of the map. 
 ---------------------------------------------------------------------------- */
 
 void	null_walls(t_global *d)
@@ -91,3 +87,7 @@ void	null_walls(t_global *d)
 	d->map->wall_e = NULL;
 	d->map->wall_w = NULL;
 }
+
+/* ----------------------------------------------------------------------------
+Set initially all of wall structures pointers to NULL to simplify free.
+---------------------------------------------------------------------------- */

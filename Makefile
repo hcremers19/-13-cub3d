@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+         #
+#    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/02 13:43:17 by acaillea         ###   ########.fr        #
+#    Updated: 2022/11/02 14:07:35 by hcremers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,8 @@ SRCS		=	exit.c					\
 				libft1.c				\
 				libft2.c				\
 				malloc.c				\
-				moovePOV.c				\
-				mouvement.c				\
+				movePOV.c				\
+				movement.c				\
 				raycast.c				\
 				raycast_utils.c			\
 				read_config1.c			\

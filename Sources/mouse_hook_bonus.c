@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:13:42 by acaillea          #+#    #+#             */
-/*   Updated: 2022/10/31 17:47:59 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 14:11:26 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/main.h"
-
-/* ----------------------------------------------------------------------------
-Fonction for hook into mouse events. X and y are position of the mouse.
-Allow the programm to rotate POV of the player by fallowing the mouse
-position on the bottom of the screen.
----------------------------------------------------------------------------- */
 
 int	mouse_hook(int x, int y, t_global *d)
 {
@@ -36,3 +30,9 @@ int	mouse_hook(int x, int y, t_global *d)
 	old_x = x;
 	return (0);
 }
+
+/* ----------------------------------------------------------------------------
+Function to hook into mouse events. X and Y are the position of the mouse.
+Allow the programm to rotate POV of the player by following the mouse
+position on the bottom of the screen.
+---------------------------------------------------------------------------- */

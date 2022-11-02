@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:54 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 01:37:16 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 14:16:43 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@
 # include "define.h"
 # include "structures.h"
 # include "prototypes.h"
-# include "../../wraloc/wraloc.h"
 
 #endif /* MAIN_H */
