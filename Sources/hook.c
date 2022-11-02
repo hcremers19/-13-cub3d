@@ -6,7 +6,7 @@
 /*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:57:26 by I-lan             #+#    #+#             */
-/*   Updated: 2022/10/28 18:59:33 by acaillea         ###   ########.fr       */
+/*   Updated: 2022/11/02 13:48:23 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ used in key_hook fonction. Exit if ESC is pressed.
 int	key_hook_press(int keycode, t_global *d)
 {
 	if (keycode == ESC)
-	{
-		mlx_destroy_window(d->mlx->mlx, d->mlx->mlx_win);
-		ft_exit(d, EXIT_S);
-	}
+		ft_exit_destroy(d, EXIT_S);
 	if (keycode == W || keycode == UP_ARR)
 		d->key->kw = 1;
 	if (keycode == S || keycode == DOWN_ARR)

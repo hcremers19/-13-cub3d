@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 01:35:43 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 13:26:33 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ int	main(int ac, char **av)
 }
 
 // To do
-//	- verifier leaks
 //  - creer/github des maps + textures
 //	- Hugo : relir commentaire Alan pcq alan est nul en orthographe merci <3

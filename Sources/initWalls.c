@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initWalls.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 03:49:44 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 02:11:01 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 13:28:09 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,20 @@ void	init_one_wall(t_global *d, t_wall *wall)
 
 	fd = open(wall->path, O_RDONLY);
 	if (fd <= 0)
-		ft_exit(d, ER_OP);//free matrix
+		ft_exit_destroy(d, ER_OP);
 	if (!find_format(wall->path, ".xpm"))
+	{
 		wall->ptr = mlx_xpm_file_to_image(d->mlx->mlx, wall->path, \
 			&wall->size_x, &wall->size_y);
+		if (!wall->ptr)
+			ft_exit_destroy(d, ER_MLX_IM);
+	}
 	else
-		ft_exit(d, ER_EX);//free matrix
+		ft_exit_destroy(d, ER_EX);
 	wall->addr = mlx_get_data_addr(wall->ptr, &wall->bpp, \
 		&wall->line_len, &wall->endian);
+	if (!wall->addr)
+		ft_exit_destroy(d, ER_MLX_AD);
 	close(fd);
 }
 

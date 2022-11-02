@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: I-lan <I-lan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:34:48 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 01:35:27 by I-lan            ###   ########.fr       */
+/*   Updated: 2022/11/02 13:33:04 by acaillea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 # define PROTOTYPES_H
 
 //-------------------------------------------------------------
+//		exit_utils.c
+//-------------------------------------------------------------
+
+void	free_map(t_global *d);
+void	free_path(t_wall *wall);
+void	free_walls(t_global *d);
+
+//-------------------------------------------------------------
 //		exit.c
 //-------------------------------------------------------------
 
-void	free_path(t_wall *wall);
-void	free_walls(t_global *d);
 int		ft_exit_int(t_global *d);
+void	ft_exit_destroy(t_global *d, char *str);
 void	ft_exit(t_global *d, char *str);
+void	ft_exit1(t_global *d);
 
 //-------------------------------------------------------------
 //		ft_atoi.c
@@ -194,12 +202,6 @@ void	valid_map(t_global *d);
 void	valid_char(t_global *d, char *line, int x, int y);
 void	fill_matrix2(t_global *d, char *line, int fd);
 void	fill_matrix1(t_global *d, char *file);
-
-//-------------------------------------------------------------
-//		Utils
-//-------------------------------------------------------------
-
-void	ft_free_mat(char **mat);
 
 //-------------------------------------------------------------
 

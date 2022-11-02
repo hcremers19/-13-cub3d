@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
+#    By: acaillea <acaillea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 16:04:36 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/02 12:27:58 by hcremers         ###   ########.fr        #
+#    Updated: 2022/11/02 13:43:17 by acaillea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ NAME_BONUS	=	Cub3D_Bonus
 SRCS_DIR	=	./Sources/
 
 SRCS		=	exit.c					\
+				exit_utils.c			\
 				ft_atoi.c				\
 				ft_split.c				\
 				ft_strtrim.c			\
@@ -53,7 +54,7 @@ SRCS_BONUS	=	main_bonus.c			\
 
 # -----------	Includes ------------ #
 
-# INC			=	./Includes/main.h
+INC			=	./Includes/main.h
 
 # -----------	Objects ------------- #
 
@@ -72,8 +73,8 @@ CFLAGS		=	-Wall -Werror -Wextra
 # -----------	MLX ----------------- #
 
 MLX			= 	-lmlx -framework OpenGL -framework AppKit
-# MLX				= -L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
-# MLX			= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+# MLX		= 	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz --> Compilation with MLX files
+# MLX		= 	-Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz --> Compilation with Linus
 
 # -----------	Fonctions ----------- #
 
@@ -94,7 +95,7 @@ ${OBJS_DIR}%.o:${SRCS_DIR}%.c
 	@${CC} ${CFLAGS} -I ${INC} -Imlx -c $< -o $@
 	@${PRI} "${C_MAG}	Compiling Cub3D:	\
 	${C_CYAN}[${C_ORANGE}$<${C_CYAN}] $(C_RESET) $(L_CLEAR)${C_DEFAUT}\r"
-#	 @${VEL} 0.5
+	@${VEL} 0.1
 	@printf "$(L_CLEAR)\r"
 
 all : ${OBJS_FIL} ${NAME}
