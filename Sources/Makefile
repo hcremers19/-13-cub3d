@@ -6,28 +6,22 @@
 #    By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 15:12:04 by acaillea          #+#    #+#              #
-#    Updated: 2022/11/10 21:01:43 by hcremers         ###   ########.fr        #
+#    Updated: 2022/11/10 20:54:53 by hcremers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3D
+NAME	= libsrcs.a
 
-SRCS		= main.c
+SRCS	= $(wildcard *.c)
 
-OBJS		= $(addprefix $(OBJDIR), $(SRCS:.c=.o))
-OBJDIR		= Objects/
+OBJS	= $(addprefix $(OBJDIR), $(SRCS:.c=.o))
+OBJDIR	= objs/
 
-CC			= gcc
-RM			= rm -f
-MKDIR		= mkdir
+CC		= gcc
+RM		= rm -f
+MKDIR	= mkdir
 
-LIBDIR		= Sources/
-LIB			= $(LIBDIR)libsrcs.a
-
-MLX			= -lmlx -framework OpenGL -framework AppKit							# MacOS
-# MLX			= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz # Linux
-
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 
 ###############################################################################
 
@@ -37,8 +31,8 @@ $(OBJDIR)%.o:	%.c
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				make -C $(LIBDIR)
-				$(CC) $(CFLAGS) $(OBJS) $(LIB) $(MLX) -o $(NAME)
+				ar rcs $(NAME) $(OBJS) $(LIB)
+				ranlib $(NAME)
 
 $(OBJS):		| $(OBJDIR)
 
@@ -46,12 +40,10 @@ $(OBJDIR):
 				$(MKDIR) $(OBJDIR)
 
 clean:
-				make clean -C $(LIBDIR)
 				$(RM) $(wildcard *.o)
 				$(RM) -r $(OBJDIR)
 
 fclean:			clean
-				make fclean -C $(LIBDIR)
 				$(RM) $(NAME)
 
 re:				fclean all

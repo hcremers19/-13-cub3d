@@ -6,11 +6,11 @@
 /*   By: hcremers <hcremers@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:29:13 by acaillea          #+#    #+#             */
-/*   Updated: 2022/11/02 14:05:00 by hcremers         ###   ########.fr       */
+/*   Updated: 2022/11/10 20:58:04 by hcremers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/main.h"
+#include "./Includes/main.h"
 
 int	main(int ac, char **av)
 {
